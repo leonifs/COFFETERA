@@ -623,46 +623,46 @@
 <script>
 // ===== MINI MAP INIT (SYNC WITH CO-MAP DATA: ALL SHOPS + REVIEWS + SHORTCUT) =====
 setTimeout(()=>{
-  const miniMap = L.map('miniMap').setView([-7.770,110.377],13);
+  const miniMap = L.map('miniMap').setView([-7.795,110.375],13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(miniMap);
 
   // === SAME DATA AS CO-MAP (DISALIN AGAR 100% MUNCUL SEMUA) ===
   const aesthetic = [
-    {lat:-7.770,lng:110.370,name:'Aesthetic Coffee 1',rating:4.5},
-    {lat:-7.766,lng:110.365,name:'Aesthetic Coffee 2',rating:4.2},
-    {lat:-7.772,lng:110.385,name:'Aesthetic Coffee 3',rating:4.7},
-    {lat:-7.768,lng:110.378,name:'Aesthetic Coffee 4',rating:4.3}
+    {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1',rating:4.5},
+    {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2',rating:4.2},
+    {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3',rating:4.7},
+    {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4',rating:4.3}
   ];
 
   const working = [
-    {lat:-7.769,lng:110.372,name:'Working Coffee 1',rating:4.1},
-    {lat:-7.775,lng:110.388,name:'Working Coffee 2',rating:4.4},
-    {lat:-7.763,lng:110.360,name:'Working Coffee 3',rating:4.0},
-    {lat:-7.771,lng:110.378,name:'Working Coffee 4',rating:4.3}
+    {lat:-7.804,lng:110.358,name:'Working Coffee 1',rating:4.1},
+    {lat:-7.792,lng:110.367,name:'Working Coffee 2',rating:4.4},
+    {lat:-7.786,lng:110.374,name:'Working Coffee 3',rating:4.0},
+    {lat:-7.798,lng:110.382,name:'Working Coffee 4',rating:4.3}
   ];
 
   const family = [
-    {lat:-7.768,lng:110.374,name:'Family Coffee 1',rating:4.6},
-    {lat:-7.776,lng:110.390,name:'Family Coffee 2',rating:4.2},
-    {lat:-7.764,lng:110.362,name:'Family Coffee 3',rating:4.1},
-    {lat:-7.773,lng:110.382,name:'Family Coffee 4',rating:4.5},
-    {lat:-7.767,lng:110.368,name:'Family Coffee 5',rating:4.3},
-    {lat:-7.774,lng:110.386,name:'Family Coffee 6',rating:4.4},
-    {lat:-7.762,lng:110.358,name:'Family Coffee 7',rating:4.2}
+    {lat:-7.805,lng:110.370,name:'Family Coffee 1',rating:4.6},
+    {lat:-7.796,lng:110.378,name:'Family Coffee 2',rating:4.2},
+    {lat:-7.787,lng:110.360,name:'Family Coffee 3',rating:4.1},
+    {lat:-7.799,lng:110.368,name:'Family Coffee 4',rating:4.5},
+    {lat:-7.790,lng:110.385,name:'Family Coffee 5',rating:4.3},
+    {lat:-7.803,lng:110.392,name:'Family Coffee 6',rating:4.4},
+    {lat:-7.789,lng:110.373,name:'Family Coffee 7',rating:4.2}
   ];
 
   const romantic = [
-    {lat:-7.771,lng:110.376,name:'Romantic Coffee 1',rating:4.8},
-    {lat:-7.777,lng:110.392,name:'Romantic Coffee 2',rating:4.6},
-    {lat:-7.765,lng:110.364,name:'Romantic Coffee 3',rating:4.5},
-    {lat:-7.772,lng:110.380,name:'Romantic Coffee 4',rating:4.7},
-    {lat:-7.768,lng:110.369,name:'Romantic Coffee 5',rating:4.4},
-    {lat:-7.775,lng:110.387,name:'Romantic Coffee 6',rating:4.6},
-    {lat:-7.763,lng:110.361,name:'Romantic Coffee 7',rating:4.3},
-    {lat:-7.770,lng:110.373,name:'Romantic Coffee 8',rating:4.7},
-    {lat:-7.766,lng:110.366,name:'Romantic Coffee 9',rating:4.5},
-    {lat:-7.774,lng:110.384,name:'Romantic Coffee 10',rating:4.6}
+    {lat:-7.801,lng:110.366,name:'Romantic Coffee 1',rating:4.8},
+    {lat:-7.793,lng:110.375,name:'Romantic Coffee 2',rating:4.6},
+    {lat:-7.786,lng:110.382,name:'Romantic Coffee 3',rating:4.5},
+    {lat:-7.798,lng:110.390,name:'Romantic Coffee 4',rating:4.7},
+    {lat:-7.792,lng:110.360,name:'Romantic Coffee 5',rating:4.4},
+    {lat:-7.804,lng:110.368,name:'Romantic Coffee 6',rating:4.6},
+    {lat:-7.788,lng:110.377,name:'Romantic Coffee 7',rating:4.3},
+    {lat:-7.800,lng:110.384,name:'Romantic Coffee 8',rating:4.7},
+    {lat:-7.795,lng:110.371,name:'Romantic Coffee 9',rating:4.5},
+    {lat:-7.802,lng:110.388,name:'Romantic Coffee 10',rating:4.6}
   ];
 
   // ===== ICON SAMA PERSIS DENGAN CO-MAP =====
@@ -1624,11 +1624,25 @@ mapBtn.addEventListener('click', function(e){
   `;
 
   setTimeout(()=>{
-    const map = L.map('map').setView([-7.770, 110.377], 13);
+    const map = L.map('map').setView([-7.795, 110.375], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap'
     }).addTo(map);
+
+    // ===== LOAD GEOJSON YOGYAKARTA (GITHUB: leonifs/COFFETERA) =====
+    fetch('https://raw.githubusercontent.com/leonifs/COFFETERA/main/YOGYAKARTA.json')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: function(feature, layer){
+            if(feature.properties){
+              layer.bindPopup(feature.properties.name || 'Coffee Location');
+            }
+          }
+        }).addTo(map);
+      })
+      .catch(err => console.error('Gagal load GeoJSON:', err));
 
     // ===== ICON WARNA =====
     function icon(color){
@@ -1644,42 +1658,42 @@ mapBtn.addEventListener('click', function(e){
     const familyLayer = L.layerGroup().addTo(map);
     const romanticLayer = L.layerGroup().addTo(map);
 
-    // ===== DATA (PERSEBARAN MERATA & REALISTIS) =====
+    // ===== DATA (SINKRON DENGAN MINI MAP - KOTA YOGYAKARTA) =====
     const aesthetic = [
-      {lat:-7.770,lng:110.370,name:'Aesthetic Coffee 1', img:'1.png', rating:4.5},
-      {lat:-7.766,lng:110.365,name:'Aesthetic Coffee 2', img:'2.png', rating:4.2},
-      {lat:-7.772,lng:110.385,name:'Aesthetic Coffee 3', img:'3.png', rating:4.7},
-      {lat:-7.768,lng:110.378,name:'Aesthetic Coffee 4', img:'4.png', rating:4.3}
+      {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1', img:'1.png', rating:4.5},
+      {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3', img:'3.png', rating:4.7},
+      {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4', img:'4.png', rating:4.3}
     ];
 
     const working = [
-      {lat:-7.769,lng:110.372,name:'Working Coffee 1', img:'1.png', rating:4.1},
-      {lat:-7.775,lng:110.388,name:'Working Coffee 2', img:'2.png', rating:4.4},
-      {lat:-7.763,lng:110.360,name:'Working Coffee 3', img:'3.png', rating:4.0},
-      {lat:-7.771,lng:110.378,name:'Working Coffee 4', img:'4.png', rating:4.3}
+      {lat:-7.804,lng:110.358,name:'Working Coffee 1', img:'1.png', rating:4.1},
+      {lat:-7.792,lng:110.367,name:'Working Coffee 2', img:'2.png', rating:4.4},
+      {lat:-7.786,lng:110.374,name:'Working Coffee 3', img:'3.png', rating:4.0},
+      {lat:-7.798,lng:110.382,name:'Working Coffee 4', img:'4.png', rating:4.3}
     ];
 
     const family = [
-      {lat:-7.768,lng:110.374,name:'Family Coffee 1', img:'1.png', rating:4.6},
-      {lat:-7.776,lng:110.390,name:'Family Coffee 2', img:'2.png', rating:4.2},
-      {lat:-7.764,lng:110.362,name:'Family Coffee 3', img:'3.png', rating:4.1},
-      {lat:-7.773,lng:110.382,name:'Family Coffee 4', img:'4.png', rating:4.5},
-      {lat:-7.767,lng:110.368,name:'Family Coffee 5', img:'5.png', rating:4.3},
-      {lat:-7.774,lng:110.386,name:'Family Coffee 6', img:'6.png', rating:4.4},
-      {lat:-7.762,lng:110.358,name:'Family Coffee 7', img:'7.png', rating:4.2}
+      {lat:-7.805,lng:110.370,name:'Family Coffee 1', img:'1.png', rating:4.6},
+      {lat:-7.796,lng:110.378,name:'Family Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.787,lng:110.360,name:'Family Coffee 3', img:'3.png', rating:4.1},
+      {lat:-7.799,lng:110.368,name:'Family Coffee 4', img:'4.png', rating:4.5},
+      {lat:-7.790,lng:110.385,name:'Family Coffee 5', img:'5.png', rating:4.3},
+      {lat:-7.803,lng:110.392,name:'Family Coffee 6', img:'6.png', rating:4.4},
+      {lat:-7.789,lng:110.373,name:'Family Coffee 7', img:'7.png', rating:4.2}
     ];
 
     const romantic = [
-      {lat:-7.771,lng:110.376,name:'Romantic Coffee 1', img:'1.png', rating:4.8},
-      {lat:-7.777,lng:110.392,name:'Romantic Coffee 2', img:'2.png', rating:4.6},
-      {lat:-7.765,lng:110.364,name:'Romantic Coffee 3', img:'3.png', rating:4.5},
-      {lat:-7.772,lng:110.380,name:'Romantic Coffee 4', img:'4.png', rating:4.7},
-      {lat:-7.768,lng:110.369,name:'Romantic Coffee 5', img:'5.png', rating:4.4},
-      {lat:-7.775,lng:110.387,name:'Romantic Coffee 6', img:'6.png', rating:4.6},
-      {lat:-7.763,lng:110.361,name:'Romantic Coffee 7', img:'7.png', rating:4.3},
-      {lat:-7.770,lng:110.373,name:'Romantic Coffee 8', img:'8.png', rating:4.7},
-      {lat:-7.766,lng:110.366,name:'Romantic Coffee 9', img:'9.png', rating:4.5},
-      {lat:-7.774,lng:110.384,name:'Romantic Coffee 10', img:'10.png', rating:4.6}
+      {lat:-7.801,lng:110.366,name:'Romantic Coffee 1', img:'1.png', rating:4.8},
+      {lat:-7.793,lng:110.375,name:'Romantic Coffee 2', img:'2.png', rating:4.6},
+      {lat:-7.786,lng:110.382,name:'Romantic Coffee 3', img:'3.png', rating:4.5},
+      {lat:-7.798,lng:110.390,name:'Romantic Coffee 4', img:'4.png', rating:4.7},
+      {lat:-7.792,lng:110.360,name:'Romantic Coffee 5', img:'5.png', rating:4.4},
+      {lat:-7.804,lng:110.368,name:'Romantic Coffee 6', img:'6.png', rating:4.6},
+      {lat:-7.788,lng:110.377,name:'Romantic Coffee 7', img:'7.png', rating:4.3},
+      {lat:-7.800,lng:110.384,name:'Romantic Coffee 8', img:'8.png', rating:4.7},
+      {lat:-7.795,lng:110.371,name:'Romantic Coffee 9', img:'9.png', rating:4.5},
+      {lat:-7.802,lng:110.388,name:'Romantic Coffee 10', img:'10.png', rating:4.6}
     ];
 
     // ===== HAPUS KETERGANTUNGAN MAP (INSIGHT TIDAK BOLEH DI SINI) =====
