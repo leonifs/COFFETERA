@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COFFETERA</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Montserrat',sans-serif}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:url('WALLPAPER.png') no-repeat center/cover;
+    }
+
+    .overlay{
+      position:absolute;
+      width:100%;height:100%;
+      background:linear-gradient(to bottom,rgba(255,122,24,0.25),rgba(255,255,255,0.15));
+    }
+
+    .content{position:relative;z-index:2}
+
+    .title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(60px,12vw,140px);
+      letter-spacing:12px;
+      color:transparent;
+      -webkit-text-stroke:2px #fff;
+      text-shadow:0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .subtitle{
+      margin-top:20px;
+      font-size:clamp(14px,3vw,22px);
+      color:#ffffff;
+      font-weight:300;
+      letter-spacing:2px;
+      text-shadow:0 2px 10px rgba(0,0,0,0.3);
+      font-family:'Montserrat', sans-serif;
+    }
+
+    .wave{position:absolute;bottom:0;width:100%;height:200px}
+    .wave svg{width:100%;height:100%}
+
+    /* NEXT SECTION */
+    .next-section{
+  min-height:100vh;
+  background:linear-gradient(to bottom, #ffffff 0%, #fff7f0 40%, #fff1e6 70%, #ffeddc 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  padding:20px 20px 0; /* hilangkan space bawah */
+  gap:40px;
+}
+
+    .charts{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:40px;
+      width:100%;
+      max-width:1200px;
+      opacity:0;
+      transform:translateY(50px);
+      transition:0.8s;
+    }
+
+    .charts.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .card{
+      background:#f9f9f9;
+      padding:25px;
+      border-radius:18px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      transition:all 0.35s ease;
+      cursor:pointer;
+    }
+
+    /* HOVER POP-UP EFFECT */
+    .card:hover{
+      transform:translateY(-12px) scale(1.05);
+      box-shadow:0 20px 50px rgba(0,0,0,0.2);
+    }
+
+    .donut{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      margin:0 auto 15px;
+      position:relative;
+    }
+
+    .donut::after{
+      content:'';
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:80px;height:80px;
+      background:#fff;
+      border-radius:50%;
+    }
+
+    .value{
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      font-weight:bold;
+      color:#ff7a18;
+      z-index:2;
+      font-size:20px;
+    }
+
+    /* DONUT COLORS */
+    .aesthetic{background:conic-gradient(#ff7a18 0% 80%, #eee 80%)}
+    .cowork{background:conic-gradient(#ff7a18 0% 70%, #eee 70%)}
+    .family{background:conic-gradient(#ff7a18 0% 60%, #eee 60%)}
+    .romantic{background:conic-gradient(#ff7a18 0% 50%, #eee 50%)}
+
+    /* TITLE STYLE (lebih aesthetic) */
+    .card p{
+      font-family:'Montserrat', sans-serif;
+      font-size:16px;
+      margin-top:10px;
+      color:#333;
+      letter-spacing:2px;
+      font-weight:400;
+    }
+
+    .section-title{
+      font-family:'Bebas Neue', sans-serif;
+      font-size:clamp(30px,5vw,60px);
+      color:#ff7a18;
+      letter-spacing:6px;
+      text-align:center;
+    }
+
+    @media(max-width:600px){
+      .wave{height:150px}
+    }
+  
+/* SLIDER STYLE */
+.special{width:100%;max-width:1200px;margin-top:40px;margin-bottom:30px;text-align:center}
+.special .section-title{margin-bottom:40px;}
+.slider{position:relative;overflow:hidden;border-radius:20px}
+.slides{display:flex;transition:0.5s}
+.slide{min-width:100%;display:none;width:100%;height:420px;object-fit:cover;border-radius:20px}
+.slide.active{display:block}
+.nav{position:absolute;top:50%;transform:translateY(-50%);background:#ff7a18;color:#fff;border:none;padding:10px 15px;cursor:pointer;border-radius:50%}
+.prev{left:10px}
+.next{right:10px}
+.dots{margin-top:15px}
+.dot{display:inline-block;width:10px;height:10px;background:#ccc;border-radius:50%;margin:0 5px}
+.dot.active{background:#ff7a18}
+
+/* BACKGROUND GRADIENT WAVE (lebih soft cream) */
+.next-section{
+  background:linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #fffaf5 40%,
+    #fff4ec 70%,
+    #fdf0e6 100%
+  );
+}
+
+.contact-container{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  flex-wrap:wrap;
+}
+
+.person{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  color:#fff;
+}
+
+.left-people{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.left-people img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:12px;
+  border:3px solid #fff;
+}
+
+.person img{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.6);
+}
+
+.right-contact{display:none;}
+
+.contact-title{
+  font-family:'Montserrat', sans-serif;
+  font-size:18px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+  color:#fff;
+  text-align:center;
+  opacity:0.9;
+}
+
+.contact-info{
+  font-size:13px;
+  line-height:1.6;
+  color:#fff;
+  opacity:0.9;
+}
+
+
+/* HEADER STYLE */
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 30px; /* diperkecil */
+  background:rgba(255,245,235,0.9);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  transition:0.4s;
+}
+
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;
+  letter-spacing:4px;
+  color:#ff7a18;
+  opacity:1; /* selalu tampil */
+  transition:0.4s;
+}
+
+.nav-menu{
+  display:flex;
+  gap:30px;
+}
+
+.nav-item{
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  letter-spacing:2px;
+  transition:0.3s;
+}
+
+.nav-item:hover{
+  color:#ff7a18;
+}
+
+/* DROPDOWN FIX */
+.dropdown{
+  position:relative;
+  padding-bottom:10px; /* hilangkan gap */
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  right:0;
+  background:#fdf6ec;
+  padding:10px 0;
+  display:none;
+  flex-direction:column;
+  min-width:200px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  border-radius:10px;
+  z-index:999;
+}
+
+.dropdown-menu a{
+  padding:10px 15px;
+  text-decoration:none;
+  color:#333;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+.dropdown-menu a:hover{
+  background:#fff0e6;
+  color:#ff7a18;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover{
+  display:flex;
+}
+
+.header.scrolled .logo{
+  opacity:1;
+}
+
+/* ===== FINAL PREMIUM TABLE FONT FIX (ALL CONSISTENT) ===== */
+.sheet-table{
+  width:80%;
+  max-width:850px;
+  margin:20px auto;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#ffffff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* PAKSA SEMUA ISI TABEL FONT SAMA */
+.sheet-table th,
+.sheet-table td{
+  font-family:'Playfair Display', serif !important;
+}
+
+.sheet-th{
+  background:#ff7a18;
+  color:#ffffff;
+  padding:10px;
+  font-family:'Playfair Display', serif;
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.sheet-td{
+  padding:8px;
+  font-size:12px;
+  letter-spacing:0.3px;
+  color:#333;
+  text-align:center;
+}
+
+.sheet-table tr:nth-child(even) .sheet-td{
+  background:#fff6ef;
+}
+
+.sheet-table tr:hover .sheet-td{
+  background:#ffe5d3;
+  transition:0.2s ease;
+}
+
+.sheet-th{
+  background:#ff7a18;
+  color:#ffffff;
+  padding:14px;
+  font-family:'Playfair Display', serif;
+  font-size:15px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+}
+
+.sheet-table tr:nth-child(even) .sheet-td{
+  background:#fff6ef;
+}
+
+.sheet-table tr:hover .sheet-td{
+  background:#ffe5d3;
+  transition:0.2s ease;
+}
+
+
+
+/* FIX ZOOM CONTROL POSITION (TIDAK KETUTUP HEADER) */
+.leaflet-top.leaflet-left{
+  top:80px !important; /* turun dari header */
+}
+
+/* SCROLL ANIMATION GLOBAL */
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* LEFT TO RIGHT ANIMATION (KHUSUS NAMA + REVIEW) */
+.fade-left{
+  opacity:0;
+  transform:translateX(-60px);
+  transition:all 0.8s ease;
+}
+.fade-left.show{
+  opacity:1;
+  transform:translateX(0);
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="logo" id="logo">COFFETERA</div>
+  <nav class="nav-menu">
+    <a href="#" class="nav-item" id="homeBtn">HOME</a>
+    <a href="#" class="nav-item">CO-MAP</a>
+    <div class="dropdown">
+        <a href="#" class="nav-item">TOP 10</a>
+        <div class="dropdown-menu">
+          <a href="#" class="top-link" data-page="AESTHETIC COFFEE">AESTHETIC COFFEE</a>
+          <a href="#" class="top-link" data-page="WORKING COFFEE">WORKING COFFEE</a>
+          <a href="#" class="top-link" data-page="FAMILY COFFEE">FAMILY COFFEE</a>
+          <a href="#" class="top-link" data-page="ROMANTIC COFFEE">ROMANTIC COFFEE</a>
+        </div>
+      </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="title">COFFETERA</div>
+    <div class="subtitle">Find Your Perfect Coffee Spot</div>
+  </div>
+
+  <div class="wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#fff" fill-opacity="0.9" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,149.3C840,149,960,171,1080,181.3C1200,192,1320,192,1380,192L1440,192L1440,320L0,320Z"></path>
+      <path fill="#fff" fill-opacity="0.6" d="M0,200L60,208C120,216,240,232,360,224C480,216,600,184,720,181.3C840,179,960,203,1080,213.3C1200,224,1320,224,1380,224L1440,224L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="next-section">
+  <div class="section-title">COFFEE INSIGHT</div>
+  
+  <p style="max-width:900px;text-align:center;margin-top:2px;font-size:14px;color:#444;letter-spacing:1px;font-family:'Montserrat',sans-serif;">
+    Explore what kind of coffee places people love the most from cozy romantic spots to lively family hangouts.
+  </p>
+  <div class="charts" id="charts">
+
+    <div class="card" data-sheet="Aesthetic Coffee">
+      <div class="donut aesthetic">
+        <div class="value">80%</div>
+      </div>
+      <p>Aesthetic Coffee</p>
+    </div>
+
+    <div class="card" data-sheet="Working Coffee">
+      <div class="donut cowork">
+        <div class="value">70%</div>
+      </div>
+      <p>Co-Working Coffee</p>
+    </div>
+
+    <div class="card" data-sheet="Family Coffee">
+      <div class="donut family">
+        <div class="value">60%</div>
+      </div>
+      <p>Family Coffee</p>
+    </div>
+
+    <div class="card" data-sheet="Romantic Coffee">
+      <div class="donut romantic">
+        <div class="value">50%</div>
+      </div>
+      <p>Romantic Coffee</p>
+    </div>
+
+  </div>
+  <!-- SPECIAL FOR YOU -->
+  <div class="special">
+    <div class="section-title">SPECIAL FOR YOU</div>
+  
+
+    <div class="slider">
+      <button class="nav prev">&#10094;</button>
+
+      <div class="slides" id="slides">
+        <img src="1.png" class="slide active">
+        <img src="2.png" class="slide">
+        <img src="3.png" class="slide">
+      </div>
+
+      <button class="nav next">&#10095;</button>
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+  </section>
+
+<!-- ================= NEW SCROLL SECTION (MAP + COFFEE LIST) ================= -->
+<section class="map-list-section">
+
+  <div class="map-list-container">
+
+    <!-- LEFT MAP -->
+    <div class="map-box">
+      <div id="miniMap"></div>
+    </div>
+
+    <!-- RIGHT LIST -->
+    <div class="coffee-list" id="coffeeList">
+      <!-- AUTO GENERATED -->
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+.map-list-section{
+  min-height:100vh;
+  background:linear-gradient(
+    to bottom,
+    #fffaf5 0%,
+    #fff4ec 40%,
+    #fdf0e6 70%,
+    #fde8dc 100%
+  );
+  padding:60px 40px;
+}
+
+.map-list-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.map-box{
+  background:rgba(255,255,255,0.9);
+  border-radius:20px;
+  padding:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+#miniMap{
+  width:100%;
+  height:500px;
+  border-radius:15px;
+}
+
+.coffee-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  max-height:500px;
+  overflow-y:auto;
+}
+
+.coffee-card{
+  background:rgba(255,255,255,0.95);
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.coffee-name{
+  font-family:'Bebas Neue';
+  letter-spacing:2px;
+  font-size:20px;
+  color:#ff7a18;
+}
+
+.coffee-rating{
+  font-size:14px;
+  margin:5px 0;
+}
+
+.review-box{
+  max-height:70px;
+  overflow-y:auto;
+  font-size:12px;
+  background:#fff5ee;
+  padding:8px;
+  border-radius:8px;
+}
+
+@media(max-width:900px){
+  .map-list-container{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+// ===== MINI MAP INIT (SYNC WITH CO-MAP DATA: ALL SHOPS + REVIEWS + SHORTCUT) =====
+setTimeout(()=>{
+  const miniMap = L.map('miniMap').setView([-7.770,110.377],13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(miniMap);
+
+  // === SAME DATA AS CO-MAP (DISALIN AGAR 100% MUNCUL SEMUA) ===
+  const aesthetic = [
+    {lat:-7.770,lng:110.370,name:'Aesthetic Coffee 1',rating:4.5},
+    {lat:-7.766,lng:110.365,name:'Aesthetic Coffee 2',rating:4.2},
+    {lat:-7.772,lng:110.385,name:'Aesthetic Coffee 3',rating:4.7},
+    {lat:-7.768,lng:110.378,name:'Aesthetic Coffee 4',rating:4.3}
+  ];
+
+  const working = [
+    {lat:-7.769,lng:110.372,name:'Working Coffee 1',rating:4.1},
+    {lat:-7.775,lng:110.388,name:'Working Coffee 2',rating:4.4},
+    {lat:-7.763,lng:110.360,name:'Working Coffee 3',rating:4.0},
+    {lat:-7.771,lng:110.378,name:'Working Coffee 4',rating:4.3}
+  ];
+
+  const family = [
+    {lat:-7.768,lng:110.374,name:'Family Coffee 1',rating:4.6},
+    {lat:-7.776,lng:110.390,name:'Family Coffee 2',rating:4.2},
+    {lat:-7.764,lng:110.362,name:'Family Coffee 3',rating:4.1},
+    {lat:-7.773,lng:110.382,name:'Family Coffee 4',rating:4.5},
+    {lat:-7.767,lng:110.368,name:'Family Coffee 5',rating:4.3},
+    {lat:-7.774,lng:110.386,name:'Family Coffee 6',rating:4.4},
+    {lat:-7.762,lng:110.358,name:'Family Coffee 7',rating:4.2}
+  ];
+
+  const romantic = [
+    {lat:-7.771,lng:110.376,name:'Romantic Coffee 1',rating:4.8},
+    {lat:-7.777,lng:110.392,name:'Romantic Coffee 2',rating:4.6},
+    {lat:-7.765,lng:110.364,name:'Romantic Coffee 3',rating:4.5},
+    {lat:-7.772,lng:110.380,name:'Romantic Coffee 4',rating:4.7},
+    {lat:-7.768,lng:110.369,name:'Romantic Coffee 5',rating:4.4},
+    {lat:-7.775,lng:110.387,name:'Romantic Coffee 6',rating:4.6},
+    {lat:-7.763,lng:110.361,name:'Romantic Coffee 7',rating:4.3},
+    {lat:-7.770,lng:110.373,name:'Romantic Coffee 8',rating:4.7},
+    {lat:-7.766,lng:110.366,name:'Romantic Coffee 9',rating:4.5},
+    {lat:-7.774,lng:110.384,name:'Romantic Coffee 10',rating:4.6}
+  ];
+
+  // ===== ICON SAMA PERSIS DENGAN CO-MAP =====
+  function icon(color){
+    return L.divIcon({
+      className:'',
+      html:`<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2px solid white"></div>`
+    });
+  }
+
+  const list = document.getElementById('coffeeList');
+  list.innerHTML = '';
+
+  function generateReviews(name){
+  // === REVIEW PER NAMA COFFEE SHOP (FULL MAP SEMUA MARKER) ===
+  const reviewsByCoffeeShop = {
+
+    // ===== AESTHETIC (1-4) =====
+    "Aesthetic Coffee 1": [
+      {user:'user1@mail.com', text:'Tempatnya aesthetic banget!'},
+      {user:'user2@mail.com', text:'Lighting bagus buat foto.'},
+      {user:'user3@mail.com', text:'Interior unik dan cozy.'},
+      {user:'user4@mail.com', text:'Recommended buat nongkrong santai.'}
+    ],
+    "Aesthetic Coffee 2": [
+      {user:'user1@mail.com', text:'Spot foto paling bagus di sini!'},
+      {user:'user2@mail.com', text:'Desainnya modern banget.'},
+      {user:'user3@mail.com', text:'Cahaya naturalnya keren.'},
+      {user:'user4@mail.com', text:'Instagramable parah!'}
+    ],
+    "Aesthetic Coffee 3": [
+      {user:'user1@mail.com', text:'Interior artsy dan nyaman.'},
+      {user:'user2@mail.com', text:'Banyak dekor unik.'},
+      {user:'user3@mail.com', text:'Cocok buat foto aesthetic.'},
+      {user:'user4@mail.com', text:'Suasana tenang.'}
+    ],
+    "Aesthetic Coffee 4": [
+      {user:'user1@mail.com', text:'Tempat estetik banget buat chill.'},
+      {user:'user2@mail.com', text:'Lighting warm dan cozy.'},
+      {user:'user3@mail.com', text:'Desain interior premium.'},
+      {user:'user4@mail.com', text:'Worth it buat nongkrong.'}
+    ],
+
+    // ===== WORKING (1-4) =====
+    "Working Coffee 1": [
+      {user:'user1@mail.com', text:'Cocok buat kerja lama.'},
+      {user:'user2@mail.com', text:'WiFi kencang dan stabil.'},
+      {user:'user3@mail.com', text:'Banyak colokan.'},
+      {user:'user4@mail.com', text:'Suasana tenang banget.'}
+    ],
+    "Working Coffee 2": [
+      {user:'user1@mail.com', text:'Work-friendly banget.'},
+      {user:'user2@mail.com', text:'Meja luas dan nyaman.'},
+      {user:'user3@mail.com', text:'Internet cepat.'},
+      {user:'user4@mail.com', text:'Cocok WFH.'}
+    ],
+    "Working Coffee 3": [
+      {user:'user1@mail.com', text:'Tidak bising, fokus kerja enak.'},
+      {user:'user2@mail.com', text:'Colokan banyak.'},
+      {user:'user3@mail.com', text:'AC dingin.'},
+      {user:'user4@mail.com', text:'Betah lama-lama.'}
+    ],
+    "Working Coffee 4": [
+      {user:'user1@mail.com', text:'Spot kerja terbaik.'},
+      {user:'user2@mail.com', text:'Coffee enak sambil kerja.'},
+      {user:'user3@mail.com', text:'Suasana produktif.'},
+      {user:'user4@mail.com', text:'Rekomendasi WFH.'}
+    ],
+
+    // ===== FAMILY (1-7) =====
+    "Family Coffee 1": [
+      {user:'user1@mail.com', text:'Tempat luas dan nyaman.'},
+      {user:'user2@mail.com', text:'Cocok buat keluarga.'},
+      {user:'user3@mail.com', text:'Menu banyak pilihan.'},
+      {user:'user4@mail.com', text:'Pelayanan cepat.'}
+    ],
+    "Family Coffee 2": [
+      {user:'user1@mail.com', text:'Family friendly banget.'},
+      {user:'user2@mail.com', text:'Area duduk luas.'},
+      {user:'user3@mail.com', text:'Ada playground kecil.'},
+      {user:'user4@mail.com', text:'Anak-anak suka.'}
+    ],
+    "Family Coffee 3": [
+      {user:'user1@mail.com', text:'Cocok untuk makan bersama.'},
+      {user:'user2@mail.com', text:'Menu lengkap.'},
+      {user:'user3@mail.com', text:'Suasana hangat.'},
+      {user:'user4@mail.com', text:'Pelayanan ramah.'}
+    ],
+    "Family Coffee 4": [
+      {user:'user1@mail.com', text:'Nyaman buat keluarga besar.'},
+      {user:'user2@mail.com', text:'Tempat bersih.'},
+      {user:'user3@mail.com', text:'Makanan enak.'},
+      {user:'user4@mail.com', text:'Harga terjangkau.'}
+    ],
+    "Family Coffee 5": [
+      {user:'user1@mail.com', text:'Suasana santai.'},
+      {user:'user2@mail.com', text:'Cocok weekend.'},
+      {user:'user3@mail.com', text:'Tempat adem.'},
+      {user:'user4@mail.com', text:'Rekomendasi keluarga.'}
+    ],
+    "Family Coffee 6": [
+      {user:'user1@mail.com', text:'Banyak menu anak-anak.'},
+      {user:'user2@mail.com', text:'Parkiran luas.'},
+      {user:'user3@mail.com', text:'Tempat nyaman.'},
+      {user:'user4@mail.com', text:'Worth it.'}
+    ],
+    "Family Coffee 7": [
+      {user:'user1@mail.com', text:'Family hangout spot.'},
+      {user:'user2@mail.com', text:'Suasana tenang.'},
+      {user:'user3@mail.com', text:'Makanan enak.'},
+      {user:'user4@mail.com', text:'Pelayanan bagus.'}
+    ],
+
+    // ===== ROMANTIC (1-10) =====
+    "Romantic Coffee 1": [
+      {user:'user1@mail.com', text:'Ambience romantis banget.'},
+      {user:'user2@mail.com', text:'Lampu temaram cozy.'},
+      {user:'user3@mail.com', text:'Cocok buat date.'},
+      {user:'user4@mail.com', text:'View-nya bagus.'}
+    ],
+    "Romantic Coffee 2": [
+      {user:'user1@mail.com', text:'Suasana sangat romantis.'},
+      {user:'user2@mail.com', text:'Candle light vibes.'},
+      {user:'user3@mail.com', text:'Perfect for couple.'},
+      {user:'user4@mail.com', text:'Peaceful place.'}
+    ],
+    "Romantic Coffee 3": [
+      {user:'user1@mail.com', text:'Tempat date terbaik.'},
+      {user:'user2@mail.com', text:'Music soft dan enak.'},
+      {user:'user3@mail.com', text:'Lighting hangat.'},
+      {user:'user4@mail.com', text:'Romantis banget.'}
+    ],
+    "Romantic Coffee 4": [
+      {user:'user1@mail.com', text:'Cocok dinner couple.'},
+      {user:'user2@mail.com', text:'View malam indah.'},
+      {user:'user3@mail.com', text:'Suasana tenang.'},
+      {user:'user4@mail.com', text:'Rekomendasi date night.'}
+    ],
+    "Romantic Coffee 5": [
+      {user:'user1@mail.com', text:'Hidden romantic spot.'},
+      {user:'user2@mail.com', text:'Lampu cantik.'},
+      {user:'user3@mail.com', text:'Mood romantis kuat.'},
+      {user:'user4@mail.com', text:'Sangat cozy.'}
+    ],
+    "Romantic Coffee 6": [
+      {user:'user1@mail.com', text:'Perfect couple place.'},
+      {user:'user2@mail.com', text:'Atmosphere hangat.'},
+      {user:'user3@mail.com', text:'Minuman enak.'},
+      {user:'user4@mail.com', text:'Worth visit.'}
+    ],
+    "Romantic Coffee 7": [
+      {user:'user1@mail.com', text:'Sangat romantis.'},
+      {user:'user2@mail.com', text:'View kota malam.'},
+      {user:'user3@mail.com', text:'Tempat nyaman.'},
+      {user:'user4@mail.com', text:'Love it.'}
+    ],
+    "Romantic Coffee 8": [
+      {user:'user1@mail.com', text:'Candle vibes.'},
+      {user:'user2@mail.com', text:'Suasana intimate.'},
+      {user:'user3@mail.com', text:'Perfect date.'},
+      {user:'user4@mail.com', text:'So good.'}
+    ],
+    "Romantic Coffee 9": [
+      {user:'user1@mail.com', text:'Romantic corner.'},
+      {user:'user2@mail.com', text:'Soft music.'},
+      {user:'user3@mail.com', text:'Cozy place.'},
+      {user:'user4@mail.com', text:'Nice ambiance.'}
+    ],
+    "Romantic Coffee 10": [
+      {user:'user1@mail.com', text:'Top romantic spot.'},
+      {user:'user2@mail.com', text:'Beautiful lighting.'},
+      {user:'user3@mail.com', text:'Great experience.'},
+      {user:'user4@mail.com', text:'Highly recommended.'}
+    ]
+  };
+
+  const fallback = [
+    {user:'user1@mail.com', text:'Kopi enak dan strong.'},
+    {user:'user2@mail.com', text:'Baristanya ramah.'},
+    {user:'user3@mail.com', text:'Harga masih worth it.'},
+    {user:'user4@mail.com', text:'Balik lagi sih!'}
+  ];
+
+  const selected = reviewsByCoffeeShop[name] || fallback;
+
+  let html = '';
+
+  selected.forEach((rev)=>{
+    html += `
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start">
+        <div style="width:32px;height:32px;background:#ddd;border-radius:50%"></div>
+        <div>
+          <div style="font-size:11px;color:#555"><b>From:</b> ${rev.user}</div>
+          <div style="font-size:12px;color:#333">${rev.text}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  return html;
+}
+
+  // ===== RENDER SESUAI CO-MAP (WARNA & STYLE SAMA) =====
+  function renderCategory(data, color){
+    data.forEach(item=>{
+      L.marker([item.lat,item.lng], {icon:icon(color)})
+        .addTo(miniMap)
+        .bindPopup(item.name);
+
+      list.innerHTML += `
+        <div class="coffee-card">
+          <div class="coffee-name">${item.name}</div>
+          <div class="coffee-rating">⭐ ${item.rating}</div>
+          <div class="review-box">${generateReviews(item.name)}</div>
+        </div>
+      `;
+    });
+  }
+
+  renderCategory(aesthetic,'red');
+  renderCategory(working,'orange');
+  renderCategory(family,'green');
+  renderCategory(romantic,'pink');
+
+  // === BUTTON SHORTCUT KE CO-MAP (HIDDEN NAVIGATION) ===
+  const btn = document.createElement('button');
+  btn.innerText = '⛶';
+  btn.title = 'Open Full CO-MAP';
+  btn.style.position = 'absolute';
+  btn.style.top = '15px';
+  btn.style.right = '15px';
+  btn.style.zIndex = '1000';
+  btn.style.padding = '10px';
+  btn.style.background = '#ff7a18';
+  btn.style.color = '#fff';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '8px';
+  btn.style.cursor = 'pointer';
+
+  btn.onclick = ()=>{
+    document.querySelectorAll('.nav-item')[1].click();
+  };
+
+  document.querySelector('.map-box').appendChild(btn);
+
+},500);
+</script>
+
+<script>
+
+// ===== APPLY ANIMATION KE SEMUA ELEMEN HOME =====
+document.addEventListener('DOMContentLoaded', ()=>{
+  const targets = document.querySelectorAll('.card, .section-title, .slider, .map-box');
+  const leftTargets = document.querySelectorAll('.coffee-name, .review-box');
+
+  targets.forEach(el=>{
+    el.classList.add('fade-up');
+  });
+
+  leftTargets.forEach(el=>{
+    el.classList.add('fade-left');
+  });
+
+  const observerAll = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{threshold:0.2});
+
+  targets.forEach(el=>observerAll.observe(el));
+  leftTargets.forEach(el=>observerAll.observe(el));
+});
+
+const charts = document.getElementById('charts');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      charts.classList.add('show');
+    }
+  })
+},{threshold:0.3});
+
+observer.observe(charts);
+
+// SLIDER SCRIPT
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+
+function showSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  dots.forEach(d=>d.classList.remove('active'));
+  slides[i].classList.add('active');
+  dots[i].classList.add('active');
+}
+
+document.querySelector('.next').onclick = ()=>{
+  index = (index+1)%slides.length;
+  showSlide(index);
+}
+
+document.querySelector('.prev').onclick = ()=>{
+  index = (index-1+slides.length)%slides.length;
+  showSlide(index);
+}
+
+
+
+// ================= GLOBAL INSIGHT (INTEGRATED FROM FIRST LOAD - NO BUG) =================
+function renderInsightAwal(){
+  const aesthetic = 4;
+  const working = 4;
+  const family = 7;
+  const romantic = 10;
+
+  const total = aesthetic + working + family + romantic;
+
+  const a = Math.round((aesthetic/total)*100);
+  const w = Math.round((working/total)*100);
+  const f = Math.round((family/total)*100);
+  const r = Math.round((romantic/total)*100);
+
+  const values = document.querySelectorAll('.value');
+
+  if(values.length === 4){
+    values[0].innerText = a + '%';
+    values[1].innerText = w + '%';
+    values[2].innerText = f + '%';
+    values[3].innerText = r + '%';
+
+    document.querySelector('.aesthetic').style.background = `conic-gradient(#ff7a18 0% ${a}%, #eee ${a}%)`;
+    document.querySelector('.cowork').style.background = `conic-gradient(#ff7a18 0% ${w}%, #eee ${w}%)`;
+    document.querySelector('.family').style.background = `conic-gradient(#ff7a18 0% ${f}%, #eee ${f}%)`;
+    document.querySelector('.romantic').style.background = `conic-gradient(#ff7a18 0% ${r}%, #eee ${r}%)`;
+  }
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', renderInsightAwal);
+}else{
+  renderInsightAwal();
+}
+
+// HEADER FIXED - LOGO SELALU MUNCUL (SCROLL EFFECT DIHAPUS)
+
+</script>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © Geomatics Engineering 2026
+  </footer>
+
+<style>
+.footer{
+  width:100%;
+  text-align:center;
+  padding:10px 5px;
+  font-size:11px;
+  color:#ffffff;
+  background:#ffb88c;
+  letter-spacing:2px;
+  margin-top:0;
+  cursor:pointer; /* pointer */
+  transition:0.3s ease;
+}
+
+.footer:hover{
+  color:#ff7a18; /* HANYA TEKS BERUBAH */
+}
+</style>
+
+
+
+<!-- CONTACT SECTION (REDESIGN SESUAI GAMBAR) -->
+<section class="contact-section" id="contactSection">
+
+  <div class="contact-header">
+    <span>MEET</span>
+    <span>OUR</span>
+    <span>TEAM</span>
+  </div>
+
+  <div class="contact-main">
+
+    <!-- PERSON 1 (LEONI) -->
+    <div class="person-row">
+      <div class="contact-img">
+        <img src="Leoni.png">
+      </div>
+
+      <div class="contact-form">
+        <h2 class="form-title">WEBGIS DEVELOPMENT</h2>
+
+        <label class="field-label">Name</label>
+        <input type="text" value="Leoni Fransiska" readonly>
+
+        <div class="row">
+          <div style="flex:1">
+            <label class="field-label">Email</label>
+            <input type="email" value="leonifs248@gmail.com" readonly>
+          </div>
+          <div style="flex:1">
+            <label class="field-label">LinkedIn</label>
+            <input type="text" value="Leoni Fransiska" readonly>
+          </div>
+        </div>
+
+        <textarea id="message" placeholder="Hi..."></textarea>
+        <button onclick="sendWhatsApp()">KIRIM</button>
+      </div>
+    </div>
+
+    <!-- PERSON 2 (ARINA) -->
+    <div class="person-row">
+      <div class="contact-img">
+        <img src="Arina.png">
+      </div>
+
+      <div class="contact-form">
+        <h2 class="form-title">DATA ANALYST</h2>
+
+        <label class="field-label">Name</label>
+        <input type="text" value="Arina Septia Andria" readonly>
+
+        <div class="row">
+          <div style="flex:1">
+            <label class="field-label">Email</label>
+            <input type="email" value="arinarinaseptia@gmail.com" readonly>
+          </div>
+          <div style="flex:1">
+            <label class="field-label">LinkedIn</label>
+            <input type="text" value="Arina Septia" readonly>
+          </div>
+        </div>
+
+        <textarea id="message2" placeholder="Hi..."></textarea>
+        <button onclick="sendWhatsAppArina()">KIRIM</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WAVE EFFECT (SAMA SEPERTI HERO, TIDAK MENUTUP ELEMEN) -->
+  <div class="contact-wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#ffffff" fill-opacity="0.12" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,149.3C840,149,960,171,1080,181.3C1200,192,1320,192,1380,192L1440,192L1440,320L0,320Z"></path>
+      <path fill="#ffffff" fill-opacity="0.08" d="M0,200L60,208C120,216,240,232,360,224C480,216,600,184,720,181.3C840,179,960,203,1080,213.3C1200,224,1320,224,1380,224L1440,224L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+
+</section>
+
+<style>
+.contact-wave{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:150px;
+  z-index:0; /* DI BELAKANG SEMUA ELEMEN */
+  pointer-events:none;
+}
+
+.contact-wave svg{
+  width:100%;
+  height:100%;
+}
+
+.contact-section{
+  display:none;
+  background:linear-gradient(
+    to bottom,
+    #f2a65a 0%,
+    #f4b35e 25%,
+    #f7c07a 50%,
+    #f5c999 70%,
+    #f0b983 100% /* DIPERGELAP, TIDAK TERLALU PUTIH */
+  );
+  padding:60px 20px;
+  font-family:'Playfair Display', serif;
+  position:relative;
+  overflow:hidden;
+  z-index:0; /* BASE */
+}
+
+/* BUBBLE GRADIENT ABSTRACT */
+.contact-section::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.25) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.22) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 60%),
+    radial-gradient(circle at 10% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 60%, rgba(255,255,255,0.18) 0%, transparent 50%);
+  animation: bubbleMove 20s infinite linear;
+  filter:blur(18px);
+  z-index:-2; /* PALING BELAKANG, TIDAK NUTUP ELEMEN */
+  pointer-events:none;
+}
+
+@keyframes bubbleMove{
+  0%{transform:translateY(0px) scale(1);}
+  50%{transform:translateY(-20px) scale(1.05);}
+  100%{transform:translateY(0px) scale(1);}
+}
+
+/* GARIS TEPI TIPIS (PUTIH & SEDIKIT MELENGKUNG) */
+.contact-section::before{
+  content:'';
+  position:absolute;
+  top:20px;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:20px;
+  pointer-events:none;
+  z-index:1; /* FRAME DI ATAS BACKGROUND */
+}
+
+.contact-header{
+  display:flex;
+  justify-content:space-between;
+  font-family:'Playfair Display', serif;
+  letter-spacing:4px;
+  font-size:20px;
+  margin-bottom:40px;
+  padding:0 120px;
+  color:#ffffff;
+  position:relative;
+  z-index:3; /* PALING DEPAN (DI ATAS GRADASI) */
+}
+
+.contact-main{
+  display:flex;
+  flex-direction:column;
+  gap:60px;
+  align-items:flex-start; /* GESER KE KIRI */
+  padding-left:120px; /* LURUS DENGAN HURUF M (HEADER) */
+}
+
+.person-row{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+  justify-content:flex-start; /* IKUT KE KIRI */
+}
+
+.contact-img img{
+  width:260px;
+  height:380px;
+  object-fit:cover;
+  border-radius:30px; /* MELENGKUNG */
+  border:2px solid rgba(255,255,255,0.9); /* GARIS BINGKAI */
+  padding:6px; /* jarak dalam biar elegan */
+  background:transparent;
+}
+
+.contact-cards{
+  display:flex;
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+
+.contact-card-new{
+  width:300px;
+  background:#ddd;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  position:relative;
+  border-radius:25px; /* MELENGKUNG (TIDAK LANCIP) */
+  overflow:hidden; /* BIAR ISI IKUT ROUNDED */
+}
+
+/* OVERLAY KE FOTO (TANPA GESER FOTO) */
+.contact-card-new:first-child{
+  transform:translateX(-80px); /* masuk ke Leoni */
+  z-index:3;
+}
+
+.contact-card-new:last-child{
+  transform:translateX(80px); /* masuk ke Arina */
+  z-index:3;
+}
+
+.card-title{
+  background:#ff7a18;
+  color:#fff;
+  padding:15px;
+  font-family:'Playfair Display', serif;
+  letter-spacing:2px;
+  font-size:18px;
+  border-top-left-radius:25px; /* IKUT MELENGKUNG */
+  border-top-right-radius:25px;
+}
+
+.card-body{
+  padding:20px;
+  font-size:13px;
+  font-family:'Playfair Display', serif;
+  line-height:2;
+}
+
+/* CONTACT FORM STYLE */
+.contact-form{
+  width:520px; /* DIPERLEBAR */
+  background:transparent;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.form-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:40px;
+  letter-spacing:4px;
+  color:#fff;
+  margin-top:-10px;
+}
+
+.field-label{
+  font-size:12px;
+  color:#fff;
+  opacity:0.8;
+  letter-spacing:1px;
+  margin-bottom:4px;
+  display:block;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%; /* PANJANG KE KANAN */
+  padding:12px;
+  border:none;
+  border-bottom:2px solid #fff;
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+  outline:none;
+  font-family:'Montserrat',sans-serif;
+}
+
+.contact-form textarea{
+  min-height:100px;
+  resize:none;
+}
+
+.contact-form .row{
+  display:flex;
+  gap:10px;
+}
+
+.contact-form .row div{
+  flex:1; /* BIAR FULL MEMANJANG */
+}
+
+.contact-form button{
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  background:#fff;
+  color:#333;
+  cursor:pointer;
+  letter-spacing:2px;
+}
+
+@media(max-width:900px){
+  .contact-main{flex-direction:column}
+  .contact-form{width:100%}
+}
+  .contact-cards{flex-direction:column}
+}
+
+
+</style>
+
+<script>
+// FOOTER CLICK → MUNCULKAN CONTACT
+const footer = document.querySelector('.footer');
+footer.addEventListener('click', ()=>{
+  const contact = document.getElementById('contactSection');
+  contact.style.display = 'block';
+  contact.scrollIntoView({behavior:'smooth'});
+});
+
+// HOME CLICK → SEMBUNYIKAN CONTACT
+const homeBtn = document.getElementById('homeBtn');
+homeBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const contact = document.getElementById('contactSection');
+  contact.style.display = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+
+<script>
+// NAVIGASI DROPDOWN → PAGE 2 (AMAN, TANPA MERUSAK SCRIPT LAIN)
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.addEventListener('click', function(e){
+    // FIX: HIDE MINIMAP + FOOTER (ANTI OVERLAY / LAG)
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    e.preventDefault();
+
+    const title = this.getAttribute('data-page');
+
+    const hero = document.querySelector('.hero');
+    const next = document.querySelector('.next-section');
+
+    if(hero) hero.style.display = 'none';
+    if(next) next.style.display = 'none';
+
+    let page = document.getElementById('page2');
+
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    page.innerHTML = `
+      <div style="
+        margin-top:90px;
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        flex-direction:column;
+        font-family:'Montserrat', sans-serif;
+        padding-top:20px;
+      ">
+        <h1 style="font-size:30px;letter-spacing:4px;color:#ff7a18;">${title}</h1>
+        <p style="font-family:'Playfair Display', serif; letter-spacing:2px;">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+      </div>
+    `;
+  });
+});
+
+// HOME → BALIK KE HALAMAN AWAL
+const homeFix = document.getElementById('homeBtn');
+homeFix.addEventListener('click', function(e){
+  e.preventDefault();
+
+  const hero = document.querySelector('.hero');
+  const next = document.querySelector('.next-section');
+  const page = document.getElementById('page2');
+
+  if(hero) hero.style.display = 'flex';
+  if(next) next.style.display = 'flex';
+  if(page) page.remove();
+
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+<script>
+// ================= PAGE 2 + GOOGLE SHEETS (FINAL NO BUG) =================
+const SHEET_AESTHETIC = "https://docs.google.com/spreadsheets/d/1Vl4rKuLOcf0oBeq7DN8goLGQ7pr3tDQ-G-dS83w350Y/gviz/tq?tqx=out:json";
+const SHEET_WORKING = "https://docs.google.com/spreadsheets/d/1_bsHnKdgx6Uk5w93QFU_Q4Q8rMNeyH7BkfnWPMzs2Zo/gviz/tq?tqx=out:json";
+const SHEET_FAMILY = "https://docs.google.com/spreadsheets/d/1gHC4rHIhyUCC5O0O-A9sMCGFh9GBn0_jLPwpfToi-r8/gviz/tq?tqx=out:json";
+const SHEET_ROMANTIC = "https://docs.google.com/spreadsheets/d/1GgEqoymTJ__hlOcIbR5grgSjZ7tKGQP2MJvTuxuDGWU/gviz/tq?tqx=out:json";
+
+async function loadSheet(url){
+  try{
+    const res = await fetch(url);
+    const txt = await res.text();
+    const json = JSON.parse(txt.substring(47).slice(0,-2));
+
+    const cols = json.table.cols;
+    const rows = json.table.rows;
+
+    let html = `<table class="sheet-table">`;
+
+    // HEADER
+    html += "<tr>";
+    cols.slice(0,5).forEach(c=>{
+      html += `<th class="sheet-th">${c.label}</th>`;
+    });
+    html += "</tr>";
+
+    // DATA
+    rows.forEach(r=>{
+      html += "<tr>";
+      r.c.slice(0,5).forEach(cell=>{
+        html += `<td class="sheet-td">${cell ? cell.v : ''}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    document.getElementById('sheetTable').innerHTML = html;
+
+  }catch(err){
+    document.getElementById('sheetTable').innerHTML = "GAGAL LOAD DATA";
+    console.error(err);
+  }
+}
+
+// SINGLE NAVIGATION HANDLER (ANTI BUG)
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.onclick = function(e){
+    // FIX: HIDE MINIMAP + FOOTER (ANTI OVERLAY / LAG)
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    e.preventDefault();
+
+    const title = this.dataset.page;
+
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.next-section').style.display='none';
+
+    let page = document.getElementById('page2');
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    // AESTHETIC
+    if(title === "AESTHETIC COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${title}</h1>
+          <p style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_AESTHETIC);
+    }
+
+    // WORKING (FIXED)
+    else if(title === "WORKING COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${title}</h1>
+          <p style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_WORKING);
+    }
+
+    // FAMILY (NEW FIX NO BUG)
+    else if(title === "FAMILY COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${title}</h1>
+          <p style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_FAMILY);
+    }
+    // ROMANTIC (FINAL FIX NO BUG)
+    else if(title === "ROMANTIC COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${title}</h1>
+          <p style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_ROMANTIC);
+    }
+
+    // OTHER
+    else{
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${title}</h1>
+          <p style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+        </div>
+      `;
+    }
+  }
+});
+
+// HOME FIX (CLEAN)
+document.getElementById('homeBtn').onclick = function(e){
+  // BALIKIN MINIMAP + FOOTER
+  const mini = document.querySelector('.map-list-section');
+  if(mini) mini.style.display = 'block';
+  const footer = document.querySelector('.footer');
+  if(footer) footer.style.display = 'block';
+  // BALIKIN MINIMAP SAAT KE HOME
+  const miniSection = document.querySelector('.map-list-section');
+  if(miniSection) miniSection.style.display = 'block';
+  e.preventDefault();
+  document.querySelector('.hero').style.display='flex';
+  document.querySelector('.next-section').style.display='flex';
+  const page = document.getElementById('page2');
+  if(page) page.remove();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+<!-- CO-MAP PAGE (INTERACTIVE MAP) -->
+<script>
+const mapBtn = document.querySelectorAll('.nav-item')[1]; // CO-MAP
+
+mapBtn.addEventListener('click', function(e){
+  // HIDE MINIMAP SECTION BIAR TIDAK KEDIP / LAG
+  const miniSection = document.querySelector('.map-list-section');
+  if(miniSection) miniSection.style.display = 'none';
+  e.preventDefault();
+
+  document.querySelector('.hero').style.display = 'none';
+  document.querySelector('.next-section').style.display = 'none';
+
+  let page = document.getElementById('page2');
+  if(!page){
+    page = document.createElement('div');
+    page.id = 'page2';
+    document.body.appendChild(page);
+  }
+
+  page.innerHTML = `
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:900;">
+      
+      <!-- MAP -->
+      <div id="map" style="width:100%;height:100%;"></div>
+
+      <!-- FLOAT LEGEND (BOTTOM LEFT) -->
+      <div style="position:fixed;bottom:20px;left:20px;background:#fff;padding:12px 14px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.15);font-family:'Montserrat',sans-serif;z-index:1000;min-width:200px">
+        <div style="font-weight:600;margin-bottom:8px;color:#ff7a18;letter-spacing:1px">COFFEE TYPE</div>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:red">
+          Aesthetic Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:orange">
+          Working Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:green">
+          Family Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:pink">
+          Romantic Coffee
+        </label>
+      </div>
+
+    </div>
+  `;
+
+  setTimeout(()=>{
+    const map = L.map('map').setView([-7.770, 110.377], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // ===== ICON WARNA =====
+    function icon(color){
+      return L.divIcon({
+        className:'',
+        html:`<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2px solid white"></div>`
+      });
+    }
+
+    // ===== LAYER GROUP =====
+    const aestheticLayer = L.layerGroup().addTo(map);
+    const workingLayer = L.layerGroup().addTo(map);
+    const familyLayer = L.layerGroup().addTo(map);
+    const romanticLayer = L.layerGroup().addTo(map);
+
+    // ===== DATA (PERSEBARAN MERATA & REALISTIS) =====
+    const aesthetic = [
+      {lat:-7.770,lng:110.370,name:'Aesthetic Coffee 1', img:'1.png', rating:4.5},
+      {lat:-7.766,lng:110.365,name:'Aesthetic Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.772,lng:110.385,name:'Aesthetic Coffee 3', img:'3.png', rating:4.7},
+      {lat:-7.768,lng:110.378,name:'Aesthetic Coffee 4', img:'4.png', rating:4.3}
+    ];
+
+    const working = [
+      {lat:-7.769,lng:110.372,name:'Working Coffee 1', img:'1.png', rating:4.1},
+      {lat:-7.775,lng:110.388,name:'Working Coffee 2', img:'2.png', rating:4.4},
+      {lat:-7.763,lng:110.360,name:'Working Coffee 3', img:'3.png', rating:4.0},
+      {lat:-7.771,lng:110.378,name:'Working Coffee 4', img:'4.png', rating:4.3}
+    ];
+
+    const family = [
+      {lat:-7.768,lng:110.374,name:'Family Coffee 1', img:'1.png', rating:4.6},
+      {lat:-7.776,lng:110.390,name:'Family Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.764,lng:110.362,name:'Family Coffee 3', img:'3.png', rating:4.1},
+      {lat:-7.773,lng:110.382,name:'Family Coffee 4', img:'4.png', rating:4.5},
+      {lat:-7.767,lng:110.368,name:'Family Coffee 5', img:'5.png', rating:4.3},
+      {lat:-7.774,lng:110.386,name:'Family Coffee 6', img:'6.png', rating:4.4},
+      {lat:-7.762,lng:110.358,name:'Family Coffee 7', img:'7.png', rating:4.2}
+    ];
+
+    const romantic = [
+      {lat:-7.771,lng:110.376,name:'Romantic Coffee 1', img:'1.png', rating:4.8},
+      {lat:-7.777,lng:110.392,name:'Romantic Coffee 2', img:'2.png', rating:4.6},
+      {lat:-7.765,lng:110.364,name:'Romantic Coffee 3', img:'3.png', rating:4.5},
+      {lat:-7.772,lng:110.380,name:'Romantic Coffee 4', img:'4.png', rating:4.7},
+      {lat:-7.768,lng:110.369,name:'Romantic Coffee 5', img:'5.png', rating:4.4},
+      {lat:-7.775,lng:110.387,name:'Romantic Coffee 6', img:'6.png', rating:4.6},
+      {lat:-7.763,lng:110.361,name:'Romantic Coffee 7', img:'7.png', rating:4.3},
+      {lat:-7.770,lng:110.373,name:'Romantic Coffee 8', img:'8.png', rating:4.7},
+      {lat:-7.766,lng:110.366,name:'Romantic Coffee 9', img:'9.png', rating:4.5},
+      {lat:-7.774,lng:110.384,name:'Romantic Coffee 10', img:'10.png', rating:4.6}
+    ];
+
+    // ===== HAPUS KETERGANTUNGAN MAP (INSIGHT TIDAK BOLEH DI SINI) =====
+// (sengaja dikosongkan agar tidak override insight awal)
+
+    function addMarkers(data, layer, color){
+      data.forEach(item=>{
+        const imgSrc = item.img || '1.png';
+        const safeName = String(item.name).replace(/'/g, "\'");
+
+        L.marker([item.lat,item.lng], {icon:icon(color)})
+        .bindPopup(`
+          <div style="text-align:center;font-family:'Montserrat',sans-serif">
+            <div style="font-family:'Playfair Display', serif;font-size:18px;letter-spacing:1px;color:#ff7a18;margin-bottom:4px">
+              ${item.name}
+            </div><br>
+            <img src="${imgSrc}" style="width:120px;height:80px;object-fit:cover;margin-top:6px;border-radius:6px"><br>
+            <div style="text-align:left;margin-top:6px;font-size:13px;color:#333">
+              ⭐ ${item.rating}
+            </div>
+            <span onclick="goToDetail('${safeName}')" style="display:inline-block;margin-top:8px;color:#ff7a18;cursor:pointer;font-size:13px;text-decoration:underline">
+              View More
+            </span>
+          </div>
+        `)
+        .addTo(layer);
+      });
+    }
+
+    // ================= GOOGLE SHEET DETAIL (ROBUST PARSER) =================
+const DETAIL_BASE = "https://docs.google.com/spreadsheets/d/1trw5vm3xkZeZ3HSUVBBdldohcElzXLRk31eYiiGjixw/gviz/tq?tqx=out:json";
+
+async function loadDetailSheetByName(sheetName){
+  try{
+    const url = DETAIL_BASE + "&sheet=" + encodeURIComponent(sheetName);
+    const res = await fetch(url);
+    const txt = await res.text();
+
+    // robust clean (handle gviz wrapper)
+    const start = txt.indexOf('{');
+    const end = txt.lastIndexOf('}');
+    const json = JSON.parse(txt.substring(start, end+1));
+
+    const cols = json.table.cols || [];
+    const rows = json.table.rows || [];
+
+    if(rows.length === 0){
+      return "<div style='padding:20px'>DATA KOSONG</div>";
+    }
+
+    let html = `<table class=\"sheet-table\">`;
+
+    // HEADER FIX (SAMA UNTUK SEMUA)
+    html += "<tr>";
+    html += `<th class=\"sheet-th\">DATA</th>`;
+    html += `<th class=\"sheet-th\">KETERANGAN</th>`;
+    html += "</tr>";
+
+    // NORMALISASI TOTAL (ANTI BUG TERMASUK AESTHETIC 3)
+    rows.forEach(r=>{
+      const raw = (r.c || []).map(cell => cell && cell.v !== null ? String(cell.v).trim() : '');
+
+      // ambil hanya yang ada isi
+      const cells = raw.filter(v => v !== '');
+
+      if(cells.length === 0) return;
+
+      let left = cells[0];
+      let right = '';
+
+      // gabungkan semua sisa ke kanan (fix Aesthetic 3 pecah baris)
+      if(cells.length > 1){
+        right = cells.slice(1).join(' ');
+      }else{
+        right = '-';
+      }
+
+      html += "<tr>";
+      html += `<td class=\"sheet-td\">${left}</td>`;
+      html += `<td class=\"sheet-td\">${right}</td>`;
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    return html;
+
+  }catch(err){
+    console.error("DETAIL LOAD ERROR:", err);
+    return "<div style='padding:20px;color:red'>GAGAL LOAD DATA (CEK NAMA SHEET HARUS SAMA PERSIS)</div>";
+  }
+}
+
+// POPUP MODAL DETAIL (INTEGRATED WITH GOOGLE SHEET)
+window.goToDetail = async function(name){
+  let modal = document.getElementById('detailModal');
+
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'detailModal';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.background = 'rgba(0,0,0,0.5)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '2000';
+
+    document.body.appendChild(modal);
+  }
+
+  // loading state dulu
+  modal.innerHTML = `
+    <div style="background:#fff;width:75%;max-width:500px;border-radius:14px;padding:18px;text-align:center;font-family:'Montserrat',sans-serif;box-shadow:0 15px 35px rgba(0,0,0,0.25);position:relative;">
+      <span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:18px;cursor:pointer">✕</span>
+      <h2 style="font-family:'Bebas Neue';letter-spacing:3px;color:#ff7a18">${name}</h2>
+      <p>Loading data...</p>
+    </div>
+  `;
+
+  // LOAD SHEET SESUAI NAMA COFFEE SHOP (HARUS MATCH SAMA NAMA SHEET)
+  const tableHTML = await loadDetailSheetByName(name);
+
+  modal.innerHTML = `
+    <div style="background:#fff;width:75%;max-width:500px;border-radius:14px;padding:18px;text-align:center;font-family:'Montserrat',sans-serif;box-shadow:0 15px 35px rgba(0,0,0,0.25);position:relative;overflow:auto;max-height:85vh">
+      <span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:18px;cursor:pointer">✕</span>
+
+      <h2 style="font-family:'Bebas Neue';letter-spacing:3px;color:#ff7a18;margin-bottom:10px">${name}</h2>
+      <p style="font-family:'Playfair Display',serif;letter-spacing:1px;font-size:14px">DETAIL INFORMATION</p>
+
+      <div style="margin-top:15px">
+        ${tableHTML}
+      </div>
+    </div>
+  `;
+}
+
+// CLOSE MODAL
+window.closeModal = function(){
+  const modal = document.getElementById('detailModal');
+  if(modal) modal.remove();
+}
+
+    addMarkers(aesthetic, aestheticLayer, 'red');
+    addMarkers(working, workingLayer, 'orange');
+    addMarkers(family, familyLayer, 'green');
+    addMarkers(romantic, romanticLayer, 'pink');
+
+    // ===== CHECKBOX CONTROL =====
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes[0].onchange = ()=>{
+      if(checkboxes[0].checked){ map.addLayer(aestheticLayer);} 
+      else{ map.removeLayer(aestheticLayer);} 
+    }
+
+    checkboxes[1].onchange = ()=>{
+      if(checkboxes[1].checked){ map.addLayer(workingLayer);} 
+      else{ map.removeLayer(workingLayer);} 
+    }
+
+    checkboxes[2].onchange = ()=>{
+      if(checkboxes[2].checked){ map.addLayer(familyLayer);} 
+      else{ map.removeLayer(familyLayer);} 
+    }
+
+    checkboxes[3].onchange = ()=>{
+      if(checkboxes[3].checked){ map.addLayer(romanticLayer);} 
+      else{ map.removeLayer(romanticLayer);} 
+    }
+
+  }, 300);
+});
+// WHATSAPP INTEGRATION (FINAL SESUAI PERMINTAAN)
+function sendWhatsApp(){
+  const message = document.getElementById('message').value;
+
+  if(message.trim() === ''){
+    alert('Message tidak boleh kosong!');
+    return;
+  }
+
+  const text = message;
+  const url = "https://wa.me/628979390425?text=" + encodeURIComponent(text);
+
+  window.open(url, '_blank');
+}
+
+function sendWhatsAppArina(){
+  const message = document.getElementById('message2').value;
+
+  if(message.trim() === ''){
+    alert('Message tidak boleh kosong!');
+    return;
+  }
+
+  const text = message;
+  const url = "https://wa.me/6285559476308?text=" + encodeURIComponent(text);
+
+  window.open(url, '_blank');
+}
+
+</script>
+
+<!-- ================= CHART CLICK → GOOGLE SHEET PER SHEET (TIDAK GANGGU SCRIPT LAIN) ================= -->
+<script>
+const BASE_SHEET_SINGLE = "https://docs.google.com/spreadsheets/d/1kXUHIRUVW6DH_RG_kKLMpKFZWboa-vA39JSbftajr50/gviz/tq?tqx=out:json";
+
+async function loadSheetPerName(sheetName){
+  try{
+    const url = BASE_SHEET_SINGLE + "&sheet=" + encodeURIComponent(sheetName);
+    const res = await fetch(url);
+    const txt = await res.text();
+
+    const start = txt.indexOf('{');
+    const end = txt.lastIndexOf('}');
+    const json = JSON.parse(txt.substring(start, end+1));
+
+    const cols = json.table.cols || [];
+    const rows = json.table.rows || [];
+
+    let html = `<table class="sheet-table">`;
+
+    html += "<tr>";
+    cols.slice(0,5).forEach(c=>{
+      html += `<th class="sheet-th">${c.label}</th>`;
+    });
+    html += "</tr>";
+
+    rows.forEach(r=>{
+      html += "<tr>";
+      (r.c || []).slice(0,5).forEach(cell=>{
+        html += `<td class="sheet-td">${cell ? cell.v : ''}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    document.getElementById('sheetTable').innerHTML = html;
+
+  }catch(e){
+    document.getElementById('sheetTable').innerHTML = "GAGAL LOAD DATA (NAMA SHEET HARUS SAMA)";
+    console.error(e);
+  }
+}
+
+// CLICK HANYA CHART (CARD)
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click', function(){
+
+    // FIX: HIDE MINIMAP + FOOTER (ANTI LAG / OVERLAY DI INSIGHT)
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    const sheetName = this.getAttribute('data-sheet');
+
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.next-section').style.display='none';
+
+    let page = document.getElementById('page2');
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    page.innerHTML = `
+      <div style="margin-top:90px;text-align:center">
+        <h1 style="font-size:32px;letter-spacing:4px;color:#ff7a18">${sheetName}</h1>
+        <p style="font-family:'Playfair Display', serif;letter-spacing:2px">ALL DATA COFFEE SPACE FOR YOU!</p>
+        <div id="sheetTable">Loading data...</div>
+      </div>
+    `;
+
+    loadSheetPerName(sheetName);
+  });
+});
+</script>
+
+<style>
+/* ACTIVE HEADER STATE */
+.nav-item.active{
+  color:#ff7a18 !important;
+  font-weight:600;
+}
+</style>
+
+<script>
+// ===== ACTIVE NAV CONTROL =====
+const navItems = document.querySelectorAll('.nav-item');
+const topParent = document.querySelector('.dropdown > .nav-item');
+
+function clearActive(){
+  navItems.forEach(n=>n.classList.remove('active'));
+}
+
+function setActive(el){
+  clearActive();
+  if(el) el.classList.add('active');
+}
+
+// HOME
+const homeBtnFix = document.getElementById('homeBtn');
+homeBtnFix.addEventListener('click', ()=>{
+  setActive(homeBtnFix);
+});
+
+// CO-MAP
+const mapBtnFix = document.querySelectorAll('.nav-item')[1];
+mapBtnFix.addEventListener('click', ()=>{
+  setActive(mapBtnFix);
+});
+
+// TOP 10 (parent highlight when dropdown item clicked)
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    setActive(topParent);
+  });
+});
+
+// DEFAULT ACTIVE = HOME
+setActive(homeBtnFix);
+</script>
+</body>
+</html>
