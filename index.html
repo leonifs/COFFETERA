@@ -336,37 +336,10 @@
 .sheet-th{
   background:#ff7a18;
   color:#ffffff;
-  padding:10px;
+  padding:6px;
   font-family:'Playfair Display', serif;
-  font-size:13px;
+  font-size:11px;
   letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.sheet-td{
-  padding:8px;
-  font-size:12px;
-  letter-spacing:0.3px;
-  color:#333;
-  text-align:center;
-}
-
-.sheet-table tr:nth-child(even) .sheet-td{
-  background:#fff6ef;
-}
-
-.sheet-table tr:hover .sheet-td{
-  background:#ffe5d3;
-  transition:0.2s ease;
-}
-
-.sheet-th{
-  background:#ff7a18;
-  color:#ffffff;
-  padding:14px;
-  font-family:'Playfair Display', serif;
-  font-size:15px;
-  letter-spacing:1.5px;
   text-transform:uppercase;
 }
 
@@ -376,15 +349,62 @@
   letter-spacing:0.5px;
   color:#333;
   text-align:center;
+  font-family:'Playfair Display', serif;
 }
 
 .sheet-table tr:nth-child(even) .sheet-td{
-  background:#fff6ef;
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
 }
 
 .sheet-table tr:hover .sheet-td{
-  background:#ffe5d3;
-  transition:0.2s ease;
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-th{
+  background:#ff7a18;
+  color:#ffffff;
+  padding:6px;
+  font-family:'Playfair Display', serif;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:nth-child(even) .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:hover .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
 }
 
 
@@ -1779,57 +1799,95 @@ async function loadDetailSheetByName(sheetName){
   }
 }
 
-// POPUP MODAL DETAIL (INTEGRATED WITH GOOGLE SHEET)
+// ================= LEFT PANEL DETAIL (REPLACE MODAL) =================
 window.goToDetail = async function(name){
-  let modal = document.getElementById('detailModal');
+  // ONLY allow in CO-MAP page
+  const mapPage = document.getElementById('map');
+  if(!mapPage) return; // STOP kalau bukan di CO-MAP
+  let panel = document.getElementById('detailPanel');
 
-  if(!modal){
-    modal = document.createElement('div');
-    modal.id = 'detailModal';
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.background = 'rgba(0,0,0,0.5)';
-    modal.style.display = 'flex';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.zIndex = '2000';
+  if(!panel){
+    panel = document.createElement('div');
+    panel.id = 'detailPanel';
+    panel.style.position = 'fixed';
+    panel.style.top = '60px';
+    panel.style.left = '0';
+    panel.style.width = '380px';
+    panel.style.height = 'calc(100% - 60px)';
+    panel.style.background = '#ffffff';
+    panel.style.zIndex = '2000';
+    panel.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+    panel.style.overflowY = 'auto';
+    panel.style.fontFamily = "'Montserrat',sans-serif";
 
-    document.body.appendChild(modal);
+    document.body.appendChild(panel);
   }
 
-  // loading state dulu
-  modal.innerHTML = `
-    <div style="background:#fff;width:75%;max-width:500px;border-radius:14px;padding:18px;text-align:center;font-family:'Montserrat',sans-serif;box-shadow:0 15px 35px rgba(0,0,0,0.25);position:relative;">
-      <span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:18px;cursor:pointer">✕</span>
-      <h2 style="font-family:'Bebas Neue';letter-spacing:3px;color:#ff7a18">${name}</h2>
-      <p>Loading data...</p>
-    </div>
-  `;
+  // cari data marker (untuk ambil koordinat & gambar)
+  let found = null;
+  const allData = [...aesthetic, ...working, ...family, ...romantic];
+  found = allData.find(d => d.name === name);
 
-  // LOAD SHEET SESUAI NAMA COFFEE SHOP (HARUS MATCH SAMA NAMA SHEET)
-  const tableHTML = await loadDetailSheetByName(name);
+  const lat = found ? found.lat : -7.795;
+  const lng = found ? found.lng : 110.375;
+  const rating = found ? found.rating : '-';
+  const img = found && found.img ? found.img : '1.png';
 
-  modal.innerHTML = `
-    <div style="background:#fff;width:75%;max-width:500px;border-radius:14px;padding:18px;text-align:center;font-family:'Montserrat',sans-serif;box-shadow:0 15px 35px rgba(0,0,0,0.25);position:relative;overflow:auto;max-height:85vh">
-      <span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:18px;cursor:pointer">✕</span>
+  const gmaps = `https://www.google.com/maps?q=${lat},${lng}`;
 
-      <h2 style="font-family:'Bebas Neue';letter-spacing:3px;color:#ff7a18;margin-bottom:10px">${name}</h2>
-      <p style="font-family:'Playfair Display',serif;letter-spacing:1px;font-size:14px">DETAIL INFORMATION</p>
+  // loading dulu
+  panel.innerHTML = `
+    <div>
+      <img src="${img}" style="width:100%;height:220px;object-fit:cover">
 
-      <div style="margin-top:15px">
-        ${tableHTML}
+      <div style="padding:15px">
+        <h2 style="font-weight:700;font-size:20px;color:#333;font-family:'Playfair Display', serif">${name}</h2>
+        <div style="margin:5px 0 15px 0;font-size:14px;color:#555">
+          ${rating} ⭐⭐⭐⭐⭐ 
+        </div>
+
+        <a href="${gmaps}" target="_blank" style="display:inline-block;text-align:center;background:#ff7a1a;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-weight:600;font-size:12px;letter-spacing:0.5px;font-family:'Playfair Display', serif">
+          ⤴ GO TO GOOGLE MAPS
+        </a>
+
+        <hr style="margin:20px 0;border:none;border-top:1px solid #ddd">
+
+        <h3 style="color:#1f7a7a;font-size:14px;letter-spacing:1px;margin-bottom:10px">INFORMASI</h3>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <style>
+            #detailTable td { 
+  text-align:left !important; 
+  padding:10px; 
+  font-family:'Playfair Display', serif; 
+  font-size:13px;
+  color:#333;
+}
+#detailTable tr:nth-child(even){ background:#fafafa; }
+#detailTable tr:nth-child(odd){ background:#ffffff; }
+#detailTable tr:hover{ background:#f1f1f1; }
+            /* header removed */
+            #detailTable tr { text-align:left !important; }
+          </style>
+          
+          <tbody id="detailTable" style="text-align:left">
+            <!-- rows akan otomatis rata kiri -->
+            <tr><td colspan="2">Loading data...</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   `;
-}
 
-// CLOSE MODAL
+  // load tabel
+  const tableHTML = await loadDetailSheetByName(name);
+  document.getElementById('detailTable').innerHTML = tableHTML;
+};
+
+// OPTIONAL CLOSE (CLICK OUTSIDE NOT USED NOW)
 window.closeModal = function(){
-  const modal = document.getElementById('detailModal');
-  if(modal) modal.remove();
+  const panel = document.getElementById('detailPanel');
+  if(panel) panel.remove();
 }
 
     addMarkers(aesthetic, aestheticLayer, 'red');
@@ -1993,20 +2051,29 @@ function setActive(el){
 }
 
 // HOME
+// ===== FORCE CLOSE DETAIL PANEL WHEN LEAVING CO-MAP =====
+function removeDetailPanel(){
+  const panel = document.getElementById('detailPanel');
+  if(panel) panel.remove();
+}
+
 const homeBtnFix = document.getElementById('homeBtn');
 homeBtnFix.addEventListener('click', ()=>{
+  removeDetailPanel();
   setActive(homeBtnFix);
 });
 
 // CO-MAP
 const mapBtnFix = document.querySelectorAll('.nav-item')[1];
 mapBtnFix.addEventListener('click', ()=>{
+  removeDetailPanel();
   setActive(mapBtnFix);
 });
 
 // TOP 10 (parent highlight when dropdown item clicked)
 document.querySelectorAll('.top-link').forEach(link=>{
   link.addEventListener('click', ()=>{
+    removeDetailPanel();
     setActive(topParent);
   });
 });
