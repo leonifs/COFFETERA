@@ -2615,16 +2615,18 @@ window.backToComap = function(){
         .replace(/,/g,'.')
         .replace(/[^0-9.]/g,'');
 
-
+      // cegah titik lebih dari satu
       const parts = raw.split('.');
       if(parts.length > 2){
         raw = parts[0] + '.' + parts.slice(1).join('');
       }
 
+      // responsif saat user mengetik koma / titik
       if(fromInput){
         ratingInput.value = raw;
       }
 
+      // izinkan kondisi mengetik sementara
       if(raw === '' || raw === '.'){
         return;
       }
@@ -2641,6 +2643,7 @@ window.backToComap = function(){
       ratingSlider.value = val;
       ratingValue.innerText = val.toFixed(1);
 
+      // jangan paksa format saat user masih mengetik
       if(!fromInput){
         ratingInput.value = val.toFixed(1);
       }
