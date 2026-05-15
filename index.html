@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COFFETERA</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Montserrat',sans-serif}
+
+    .hero{
+      position:relative;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:url('WALLPAPER.png') no-repeat center/cover;
+    }
+
+    .overlay{
+      position:absolute;
+      width:100%;height:100%;
+      background:linear-gradient(to bottom,rgba(255,122,24,0.25),rgba(255,255,255,0.15));
+    }
+
+    .content{position:relative;z-index:2}
+
+    .title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(60px,12vw,140px);
+      letter-spacing:12px;
+      color:transparent;
+      -webkit-text-stroke:2px #fff;
+      text-shadow:0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .subtitle{
+      margin-top:20px;
+      font-size:clamp(14px,3vw,22px);
+      color:#ffffff;
+      font-weight:300;
+      letter-spacing:2px;
+      text-shadow:0 2px 10px rgba(0,0,0,0.3);
+      font-family:'Montserrat', sans-serif;
+    }
+
+    .wave{position:absolute;bottom:0;width:100%;height:200px}
+    .wave svg{width:100%;height:100%}
+
+    .next-section{
+  min-height:100vh;
+  background:linear-gradient(to bottom, #ffffff 0%, #fff7f0 40%, #fff1e6 70%, #ffeddc 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  padding:20px 20px 0; 
+  gap:40px;
+}
+
+    .charts{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:40px;
+      width:100%;
+      max-width:1200px;
+      opacity:0;
+      transform:translateY(50px);
+      transition:0.8s;
+    }
+
+    .charts.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .card{
+      background:#f9f9f9;
+      padding:25px;
+      border-radius:18px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      transition:all 0.35s ease;
+      cursor:pointer;
+    }
+
+
+    .card:hover{
+      transform:translateY(-12px) scale(1.05);
+      box-shadow:0 20px 50px rgba(0,0,0,0.2);
+    }
+
+    .donut{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      margin:0 auto 15px;
+      position:relative;
+    }
+
+    .donut::after{
+      content:'';
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:80px;height:80px;
+      background:#fff;
+      border-radius:50%;
+    }
+
+    .value{
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      font-weight:bold;
+      color:#ff7a18;
+      z-index:2;
+      font-size:20px;
+    }
+
+
+    .aesthetic{background:conic-gradient(#ff7a18 0% 80%, #eee 80%)}
+    .cowork{background:conic-gradient(#ff7a18 0% 70%, #eee 70%)}
+    .family{background:conic-gradient(#ff7a18 0% 60%, #eee 60%)}
+    .romantic{background:conic-gradient(#ff7a18 0% 50%, #eee 50%)}
+
+
+    .card p{
+      font-family:'Montserrat', sans-serif;
+      font-size:16px;
+      margin-top:10px;
+      color:#333;
+      letter-spacing:2px;
+      font-weight:400;
+    }
+
+    .section-title{
+      font-family:'Bebas Neue', sans-serif;
+      font-size:clamp(30px,5vw,60px);
+      color:#ff7a18;
+      letter-spacing:6px;
+      text-align:center;
+    }
+
+    @media(max-width:600px){
+      .wave{height:150px}
+    }
+  
+
+.special{width:100%;max-width:1200px;margin-top:40px;margin-bottom:30px;text-align:center}
+.special .section-title{margin-bottom:40px;}
+.slider{position:relative;overflow:hidden;border-radius:20px}
+.slides{display:flex;transition:0.5s}
+.slide{min-width:100%;display:none;width:100%;height:420px;object-fit:cover;border-radius:20px}
+.slide.active{display:block}
+.nav{position:absolute;top:50%;transform:translateY(-50%);background:#ff7a18;color:#fff;border:none;padding:10px 15px;cursor:pointer;border-radius:50%}
+.prev{left:10px}
+.next{right:10px}
+.dots{margin-top:15px}
+.dot{display:inline-block;width:10px;height:10px;background:#ccc;border-radius:50%;margin:0 5px}
+.dot.active{background:#ff7a18}
+
+
+.next-section{
+  background:linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #fffaf5 40%,
+    #fff4ec 70%,
+    #fdf0e6 100%
+  );
+}
+
+.contact-container{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  flex-wrap:wrap;
+}
+
+.person{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  color:#fff;
+}
+
+.left-people{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.left-people img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:12px;
+  border:3px solid #fff;
+}
+
+.person img{
+  width:110px;
+  height:110px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.6);
+}
+
+.right-contact{display:none;}
+
+.contact-title{
+  font-family:'Montserrat', sans-serif;
+  font-size:18px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+  color:#fff;
+  text-align:center;
+  opacity:0.9;
+}
+
+.contact-info{
+  font-size:13px;
+  line-height:1.6;
+  color:#fff;
+  opacity:0.9;
+}
+
+
+
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 30px; 
+  background:rgba(255,245,235,0.9);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  transition:0.4s;
+}
+
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;
+  letter-spacing:4px;
+  color:#ff7a18;
+  opacity:1; 
+  transition:0.4s;
+}
+
+.nav-menu{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  transition:0.35s ease;
+}
+
+.burger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  z-index:2001;
+}
+
+.burger span{
+  width:26px;
+  height:3px;
+  background:#ff7a18;
+  border-radius:10px;
+  transition:0.3s ease;
+}
+
+.burger.active span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2){
+  opacity:0;
+}
+
+.burger.active span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+.nav-item{
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+  letter-spacing:2px;
+  transition:0.3s;
+}
+
+.nav-item:hover{
+  color:#ff7a18;
+}
+
+
+.dropdown{
+  position:relative;
+  padding-bottom:10px; 
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  right:0;
+  background:#fdf6ec;
+  padding:10px 0;
+  display:none;
+  flex-direction:column;
+  min-width:200px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  border-radius:10px;
+  z-index:999;
+}
+
+.dropdown-menu a{
+  padding:10px 15px;
+  text-decoration:none;
+  color:#333;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+.dropdown-menu a:hover{
+  background:#fff0e6;
+  color:#ff7a18;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover{
+  display:flex;
+}
+
+.header.scrolled .logo{
+  opacity:1;
+}
+
+
+.sheet-table{
+  width:80%;
+  max-width:850px;
+  margin:20px auto;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#ffffff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+.sheet-table th,
+.sheet-table td{
+  font-family:'Playfair Display', serif !important;
+}
+
+.sheet-th{
+  background:#ff7a18;
+  color:#ffffff;
+  padding:6px;
+  font-family:'Playfair Display', serif;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:nth-child(even) .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:hover .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-th{
+  background:#ff7a18;
+  color:#ffffff;
+  padding:6px;
+  font-family:'Playfair Display', serif;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:nth-child(even) .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+.sheet-table tr:hover .sheet-td{
+  padding:12px;
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:#333;
+  text-align:center;
+  font-family:'Playfair Display', serif;
+}
+
+
+
+.leaflet-top.leaflet-left{
+  top:80px !important; 
+}
+
+
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+.fade-left{
+  opacity:0;
+  transform:translateX(-60px);
+  transition:all 0.8s ease;
+}
+.fade-left.show{
+  opacity:1;
+  transform:translateX(0);
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+
+    /* ===== MOBILE LEGEND RESPONSIVE ===== */
+    @media (max-width: 768px){
+      #legendBox{
+        min-width: 170px !important;
+        max-width: 170px !important;
+        max-height: 128px !important;
+        overflow-y: auto !important;
+        overflow-x:hidden !important;
+        scrollbar-gutter: stable inside !important;
+        overflow-x: hidden !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding:12px 12px !important;
+        bottom:12px !important;
+        right:12px !important;
+        border-radius:14px !important;
+      }
+
+      #legendBox label{
+        font-size:11px !important;
+        gap:6px !important;
+        margin:4px 0 !important;
+      }
+
+      #legendBox input[type="range"]{
+        height:3px !important;
+      }
+
+      #legendBox input[type="text"]{
+        width:54px !important;
+        font-size:11px !important;
+        padding:4px 5px !important;
+      }
+
+      #legendBox div{
+        font-size:11px;
+      }
+
+      #legendBox::-webkit-scrollbar{
+        width:3px;
+      }
+
+      #legendBox::-webkit-scrollbar-thumb{
+        background:rgba(255,178,122,0.45);
+        border-radius:999px;
+      }
+
+      #legendBox::-webkit-scrollbar-track{
+        background:transparent;
+        margin:6px 0;
+      }
+    }
+  </style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+
+<header class="header" id="header">
+  <div class="logo" id="logo">COFFETERA</div>
+  <div class="burger" id="burgerBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-menu" id="navMenu">
+    <a href="#" class="nav-item" id="homeBtn">HOME</a>
+    <a href="#" class="nav-item">CO-MAP</a>
+    <div class="dropdown">
+        <a href="#" class="nav-item">TOP 10</a>
+        <div class="dropdown-menu">
+          <a href="#" class="top-link" data-page="AESTHETIC COFFEE">AESTHETIC COFFEE</a>
+          <a href="#" class="top-link" data-page="WORKING COFFEE">WORKING COFFEE</a>
+          <a href="#" class="top-link" data-page="FAMILY COFFEE">FAMILY COFFEE</a>
+          <a href="#" class="top-link" data-page="ROMANTIC COFFEE">ROMANTIC COFFEE</a>
+        </div>
+      </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="title">COFFETERA</div>
+    <div class="subtitle">Find Your Perfect Coffee Spot</div>
+  </div>
+
+  <div class="wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#fff" fill-opacity="0.9" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,149.3C840,149,960,171,1080,181.3C1200,192,1320,192,1380,192L1440,192L1440,320L0,320Z"></path>
+      <path fill="#fff" fill-opacity="0.6" d="M0,200L60,208C120,216,240,232,360,224C480,216,600,184,720,181.3C840,179,960,203,1080,213.3C1200,224,1320,224,1380,224L1440,224L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="next-section">
+  <div class="section-title">COFFEE INSIGHT</div>
+  
+  <p style="max-width:900px;text-align:center;margin-top:2px;font-size:14px;color:#444;letter-spacing:1px;font-family:'Montserrat',sans-serif;">
+    Explore what kind of coffee places people love the most from cozy romantic spots to lively family hangouts.
+  </p>
+  <div class="charts" id="charts">
+
+    <div class="card" data-sheet="Aesthetic Coffee">
+      <div class="donut aesthetic">
+        <div class="value">80%</div>
+      </div>
+      <p>AESTHETIC COFFEE</p>
+    </div>
+
+    <div class="card" data-sheet="Working Coffee">
+      <div class="donut cowork">
+        <div class="value">70%</div>
+      </div>
+      <p>WORKING COFFEE</p>
+    </div>
+
+    <div class="card" data-sheet="Family Coffee">
+      <div class="donut family">
+        <div class="value">60%</div>
+      </div>
+      <p>FAMILY COFFEE</p>
+    </div>
+
+    <div class="card" data-sheet="Romantic Coffee">
+      <div class="donut romantic">
+        <div class="value">50%</div>
+      </div>
+      <p>ROMANTIC COFFEE</p>
+    </div>
+
+  </div>
+ 
+  <div class="special">
+    <div class="section-title">SPECIAL FOR YOU</div>
+  
+
+    <div class="slider">
+      <button class="nav prev">&#10094;</button>
+
+      <div class="slides" id="slides">
+        <img src="1.png" class="slide active">
+        <img src="2.png" class="slide">
+        <img src="3.png" class="slide">
+        <img src="4.png" class="slide">
+      </div>
+
+      <button class="nav next">&#10095;</button>
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+  </section>
+
+
+<section class="map-list-section">
+
+  <div class="map-list-container">
+
+    
+    <div class="map-box">
+      <div id="miniMap"></div>
+    </div>
+
+    
+    <div class="coffee-list-wrapper">
+
+      <div class="coffee-search">
+        <input type="text" id="coffeeSearch" placeholder="Search coffee place...">
+        <button id="searchBtn">⌕</button>
+      </div>
+
+      <div class="coffee-list" id="coffeeList">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+.map-list-section{
+  min-height:100vh;
+  background:linear-gradient(
+    to bottom,
+    #fffaf5 0%,
+    #fff4ec 40%,
+    #fdf0e6 70%,
+    #fde8dc 100%
+  );
+  padding:60px 40px;
+}
+
+.map-list-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.map-box{
+  background:rgba(255,255,255,0.9);
+  border-radius:20px;
+  padding:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+#miniMap{
+  width:100%;
+  height:500px;
+  border-radius:15px;
+}
+
+.coffee-list-wrapper{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.coffee-search{
+  display:flex;
+  align-items:center;
+  background:rgba(255,255,255,0.95);
+  border-radius:14px;
+  padding:8px 10px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  gap:8px;
+}
+
+.coffee-search input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:12px;
+  letter-spacing:0.5px;
+  color:#444;
+  font-family:'Montserrat',sans-serif;
+}
+
+.coffee-search input::placeholder{
+  color:#999;
+}
+
+#searchBtn{
+  width:30px;
+  height:30px;
+  border:none;
+  border-radius:50%;
+  background:#ff7a18;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s ease;
+}
+
+#searchBtn:hover{
+  transform:scale(1.08);
+  box-shadow:0 4px 10px rgba(255,122,24,0.35);
+}
+
+.coffee-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  max-height:500px;
+  overflow-y:auto;
+}
+
+.coffee-card{
+  background:rgba(255,255,255,0.95);
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.coffee-name{
+  font-family:'Bebas Neue';
+  letter-spacing:2px;
+  font-size:20px;
+  color:#ff7a18;
+}
+
+.coffee-rating{
+  font-size:14px;
+  margin:5px 0;
+}
+
+.review-box{
+  max-height:70px;
+  overflow-y:auto;
+  font-size:12px;
+  background:#fff5ee;
+  padding:8px;
+  border-radius:8px;
+}
+
+@media(max-width:900px){
+  .map-list-container{grid-template-columns:1fr}
+
+  .coffee-list{
+    max-height:420px !important;
+    overflow-y:auto !important;
+    padding-right:4px;
+    scroll-behavior:smooth;
+  }
+
+  .coffee-list::-webkit-scrollbar{
+    width:5px;
+  }
+
+  .coffee-list::-webkit-scrollbar-thumb{
+    background:#ffb27a;
+    border-radius:10px;
+  }
+
+  .coffee-card{
+    flex-shrink:0;
+  }
+}
+</style>
+
+<script>
+
+setTimeout(()=>{
+  const miniMap = L.map('miniMap').setView([-7.795,110.375],13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(miniMap);
+
+  
+  const aesthetic = [
+    {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1',rating:4.5},
+    {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2',rating:4.2},
+    {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3',rating:4.7},
+    {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4',rating:4.3}
+  ];
+
+  const working = [
+    {lat:-7.804,lng:110.358,name:'Working Coffee 1',rating:4.1},
+    {lat:-7.792,lng:110.367,name:'Working Coffee 2',rating:4.4},
+    {lat:-7.786,lng:110.374,name:'Working Coffee 3',rating:4.0},
+    {lat:-7.798,lng:110.382,name:'Working Coffee 4',rating:4.3}
+  ];
+
+  const family = [
+    {lat:-7.805,lng:110.370,name:'Family Coffee 1',rating:4.6},
+    {lat:-7.796,lng:110.378,name:'Family Coffee 2',rating:4.2},
+    {lat:-7.787,lng:110.360,name:'Family Coffee 3',rating:4.1},
+    {lat:-7.799,lng:110.368,name:'Family Coffee 4',rating:4.5},
+    {lat:-7.790,lng:110.385,name:'Family Coffee 5',rating:4.3},
+    {lat:-7.803,lng:110.392,name:'Family Coffee 6',rating:4.4},
+    {lat:-7.789,lng:110.373,name:'Family Coffee 7',rating:4.2}
+  ];
+
+  const romantic = [
+    {lat:-7.801,lng:110.366,name:'Romantic Coffee 1',rating:4.8},
+    {lat:-7.793,lng:110.375,name:'Romantic Coffee 2',rating:4.6},
+    {lat:-7.786,lng:110.382,name:'Romantic Coffee 3',rating:4.5},
+    {lat:-7.798,lng:110.390,name:'Romantic Coffee 4',rating:4.7},
+    {lat:-7.792,lng:110.360,name:'Romantic Coffee 5',rating:4.4},
+    {lat:-7.804,lng:110.368,name:'Romantic Coffee 6',rating:4.6},
+    {lat:-7.788,lng:110.377,name:'Romantic Coffee 7',rating:4.3},
+    {lat:-7.800,lng:110.384,name:'Romantic Coffee 8',rating:4.7},
+    {lat:-7.795,lng:110.371,name:'Romantic Coffee 9',rating:4.5},
+    {lat:-7.802,lng:110.388,name:'Romantic Coffee 10',rating:4.6}
+  ];
+
+  
+  function icon(color){
+    return L.divIcon({
+      className:'',
+      html:`<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2px solid white"></div>`
+    });
+  }
+
+  const list = document.getElementById('coffeeList');
+  list.innerHTML = '';
+
+  // ===== GLOBAL REVIEW FUNCTION (FIX: BISA DIAKSES CO-MAP & HOME) =====
+window.generateReviews = function(name){
+  const cleanName = String(name).trim();
+
+  const reviewsByCoffeeShop = {
+    "Aesthetic Coffee 1": [
+      {user:'user1@mail.com', text:'Tempatnya aesthetic banget!'},
+      {user:'user2@mail.com', text:'Lighting bagus buat foto.'},
+      {user:'user3@mail.com', text:'Interior unik dan cozy.'},
+      {user:'user4@mail.com', text:'Recommended buat nongkrong santai.'}
+    ],
+    "Aesthetic Coffee 2": [
+      {user:'user1@mail.com', text:'Spot foto paling bagus di sini!'},
+      {user:'user2@mail.com', text:'Desainnya modern banget.'},
+      {user:'user3@mail.com', text:'Cahaya naturalnya keren.'},
+      {user:'user4@mail.com', text:'Instagramable parah!'}
+    ],
+    "Working Coffee 1": [
+      {user:'user1@mail.com', text:'Cocok buat kerja lama.'},
+      {user:'user2@mail.com', text:'WiFi kencang dan stabil.'},
+      {user:'user3@mail.com', text:'Banyak colokan.'},
+      {user:'user4@mail.com', text:'Suasana tenang banget.'}
+    ]
+    // (sisanya tetap sama, tidak diubah)
+  };
+
+  const fallback = [
+    {user:'user1@mail.com', text:'Kopi enak dan strong.'},
+    {user:'user2@mail.com', text:'Baristanya ramah.'},
+    {user:'user3@mail.com', text:'Harga masih worth it.'},
+    {user:'user4@mail.com', text:'Balik lagi sih!'}
+  ];
+
+  const selected = reviewsByCoffeeShop[cleanName] || fallback;
+
+  let html = '';
+
+  selected.forEach((rev)=>{
+    html += `
+      <div style="display:flex;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #eee;align-items:flex-start">
+        <div style="width:32px;height:32px;background:#ddd;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px">👤</div>
+        <div>
+          <div style="font-size:11px;color:#555"><b>From:</b> ${rev.user}</div>
+          <div style="font-size:12px;color:#333">${rev.text}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  return html;
+}
+
+  
+  function renderCategory(data, color){
+    data.forEach(item=>{
+      L.marker([item.lat,item.lng], {icon:icon(color)})
+        .addTo(miniMap)
+        .bindPopup(item.name);
+
+      list.innerHTML += `
+        <div class="coffee-card">
+          <div class="coffee-name">${item.name}</div>
+          <div class="coffee-rating">⭐ ${item.rating}</div>
+          <div class="review-box">${generateReviews(item.name)}</div>
+        </div>
+      `;
+    });
+  }
+
+  renderCategory(aesthetic,'red');
+  renderCategory(working,'orange');
+  renderCategory(family,'green');
+  renderCategory(romantic,'pink');
+
+
+const coffeeSearch = document.getElementById('coffeeSearch');
+const searchBtn = document.getElementById('searchBtn');
+
+function filterCoffee(){
+  const keyword = coffeeSearch.value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.coffee-card');
+
+  cards.forEach(card=>{
+    const name = card.querySelector('.coffee-name').innerText.toLowerCase();
+
+    if(name.includes(keyword)){
+      card.style.display = 'block';
+    }else{
+      card.style.display = 'none';
+    }
+  });
+}
+
+coffeeSearch.addEventListener('keyup', filterCoffee);
+searchBtn.addEventListener('click', filterCoffee);
+
+  
+  const btn = document.createElement('button');
+  btn.innerText = '⛶';
+  btn.title = 'Open Full CO-MAP';
+  btn.style.position = 'absolute';
+  btn.style.top = '15px';
+  btn.style.right = '15px';
+  btn.style.zIndex = '1000';
+  btn.style.padding = '10px';
+  btn.style.background = '#ff7a18';
+  btn.style.color = '#fff';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '8px';
+  btn.style.cursor = 'pointer';
+
+  btn.onclick = ()=>{
+    document.querySelectorAll('.nav-item')[1].click();
+  };
+
+  document.querySelector('.map-box').appendChild(btn);
+
+},500);
+</script>
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const targets = document.querySelectorAll('.card, .section-title, .slider, .map-box');
+  const leftTargets = document.querySelectorAll('.coffee-name, .review-box');
+
+  targets.forEach(el=>{
+    el.classList.add('fade-up');
+  });
+
+  leftTargets.forEach(el=>{
+    el.classList.add('fade-left');
+  });
+
+  const observerAll = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{threshold:0.2});
+
+  targets.forEach(el=>observerAll.observe(el));
+  leftTargets.forEach(el=>observerAll.observe(el));
+});
+
+const charts = document.getElementById('charts');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      charts.classList.add('show');
+    }
+  })
+},{threshold:0.3});
+
+observer.observe(charts);
+
+
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+
+function showSlide(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  dots.forEach(d=>d.classList.remove('active'));
+  slides[i].classList.add('active');
+  dots[i].classList.add('active');
+}
+
+document.querySelector('.next').onclick = ()=>{
+  index = (index+1)%slides.length;
+  showSlide(index);
+}
+
+document.querySelector('.prev').onclick = ()=>{
+  index = (index-1+slides.length)%slides.length;
+  showSlide(index);
+}
+
+
+function renderInsightAwal(){
+  const aesthetic = 4;
+  const working = 4;
+  const family = 7;
+  const romantic = 10;
+
+  const total = aesthetic + working + family + romantic;
+
+  const a = Math.round((aesthetic/total)*100);
+  const w = Math.round((working/total)*100);
+  const f = Math.round((family/total)*100);
+  const r = Math.round((romantic/total)*100);
+
+  const values = document.querySelectorAll('.value');
+
+  if(values.length === 4){
+    values[0].innerText = a + '%';
+    values[1].innerText = w + '%';
+    values[2].innerText = f + '%';
+    values[3].innerText = r + '%';
+
+    document.querySelector('.aesthetic').style.background = `conic-gradient(#ff7a18 0% ${a}%, #eee ${a}%)`;
+    document.querySelector('.cowork').style.background = `conic-gradient(#ff7a18 0% ${w}%, #eee ${w}%)`;
+    document.querySelector('.family').style.background = `conic-gradient(#ff7a18 0% ${f}%, #eee ${f}%)`;
+    document.querySelector('.romantic').style.background = `conic-gradient(#ff7a18 0% ${r}%, #eee ${r}%)`;
+  }
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', renderInsightAwal);
+}else{
+  renderInsightAwal();
+}
+
+
+
+</script>
+
+ 
+  <footer class="footer">
+    © Geomatics Engineering 2026
+  </footer>
+
+<style>
+.footer{
+  width:100%;
+  text-align:center;
+  padding:10px 5px;
+  font-size:11px;
+  color:#ffffff;
+  background:#ffb88c;
+  letter-spacing:2px;
+  margin-top:0;
+  cursor:pointer; 
+  transition:0.3s ease;
+}
+
+.footer:hover{
+  color:#ff7a18; 
+}
+</style>
+
+
+<section class="contact-section" id="contactSection">
+
+  <div class="contact-header">
+    <span>MEET</span>
+    <span>OUR</span>
+    <span>TEAM</span>
+  </div>
+
+  <div class="contact-main">
+
+    
+    <div class="person-row">
+      <div class="contact-img">
+        <img src="Leoni.png">
+      </div>
+
+      <div class="contact-form">
+        <h2 class="form-title">WEBGIS DEVELOPMENT</h2>
+
+        <label class="field-label">Name</label>
+        <input type="text" value="Leoni Fransiska" readonly>
+
+        <div class="row">
+          <div style="flex:1">
+            <label class="field-label">Email</label>
+            <input type="email" value="leonifs248@gmail.com" readonly>
+          </div>
+          <div style="flex:1">
+            <label class="field-label">LinkedIn</label>
+            <input type="text" value="Leoni Fransiska" readonly>
+          </div>
+        </div>
+
+        <textarea id="message" placeholder="Hi..."></textarea>
+        <button onclick="sendWhatsApp()">KIRIM</button>
+      </div>
+    </div>
+
+    
+    <div class="person-row">
+      <div class="contact-img">
+        <img src="Arina.png">
+      </div>
+
+      <div class="contact-form">
+        <h2 class="form-title">DATA ANALYST</h2>
+
+        <label class="field-label">Name</label>
+        <input type="text" value="Arina Septia Andria" readonly>
+
+        <div class="row">
+          <div style="flex:1">
+            <label class="field-label">Email</label>
+            <input type="email" value="arinarinaseptia@gmail.com" readonly>
+          </div>
+          <div style="flex:1">
+            <label class="field-label">LinkedIn</label>
+            <input type="text" value="Arina Septia" readonly>
+          </div>
+        </div>
+
+        <textarea id="message2" placeholder="Hi..."></textarea>
+        <button onclick="sendWhatsAppArina()">KIRIM</button>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <div class="contact-wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#ffffff" fill-opacity="0.12" d="M0,160L60,165.3C120,171,240,181,360,176C480,171,600,149,720,149.3C840,149,960,171,1080,181.3C1200,192,1320,192,1380,192L1440,192L1440,320L0,320Z"></path>
+      <path fill="#ffffff" fill-opacity="0.08" d="M0,200L60,208C120,216,240,232,360,224C480,216,600,184,720,181.3C840,179,960,203,1080,213.3C1200,224,1320,224,1380,224L1440,224L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+
+</section>
+
+<style>
+.contact-wave{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:150px;
+  z-index:0; 
+  pointer-events:none;
+}
+
+.contact-wave svg{
+  width:100%;
+  height:100%;
+}
+
+.contact-section{
+  display:none;
+  background:linear-gradient(
+    to bottom,
+    #f2a65a 0%,
+    #f4b35e 25%,
+    #f7c07a 50%,
+    #f5c999 70%,
+    #f0b983 100% 
+  );
+  padding:60px 20px;
+  font-family:'Playfair Display', serif;
+  position:relative;
+  overflow:hidden;
+  z-index:0; 
+}
+
+
+.contact-section::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.25) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 45%),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.22) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12) 0%, transparent 60%),
+    radial-gradient(circle at 10% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 60%, rgba(255,255,255,0.18) 0%, transparent 50%);
+  animation: bubbleMove 20s infinite linear;
+  filter:blur(18px);
+  z-index:-2; 
+  pointer-events:none;
+}
+
+@keyframes bubbleMove{
+  0%{transform:translateY(0px) scale(1);}
+  50%{transform:translateY(-20px) scale(1.05);}
+  100%{transform:translateY(0px) scale(1);}
+}
+
+
+.contact-section::before{
+  content:'';
+  position:absolute;
+  top:20px;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:20px;
+  pointer-events:none;
+  z-index:1; 
+}
+
+.contact-header{
+  display:flex;
+  justify-content:space-between;
+  font-family:'Playfair Display', serif;
+  letter-spacing:4px;
+  font-size:20px;
+  margin-bottom:40px;
+  padding:0 120px;
+  color:#ffffff;
+  position:relative;
+  z-index:3; 
+}
+
+.contact-main{
+  display:flex;
+  flex-direction:column;
+  gap:60px;
+  align-items:flex-start; 
+  padding-left:120px; 
+}
+
+.person-row{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+  justify-content:flex-start; 
+}
+
+.contact-img img{
+  width:260px;
+  height:380px;
+  object-fit:cover;
+  border-radius:30px; 
+  border:2px solid rgba(255,255,255,0.9); 
+  padding:6px; 
+  background:transparent;
+}
+
+.contact-cards{
+  display:flex;
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+
+.contact-card-new{
+  width:300px;
+  background:#ddd;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  position:relative;
+  border-radius:25px; 
+  overflow:hidden; 
+}
+
+
+.contact-card-new:first-child{
+  transform:translateX(-80px); 
+  z-index:3;
+}
+
+.contact-card-new:last-child{
+  transform:translateX(80px); 
+  z-index:3;
+}
+
+.card-title{
+  background:#ff7a18;
+  color:#fff;
+  padding:15px;
+  font-family:'Playfair Display', serif;
+  letter-spacing:2px;
+  font-size:18px;
+  border-top-left-radius:25px; 
+  border-top-right-radius:25px;
+}
+
+.card-body{
+  padding:20px;
+  font-size:13px;
+  font-family:'Playfair Display', serif;
+  line-height:2;
+}
+
+
+.contact-form{
+  width:520px; 
+  background:transparent;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.form-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:40px;
+  letter-spacing:4px;
+  color:#fff;
+  margin-top:-10px;
+}
+
+.field-label{
+  font-size:12px;
+  color:#fff;
+  opacity:0.8;
+  letter-spacing:1px;
+  margin-bottom:4px;
+  display:block;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%; 
+  padding:12px;
+  border:none;
+  border-bottom:2px solid #fff;
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+  outline:none;
+  font-family:'Montserrat',sans-serif;
+}
+
+.contact-form textarea{
+  min-height:100px;
+  resize:none;
+}
+
+.contact-form .row{
+  display:flex;
+  gap:10px;
+}
+
+.contact-form .row div{
+  flex:1; 
+}
+
+.contact-form button{
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  background:#fff;
+  color:#333;
+  cursor:pointer;
+  letter-spacing:2px;
+}
+
+@media(max-width:900px){
+
+  .header{
+    padding:14px 18px;
+  }
+
+  .logo{
+    font-size:24px;
+    letter-spacing:3px;
+  }
+
+  .burger{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:75%;
+    max-width:320px;
+    height:100vh;
+    background:rgba(255,250,245,0.98);
+    backdrop-filter:blur(14px);
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding:100px 30px 30px;
+    gap:22px;
+    box-shadow:-10px 0 30px rgba(0,0,0,0.15);
+    transition:0.35s ease;
+    overflow-y:auto;
+  }
+
+  .nav-menu.open{
+    right:0;
+  }
+
+  .nav-item{
+    font-size:16px;
+    width:100%;
+    padding:10px 0;
+    border-bottom:1px solid rgba(0,0,0,0.08);
+  }
+
+  .dropdown{
+    width:100%;
+  }
+
+  .dropdown-menu{
+    position:relative;
+    display:flex;
+    right:auto;
+    top:auto;
+    width:100%;
+    background:#fff4ea;
+    margin-top:10px;
+    border-radius:12px;
+    box-shadow:none;
+  }
+
+  .dropdown-menu a{
+    padding:12px 14px;
+    font-size:13px;
+  }
+
+  .hero{
+    padding:0 20px;
+  }
+
+  .title{
+    letter-spacing:6px;
+    -webkit-text-stroke:1.5px #fff;
+  }
+
+  .subtitle{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  .special{
+    margin-top:10px;
+  }
+
+  .slide{
+    height:240px;
+  }
+
+  .nav{
+    padding:8px 12px;
+  }
+
+  .map-list-section{
+    padding:30px 16px;
+  }
+
+  #miniMap{
+    height:340px;
+  }
+
+  .coffee-list{
+    max-height:420px !important;
+    overflow-y:auto !important;
+    padding-right:4px;
+  }
+
+  .coffee-card{
+    padding:14px;
+  }
+
+  .sheet-table{
+    width:96%;
+    font-size:11px;
+  }
+
+  .sheet-th,
+  .sheet-td{
+    font-size:10px !important;
+    padding:7px !important;
+  }
+
+  .contact-header{
+    padding:0 20px;
+    font-size:14px;
+    gap:10px;
+    text-align:center;
+  }
+
+  .contact-main{
+    padding-left:0;
+    align-items:center;
+  }
+
+  .person-row{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .contact-img img{
+    width:220px;
+    height:320px;
+  }
+
+  .contact-form{
+    width:100%;
+  }
+
+  .contact-form .row{
+    flex-direction:column;
+  }
+
+  .leaflet-control-zoom{
+    transform:scale(1.1);
+  }
+
+  #detailPanel{
+    width:100% !important;
+    left:0 !important;
+    top:70px !important;
+    height:calc(100% - 70px) !important;
+    border-radius:20px 20px 0 0;
+  }
+
+  .contact-main{flex-direction:column}
+  .contact-form{width:100%}
+}
+  .contact-cards{flex-direction:column}
+}
+
+
+</style>
+
+<script>
+
+const footer = document.querySelector('.footer');
+footer.addEventListener('click', ()=>{
+  const contact = document.getElementById('contactSection');
+  contact.style.display = 'block';
+  contact.scrollIntoView({behavior:'smooth'});
+});
+
+
+const homeBtn = document.getElementById('homeBtn');
+homeBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  const contact = document.getElementById('contactSection');
+  contact.style.display = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+
+<script>
+
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.addEventListener('click', function(e){
+
+    // hide contact section ketika buka TOP 10
+    const contactSection = document.getElementById('contactSection');
+    if(contactSection){
+      contactSection.style.display = 'none';
+    }
+    
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    e.preventDefault();
+
+    const title = this.getAttribute('data-page');
+
+    const hero = document.querySelector('.hero');
+    const next = document.querySelector('.next-section');
+
+    if(hero) hero.style.display = 'none';
+    if(next) next.style.display = 'none';
+
+    let page = document.getElementById('page2');
+
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    page.innerHTML = `
+      <div style="
+        margin-top:90px;
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        flex-direction:column;
+        font-family:'Montserrat', sans-serif;
+        padding-top:20px;
+      ">
+        <h1 style="font-size:22px;letter-spacing:4px;color:#ff7a18;">${title}</h1>
+        <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif; letter-spacing:2px;">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+      </div>
+    `;
+  });
+});
+
+
+const homeFix = document.getElementById('homeBtn');
+homeFix.addEventListener('click', function(e){
+  e.preventDefault();
+
+  const hero = document.querySelector('.hero');
+  const next = document.querySelector('.next-section');
+  const page = document.getElementById('page2');
+
+  if(hero) hero.style.display = 'flex';
+  if(next) next.style.display = 'flex';
+  if(page) page.remove();
+
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+</script>
+<script>
+
+const SHEET_AESTHETIC = "https://docs.google.com/spreadsheets/d/1Vl4rKuLOcf0oBeq7DN8goLGQ7pr3tDQ-G-dS83w350Y/gviz/tq?tqx=out:json";
+const SHEET_WORKING = "https://docs.google.com/spreadsheets/d/1_bsHnKdgx6Uk5w93QFU_Q4Q8rMNeyH7BkfnWPMzs2Zo/gviz/tq?tqx=out:json";
+const SHEET_FAMILY = "https://docs.google.com/spreadsheets/d/1gHC4rHIhyUCC5O0O-A9sMCGFh9GBn0_jLPwpfToi-r8/gviz/tq?tqx=out:json";
+const SHEET_ROMANTIC = "https://docs.google.com/spreadsheets/d/1GgEqoymTJ__hlOcIbR5grgSjZ7tKGQP2MJvTuxuDGWU/gviz/tq?tqx=out:json";
+
+async function loadSheet(url){
+  try{
+    const res = await fetch(url);
+    const txt = await res.text();
+    const json = JSON.parse(txt.substring(47).slice(0,-2));
+
+    const cols = json.table.cols;
+    const rows = json.table.rows;
+
+    let html = `<table class="sheet-table">`;
+
+    
+    html += "<tr>";
+    cols.slice(0,5).forEach(c=>{
+      html += `<th class="sheet-th">${c.label}</th>`;
+    });
+    html += "</tr>";
+
+    
+    rows.forEach(r=>{
+      html += "<tr>";
+      r.c.slice(0,5).forEach(cell=>{
+        html += `<td class="sheet-td">${cell ? cell.v : ''}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    document.getElementById('sheetTable').innerHTML = html;
+
+  }catch(err){
+    document.getElementById('sheetTable').innerHTML = "GAGAL LOAD DATA";
+    console.error(err);
+  }
+}
+
+
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.onclick = function(e){
+    
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    e.preventDefault();
+
+    const title = this.dataset.page;
+
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.next-section').style.display='none';
+
+    let page = document.getElementById('page2');
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    
+    if(title === "AESTHETIC COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${title}</h1>
+          <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_AESTHETIC);
+    }
+
+    
+    else if(title === "WORKING COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${title}</h1>
+          <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_WORKING);
+    }
+
+    
+    else if(title === "FAMILY COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${title}</h1>
+          <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_FAMILY);
+    }
+    
+    else if(title === "ROMANTIC COFFEE"){
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${title}</h1>
+          <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+          <div id="sheetTable">Loading data...</div>
+        </div>
+      `;
+      loadSheet(SHEET_ROMANTIC);
+    }
+
+    
+    else{
+      page.innerHTML = `
+        <div style="margin-top:90px;text-align:center">
+          <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${title}</h1>
+          <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">RECOMMENDATION FOR THE BEST COFFE PLACES FOR YOU</p>
+        </div>
+      `;
+    }
+  }
+});
+
+
+document.getElementById('homeBtn').onclick = function(e){
+  
+  const mini = document.querySelector('.map-list-section');
+  if(mini) mini.style.display = 'block';
+  const footer = document.querySelector('.footer');
+  if(footer) footer.style.display = 'block';
+  
+  const miniSection = document.querySelector('.map-list-section');
+  if(miniSection) miniSection.style.display = 'block';
+  e.preventDefault();
+  document.querySelector('.hero').style.display='flex';
+  document.querySelector('.next-section').style.display='flex';
+  const page = document.getElementById('page2');
+  if(page) page.remove();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+
+<script>
+const mapBtn = document.querySelectorAll('.nav-item')[1]; 
+
+mapBtn.addEventListener('click', function(e){
+  
+  const miniSection = document.querySelector('.map-list-section');
+  if(miniSection) miniSection.style.display = 'none';
+  e.preventDefault();
+
+  document.querySelector('.hero').style.display = 'none';
+  document.querySelector('.next-section').style.display = 'none';
+
+  let page = document.getElementById('page2');
+  if(!page){
+    page = document.createElement('div');
+    page.id = 'page2';
+    document.body.appendChild(page);
+  }
+
+  page.innerHTML = `
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:900;">
+      
+      <!-- MAP -->
+      <div id="map" style="width:100%;height:100%;"></div>
+
+      <!-- FLOAT LEGEND (BOTTOM RIGHT) -->
+      <div id="legendBox" style="position:fixed;bottom:20px;right:20px;background:#fff;padding:14px 16px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.15);font-family:'Montserrat',sans-serif;z-index:1000;min-width:260px;max-width:260px;transition:0.3s ease">
+        <div style="font-weight:600;margin-bottom:10px;color:#ff7a18;letter-spacing:1px">COFFEE TYPE</div>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:red">
+          Aesthetic Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:orange">
+          Working Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:green">
+          Family Coffee
+        </label>
+
+        <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
+          <input type="checkbox" checked style="accent-color:pink">
+          Romantic Coffee
+        </label>
+
+        <!-- RATING FILTER -->
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid #eee">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div style="font-weight:600;color:#ff7a18;font-size:13px;letter-spacing:1px">RATING</div>
+
+            <input 
+              type="text" 
+              inputmode="decimal"
+              id="ratingInput"
+              value="1.0"
+              autocomplete="off"
+              style="width:70px;padding:5px 8px;border:1.5px solid #ff7a18;border-radius:8px;outline:none;font-size:12px;color:#ff7a18;font-weight:700;text-align:center;transition:0.2s ease"
+              onfocus="this.style.boxShadow='0 0 0 3px rgba(255,122,24,0.18)'"
+              onblur="this.style.boxShadow='none'"
+            >
+          </div>
+
+          <input 
+            type="range" 
+            id="ratingSlider"
+            min="1" 
+            max="5" 
+            step="0.1" 
+            value="1"
+            style="width:100%;accent-color:#ff7a18;cursor:pointer"
+          >
+
+          <div style="margin-top:8px;font-size:11px;color:#777;text-align:center">
+            Showing coffee shop with rating ≥ <span id="ratingValue" style="color:#ff7a18;font-weight:700">1.0</span>
+          </div>
+        </div>
+
+        <!-- DISTANCE FILTER -->
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid #eee">
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="font-weight:600;color:#ff7a18;font-size:13px;letter-spacing:1px">DISTANCE</div>
+            </div>
+
+            <label style="display:flex;align-items:center;cursor:pointer">
+              <input type="checkbox" id="distanceToggle" checked style="width:16px;height:16px;accent-color:#ff7a18;cursor:pointer">
+            </label>
+          </div>
+
+          <input 
+            type="range" 
+            id="distanceSlider"
+            min="100"
+            max="1000"
+            step="100"
+            value="1000"
+            style="width:100%;accent-color:#ff7a18;cursor:pointer"
+          >
+
+          <div style="margin-top:8px;font-size:11px;color:#777;text-align:center">
+            Buffer radius <span id="distanceValue" style="color:#ff7a18;font-weight:700">1000 m</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+  `;
+
+  setTimeout(()=>{
+    const map = L.map('map').setView([-7.795, 110.375], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // ===== USER LOCATION & FLEXIBLE BUFFER =====
+    let userMarker = null;
+    let userBuffer = null;
+
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        (position)=>{
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          // marker lokasi user
+          userMarker = L.circleMarker([lat,lng],{
+            radius:8,
+            fillColor:'#ff7a18',
+            color:'#ffffff',
+            weight:2,
+            fillOpacity:1
+          }).addTo(map)
+          .bindPopup('Your Location');
+
+          // flexible buffer
+          userBuffer = L.circle([lat,lng],{
+            radius:1000,
+            color:'red',
+            weight:1.2,
+            fillColor:'#ff0000',
+            fillOpacity:0.08
+          }).addTo(map);
+
+          // fokus ke lokasi user
+          map.flyTo([lat,lng],15,{
+            duration:2
+          });
+        },
+        (error)=>{
+          console.log('Lokasi perangkat tidak diizinkan', error);
+        },
+        {
+          enableHighAccuracy:true,
+          timeout:10000,
+          maximumAge:0
+        }
+      );
+    }
+
+    
+    fetch('https://raw.githubusercontent.com/leonifs/COFFETERA/main/YOGYAKARTA.json')
+      .then(res => res.json())
+      .then(data => {
+        L.geoJSON(data, {
+          onEachFeature: function(feature, layer){
+            if(feature.properties){
+              layer.bindPopup(feature.properties.name || 'Kota Yogyakarta');
+            }
+          }
+        }).addTo(map);
+      })
+      .catch(err => console.error('Gagal load GeoJSON:', err));
+
+    
+    function icon(color){
+      return L.divIcon({
+        className:'',
+        html:`<div style="width:14px;height:14px;background:${color};border-radius:50%;border:2px solid white"></div>`
+      });
+    }
+
+    
+    const aestheticLayer = L.layerGroup().addTo(map);
+    const workingLayer = L.layerGroup().addTo(map);
+    const familyLayer = L.layerGroup().addTo(map);
+    const romanticLayer = L.layerGroup().addTo(map);
+
+    
+    const aesthetic = [
+      {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1', img:'1.png', rating:4.5},
+      {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3', img:'3.png', rating:4.7},
+      {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4', img:'4.png', rating:4.3}
+    ];
+
+    const working = [
+      {lat:-7.804,lng:110.358,name:'Working Coffee 1', img:'1.png', rating:4.1},
+      {lat:-7.792,lng:110.367,name:'Working Coffee 2', img:'2.png', rating:4.4},
+      {lat:-7.786,lng:110.374,name:'Working Coffee 3', img:'3.png', rating:4.0},
+      {lat:-7.798,lng:110.382,name:'Working Coffee 4', img:'4.png', rating:4.3}
+    ];
+
+    const family = [
+      {lat:-7.805,lng:110.370,name:'Family Coffee 1', img:'1.png', rating:4.6},
+      {lat:-7.796,lng:110.378,name:'Family Coffee 2', img:'2.png', rating:4.2},
+      {lat:-7.787,lng:110.360,name:'Family Coffee 3', img:'3.png', rating:4.1},
+      {lat:-7.799,lng:110.368,name:'Family Coffee 4', img:'4.png', rating:4.5},
+      {lat:-7.790,lng:110.385,name:'Family Coffee 5', img:'5.png', rating:4.3},
+      {lat:-7.803,lng:110.392,name:'Family Coffee 6', img:'6.png', rating:4.4},
+      {lat:-7.789,lng:110.373,name:'Family Coffee 7', img:'7.png', rating:4.2}
+    ];
+
+    const romantic = [
+      {lat:-7.801,lng:110.366,name:'Romantic Coffee 1', img:'1.png', rating:4.8},
+      {lat:-7.793,lng:110.375,name:'Romantic Coffee 2', img:'2.png', rating:4.6},
+      {lat:-7.786,lng:110.382,name:'Romantic Coffee 3', img:'3.png', rating:4.5},
+      {lat:-7.798,lng:110.390,name:'Romantic Coffee 4', img:'4.png', rating:4.7},
+      {lat:-7.792,lng:110.360,name:'Romantic Coffee 5', img:'5.png', rating:4.4},
+      {lat:-7.804,lng:110.368,name:'Romantic Coffee 6', img:'6.png', rating:4.6},
+      {lat:-7.788,lng:110.377,name:'Romantic Coffee 7', img:'7.png', rating:4.3},
+      {lat:-7.800,lng:110.384,name:'Romantic Coffee 8', img:'8.png', rating:4.7},
+      {lat:-7.795,lng:110.371,name:'Romantic Coffee 9', img:'9.png', rating:4.5},
+      {lat:-7.802,lng:110.388,name:'Romantic Coffee 10', img:'10.png', rating:4.6}
+    ];
+
+
+
+    function addMarkers(data, layer, color){
+      data.forEach(item=>{
+        const imgSrc = item.img || '1.png';
+        const safeName = String(item.name).replace(/'/g, "\'");
+
+        L.marker([item.lat,item.lng], {icon:icon(color)})
+        .bindPopup(`
+          <div style="text-align:center;font-family:'Montserrat',sans-serif">
+            <div style="font-family:'Playfair Display', serif;font-size:18px;letter-spacing:1px;color:#ff7a18;margin-bottom:4px">
+              ${item.name}
+            </div><br>
+            <img src="${imgSrc}" style="width:120px;height:80px;object-fit:cover;margin-top:6px;border-radius:6px"><br>
+            <div style="text-align:left;margin-top:6px;font-size:13px;color:#333">
+              ⭐ ${item.rating}
+            </div>
+            <span onclick="goToDetail('${safeName}')" style="display:inline-block;margin-top:8px;color:#ff7a18;cursor:pointer;font-size:13px;text-decoration:underline">
+              View More
+            </span>
+          </div>
+        `)
+        .addTo(layer);
+      });
+    }
+
+    
+const DETAIL_BASE = "https://docs.google.com/spreadsheets/d/1trw5vm3xkZeZ3HSUVBBdldohcElzXLRk31eYiiGjixw/gviz/tq?tqx=out:json";
+
+async function loadDetailSheetByName(sheetName){
+  try{
+    const url = DETAIL_BASE + "&sheet=" + encodeURIComponent(sheetName);
+    const res = await fetch(url);
+    const txt = await res.text();
+
+    
+    const start = txt.indexOf('{');
+    const end = txt.lastIndexOf('}');
+    const json = JSON.parse(txt.substring(start, end+1));
+
+    const cols = json.table.cols || [];
+    const rows = json.table.rows || [];
+
+    if(rows.length === 0){
+      return "<div style='padding:20px'>DATA KOSONG</div>";
+    }
+
+    let html = `<table class=\"sheet-table\">`;
+
+    
+    html += "<tr>";
+    html += `<th class=\"sheet-th\">DATA</th>`;
+    html += `<th class=\"sheet-th\">KETERANGAN</th>`;
+    html += "</tr>";
+
+    
+    rows.forEach(r=>{
+      const raw = (r.c || []).map(cell => cell && cell.v !== null ? String(cell.v).trim() : '');
+
+      
+      const cells = raw.filter(v => v !== '');
+
+      if(cells.length === 0) return;
+
+      let left = cells[0];
+      let right = '';
+
+      
+      if(cells.length > 1){
+        right = cells.slice(1).join(' ');
+      }else{
+        right = '-';
+      }
+
+      html += "<tr>";
+      html += `<td class=\"sheet-td\">${left}</td>`;
+      html += `<td class=\"sheet-td\">${right}</td>`;
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    return html;
+
+  }catch(err){
+    console.error("DETAIL LOAD ERROR:", err);
+    return "<div style='padding:20px;color:red'>GAGAL LOAD DATA (CEK NAMA SHEET HARUS SAMA PERSIS)</div>";
+  }
+}
+
+
+window.goToDetail = async function(name){
+  
+  const mapPage = document.getElementById('map');
+  if(!mapPage) return; 
+  let panel = document.getElementById('detailPanel');
+
+  if(!panel){
+    panel = document.createElement('div');
+    panel.id = 'detailPanel';
+    panel.style.position = 'fixed';
+    panel.style.top = '60px';
+    panel.style.left = '0';
+    panel.style.width = '380px';
+    panel.style.height = 'calc(100% - 60px)';
+    panel.style.background = '#ffffff';
+    panel.style.zIndex = '2000';
+    panel.style.boxShadow = '4px 0 20px rgba(0,0,0,0.2)';
+    panel.style.overflowY = 'auto';
+    panel.style.fontFamily = "'Montserrat',sans-serif";
+
+    document.body.appendChild(panel);
+  }
+
+  
+  let found = null;
+  const allData = [...aesthetic, ...working, ...family, ...romantic];
+  found = allData.find(d => d.name === name);
+
+  const lat = found ? found.lat : -7.795;
+  const lng = found ? found.lng : 110.375;
+  const rating = found ? found.rating : '-';
+  const img = found && found.img ? found.img : '1.png';
+
+  const gmaps = `https://www.google.com/maps?q=${lat},${lng}`;
+
+  
+  panel.innerHTML = `
+    <div>
+
+      <div id="mobileCloseDetail" style="position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.92);display:none;align-items:center;justify-content:center;font-size:16px;font-weight:bold;color:#444;cursor:pointer;z-index:3000;box-shadow:0 4px 12px rgba(0,0,0,0.18)">✕</div>
+      <img src="${img}" style="width:100%;height:220px;object-fit:cover">
+
+      <div style="padding:15px">
+        <h2 style="font-weight:700;font-size:20px;color:#333;font-family:'Playfair Display', serif">${name}</h2>
+        <div style="margin:5px 0 15px 0;font-size:14px;color:#555">
+          ${rating} ⭐⭐⭐⭐⭐ 
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <a href="${gmaps}" target="_blank" style="display:inline-block;text-align:center;background:#ff7a1a;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-weight:600;font-size:12px;letter-spacing:0.5px;font-family:'Playfair Display', serif">
+            GO TO GOOGLE MAPS
+          </a>
+
+          <button onclick="startRoute('${String(name).replace(/'/g, "\'")}')" style="border:none;background:linear-gradient(135deg,#ff9f43,#ff7a18);color:#fff;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600;font-size:12px;letter-spacing:0.5px;font-family:'Playfair Display', serif;box-shadow:0 10px 25px rgba(255,122,24,0.25)">
+            ROUTE
+          </button>
+        </div>
+
+        <hr style="margin:20px 0;border:none;border-top:1px solid #ddd">
+
+        <h3 style="color:#ff7a18;font-size:14px;letter-spacing:1px;margin-bottom:10px">INFORMASI</h3>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <style>
+            #detailTable td { 
+  text-align:left !important; 
+  padding:10px; 
+  font-family:'Playfair Display', serif; 
+  font-size:13px;
+  color:#333;
+}
+#detailTable tr:nth-child(even){ background:#fafafa; }
+#detailTable tr:nth-child(odd){ background:#ffffff; }
+#detailTable tr:hover{ background:#f1f1f1; }
+            /* header removed */
+            #detailTable tr { text-align:left !important; }
+          </style>
+          
+          <tbody id="detailTable" style="text-align:left">
+            <!-- rows akan otomatis rata kiri -->
+            <tr><td colspan="2">Loading data...</td></tr>
+          </tbody>
+        </table>
+
+        <!-- REVIEW (SYNC DENGAN HOME) -->
+        <hr style="margin:20px 0;border:none;border-top:1px solid #ddd">
+        <h3 style="color:#ff7a18;font-size:14px;letter-spacing:1px;margin-bottom:10px">REVIEW</h3>
+        <div id="detailReview" style="max-height:250px;overflow-y:auto"></div>
+      </div>
+    </div>
+  `;
+
+  
+  const tableHTML = await loadDetailSheetByName(name);
+  document.getElementById('detailTable').innerHTML = tableHTML;
+
+ 
+  const reviewContainer = document.getElementById('detailReview');
+  if(reviewContainer){
+    reviewContainer.innerHTML = generateReviews(name);
+  }
+
+  if(window.innerWidth <= 900){
+    const mobileClose = document.getElementById('mobileCloseDetail');
+    if(mobileClose){
+      mobileClose.style.display = 'flex';
+      mobileClose.onclick = ()=>{
+        const panel = document.getElementById('detailPanel');
+        if(panel) panel.remove();
+      }
+    }
+  }
+};
+
+
+window.closeModal = function(){
+  const panel = document.getElementById('detailPanel');
+  if(panel) panel.remove();
+}
+
+// ===== SMART LIVE ROUTING SYSTEM =====
+let routingMap = null;
+let routingUserMarker = null;
+let routingCoffeeMarker = null;
+let routingLine = null;
+let watchRouteId = null;
+let routeInitialized = false;
+let userInteractingWithMap = false;
+
+window.startRoute = function(name){
+
+  const allData = [...aesthetic, ...working, ...family, ...romantic];
+  const selected = allData.find(d => d.name === name);
+
+  if(!selected){
+    alert('Coffee shop tidak ditemukan');
+    return;
+  }
+
+  const oldPanel = document.getElementById('detailPanel');
+  if(oldPanel) oldPanel.remove();
+
+  const page = document.getElementById('page2');
+
+  page.innerHTML = `
+    <div style="position:fixed;inset:0;z-index:999">
+      <div id="routeMap" style="width:100%;height:100%"></div>
+
+      <div id="routeBottomSheet" style="position:fixed;left:0;bottom:0;width:100%;z-index:5000;display:flex;justify-content:center;font-family:'Montserrat',sans-serif;pointer-events:none">
+
+        <div id="sheetContainer" style="width:100%;max-width:100%;background:rgba(248,242,235,0.98);backdrop-filter:blur(20px);border-top-left-radius:26px;border-top-right-radius:26px;overflow:hidden;box-shadow:0 -10px 40px rgba(255,122,24,0.12);transform:translateY(0);transition:transform 0.35s ease;pointer-events:auto">
+
+          <div id="sheetHandleArea" style="padding:12px 0 4px;display:flex;justify-content:center;cursor:grab;touch-action:none">
+            <div style="width:70px;height:6px;border-radius:999px;background:#c8b7a6"></div>
+          </div>
+
+          <div style="padding:16px 18px 18px;background:linear-gradient(135deg,#ff9f43,#ff7a18);position:relative">
+
+            
+
+            <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.85);font-weight:700">
+              LIVE NAVIGATION
+            </div>
+
+            <div style="margin-top:10px;font-size:clamp(22px,5vw,34px);line-height:0.95;font-family:'Bebas Neue';letter-spacing:2px;color:white;max-width:70%">
+              ${selected.name}
+            </div>
+
+            <div style="position:absolute;right:20px;top:34px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;color:white;font-weight:600;font-size:10px;letter-spacing:1px;text-align:right">
+              <span style="width:12px;height:12px;border-radius:50%;background:#00ff99;display:block;box-shadow:0 0 12px #00ff99"></span>
+              <span>GPS CONNECTED</span>
+            </div>
+          </div>
+
+          <div style="padding:18px;background:#f5efe7;color:#2b2b2b">
+
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+
+              <div style="flex:1;min-width:180px">
+                <div style="font-size:11px;letter-spacing:2px;color:#9a8f82;margin-bottom:8px">
+                  ROUTE STATUS
+                </div>
+
+                <div id="routeDistance" style="font-size:22px;font-weight:700;line-height:1.2;color:#2b2b2b">
+                  Calculating...
+                </div>
+
+                <div id="routeEta" style="margin-top:4px;font-size:11px;font-weight:600;color:#9a8f82;letter-spacing:1px">
+                  Estimating travel time...
+                </div>
+              </div>
+
+              
+
+            </div>
+
+            <button onclick="backToComap()" style="margin-top:18px;width:100%;border:none;background:linear-gradient(135deg,#ff9f43,#ff7a18);color:white;padding:14px;border-radius:16px;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 10px 30px rgba(255,122,24,0.3)">
+              BACK TO CO-MAP
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+
+        </div>
+    </div>
+  `;
+
+  setTimeout(()=>{
+
+    routingMap = L.map('routeMap',{
+      zoomControl:true,
+      scrollWheelZoom:true,
+      doubleClickZoom:true,
+      touchZoom:true,
+      boxZoom:true
+    }).setView([selected.lat, selected.lng], 15);
+
+    // DETECT USER MANUAL MAP INTERACTION
+    routingMap.on('zoomstart dragstart movestart',()=>{
+      userInteractingWithMap = true;
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap'
+    }).addTo(routingMap);
+
+    routingCoffeeMarker = L.marker([selected.lat, selected.lng])
+      .addTo(routingMap)
+      .bindPopup(selected.name)
+      .openPopup();
+
+    if(!navigator.geolocation){
+      alert('Geolocation tidak didukung browser');
+      return;
+    }
+
+    function updateRoute(userLat, userLng){
+
+      if(!routingMap) return;
+
+      if(routingUserMarker){
+        routingUserMarker.setLatLng([userLat,userLng]);
+      }else{
+        routingUserMarker = L.circleMarker([userLat,userLng],{
+          radius:9,
+          fillColor:'#007bff',
+          color:'#fff',
+          weight:3,
+          fillOpacity:1
+        }).addTo(routingMap).bindPopup('Your Location');
+      }
+
+      const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${userLng},${userLat};${selected.lng},${selected.lat}?overview=full&geometries=geojson`;
+
+      fetch(osrmUrl)
+        .then(res => res.json())
+        .then(data => {
+
+          if(!data.routes || !data.routes.length){
+            throw new Error('Route not found');
+          }
+
+          const route = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+
+          if(routingLine){
+            routingMap.removeLayer(routingLine);
+          }
+
+          routingLine = L.polyline(route,{
+            color:'#ff7a18',
+            weight:7,
+            opacity:0.95,
+            lineJoin:'round'
+          }).addTo(routingMap);
+
+          if(!routeInitialized && !userInteractingWithMap){
+            routingMap.fitBounds(routingLine.getBounds(),{
+              padding:[70,70],
+              maxZoom:16,
+              animate:true,
+              duration:1.2
+            });
+
+            routeInitialized = true;
+          }
+
+          const distanceMeters = data.routes[0].distance;
+          const durationSeconds = data.routes[0].duration;
+
+          const km = (distanceMeters/1000).toFixed(2);
+          const minutes = Math.ceil(durationSeconds/60);
+
+          const distanceEl = document.getElementById('routeDistance');
+          const etaEl = document.getElementById('routeEta');
+
+          if(distanceEl){
+            distanceEl.innerHTML = `${km} km`;
+          }
+
+          if(etaEl){
+            etaEl.innerHTML = `Estimated time ${minutes} min`;
+          }
+
+          if(distanceMeters <= 25){
+            if(distanceEl){
+              distanceEl.innerHTML = `Arrived`;
+            }
+
+            if(etaEl){
+              etaEl.innerHTML = `Destination reached`;
+            }
+
+            if(watchRouteId){
+              navigator.geolocation.clearWatch(watchRouteId);
+            }
+          }
+
+        })
+        .catch(err => {
+          console.error(err);
+
+          const distanceEl = document.getElementById('routeDistance');
+          const etaEl = document.getElementById('routeEta');
+
+          if(distanceEl){
+            distanceEl.innerHTML = 'Unable to calculate route';
+          }
+
+          if(etaEl){
+            etaEl.innerHTML = 'Check internet or GPS';
+          }
+        });
+    }
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      updateRoute(pos.coords.latitude, pos.coords.longitude);
+    });
+
+    // ===== MOBILE DRAGGABLE BOTTOM SHEET =====
+    const sheet = document.getElementById('sheetContainer');
+    const handle = document.getElementById('sheetHandleArea');
+
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let collapsed = false;
+
+    handle.addEventListener('touchstart',(e)=>{
+      isDragging = true;
+      startY = e.touches[0].clientY;
+    },{passive:true});
+
+    handle.addEventListener('touchmove',(e)=>{
+      if(!isDragging) return;
+
+      currentY = e.touches[0].clientY - startY;
+
+      if(currentY > 0){
+        sheet.style.transform = `translateY(${Math.min(currentY,420)}px)`;
+      }
+    },{passive:true});
+
+    handle.addEventListener('touchend',()=>{
+
+      isDragging = false;
+
+      if(currentY > 120){
+        collapsed = true;
+        sheet.style.transform = 'translateY(78%)';
+      }else{
+        collapsed = false;
+        sheet.style.transform = 'translateY(0)';
+      }
+
+      currentY = 0;
+    });
+
+    handle.addEventListener('click',()=>{
+      collapsed = !collapsed;
+
+      if(collapsed){
+        sheet.style.transform = 'translateY(78%)';
+      }else{
+        sheet.style.transform = 'translateY(0)';
+      }
+    });
+
+    watchRouteId = navigator.geolocation.watchPosition((pos)=>{
+      updateRoute(pos.coords.latitude, pos.coords.longitude);
+    },(err)=>{
+      console.log(err);
+    },{
+      enableHighAccuracy:true,
+      maximumAge:0,
+      timeout:10000
+    });
+
+  },300);
+}
+
+window.backToComap = function(){
+  if(watchRouteId){
+    navigator.geolocation.clearWatch(watchRouteId);
+  }
+
+  document.querySelectorAll('.nav-item')[1].click();
+}
+
+    // INITIAL MARKERS
+    addMarkers(aesthetic, aestheticLayer, 'red');
+    addMarkers(working, workingLayer, 'orange');
+    addMarkers(family, familyLayer, 'green');
+    addMarkers(romantic, romanticLayer, 'pink');
+
+    // ===== DISTANCE BUFFER CONTROL =====
+    const distanceToggle = document.getElementById('distanceToggle');
+    const distanceSlider = document.getElementById('distanceSlider');
+    const distanceValue = document.getElementById('distanceValue');
+
+    distanceToggle.addEventListener('change',()=>{
+
+      if(!userBuffer) return;
+
+      if(distanceToggle.checked){
+        map.addLayer(userBuffer);
+      }else{
+        map.removeLayer(userBuffer);
+      }
+    });
+
+    distanceSlider.addEventListener('input',()=>{
+
+      const radius = parseInt(distanceSlider.value);
+
+      distanceValue.innerHTML = `${radius} m`;
+
+      if(userBuffer){
+        userBuffer.setRadius(radius);
+
+        if(distanceToggle.checked && !map.hasLayer(userBuffer)){
+          map.addLayer(userBuffer);
+        }
+      }
+    });
+
+    // default visible karena checkbox aktif
+    if(userBuffer && distanceToggle.checked){
+      map.addLayer(userBuffer);
+    }
+
+    // ===== RATING FILTER =====
+    const ratingSlider = document.getElementById('ratingSlider');
+    const ratingInput = document.getElementById('ratingInput');
+    const ratingValue = document.getElementById('ratingValue');
+
+    function applyRatingFilter(minRating){
+      aestheticLayer.clearLayers();
+      workingLayer.clearLayers();
+      familyLayer.clearLayers();
+      romanticLayer.clearLayers();
+
+      const filteredAesthetic = aesthetic.filter(item => item.rating >= minRating);
+      const filteredWorking = working.filter(item => item.rating >= minRating);
+      const filteredFamily = family.filter(item => item.rating >= minRating);
+      const filteredRomantic = romantic.filter(item => item.rating >= minRating);
+
+      addMarkers(filteredAesthetic, aestheticLayer, 'red');
+      addMarkers(filteredWorking, workingLayer, 'orange');
+      addMarkers(filteredFamily, familyLayer, 'green');
+      addMarkers(filteredRomantic, romanticLayer, 'pink');
+
+      if(!checkboxes[0].checked){ map.removeLayer(aestheticLayer); }
+      if(!checkboxes[1].checked){ map.removeLayer(workingLayer); }
+      if(!checkboxes[2].checked){ map.removeLayer(familyLayer); }
+      if(!checkboxes[3].checked){ map.removeLayer(romanticLayer); }
+    }
+
+    function syncRating(value, fromInput = false){
+      let raw = String(value)
+        .replace(/,/g,'.')
+        .replace(/[^0-9.]/g,'');
+
+      // cegah titik lebih dari satu
+      const parts = raw.split('.');
+      if(parts.length > 2){
+        raw = parts[0] + '.' + parts.slice(1).join('');
+      }
+
+      // responsif saat user mengetik koma / titik
+      if(fromInput){
+        ratingInput.value = raw;
+      }
+
+      // izinkan kondisi mengetik sementara
+      if(raw === '' || raw === '.'){
+        return;
+      }
+
+      let val = parseFloat(raw);
+
+      if(isNaN(val)) return;
+
+      if(val < 1) val = 1;
+      if(val > 5) val = 5;
+
+      val = Math.round(val * 10) / 10;
+
+      ratingSlider.value = val;
+      ratingValue.innerText = val.toFixed(1);
+
+      // jangan paksa format saat user masih mengetik
+      if(!fromInput){
+        ratingInput.value = val.toFixed(1);
+      }
+
+      applyRatingFilter(val);
+    }
+
+    ratingSlider.addEventListener('input', ()=>{
+      syncRating(ratingSlider.value);
+    });
+
+    ratingInput.addEventListener('input', ()=>{
+      syncRating(ratingInput.value, true);
+    });
+
+    ratingInput.addEventListener('change', ()=>{
+      let val = parseFloat(ratingInput.value);
+
+      if(isNaN(val)) val = 1;
+      if(val < 1) val = 1;
+      if(val > 5) val = 5;
+
+      val = Math.round(val * 10) / 10;
+
+      ratingInput.value = val.toFixed(1);
+      syncRating(val);
+    });
+
+    
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes[0].onchange = ()=>{
+      if(checkboxes[0].checked){ map.addLayer(aestheticLayer);} 
+      else{ map.removeLayer(aestheticLayer);} 
+    }
+
+    checkboxes[1].onchange = ()=>{
+      if(checkboxes[1].checked){ map.addLayer(workingLayer);} 
+      else{ map.removeLayer(workingLayer);} 
+    }
+
+    checkboxes[2].onchange = ()=>{
+      if(checkboxes[2].checked){ map.addLayer(familyLayer);} 
+      else{ map.removeLayer(familyLayer);} 
+    }
+
+    checkboxes[3].onchange = ()=>{
+      if(checkboxes[3].checked){ map.addLayer(romanticLayer);} 
+      else{ map.removeLayer(romanticLayer);} 
+    }
+
+  }, 300);
+});
+
+function sendWhatsApp(){
+  const message = document.getElementById('message').value;
+
+  if(message.trim() === ''){
+    alert('Message tidak boleh kosong!');
+    return;
+  }
+
+  const text = message;
+  const url = "https://wa.me/628979390425?text=" + encodeURIComponent(text);
+
+  window.open(url, '_blank');
+}
+
+function sendWhatsAppArina(){
+  const message = document.getElementById('message2').value;
+
+  if(message.trim() === ''){
+    alert('Message tidak boleh kosong!');
+    return;
+  }
+
+  const text = message;
+  const url = "https://wa.me/6285559476308?text=" + encodeURIComponent(text);
+
+  window.open(url, '_blank');
+}
+
+</script>
+
+
+<script>
+const BASE_SHEET_SINGLE = "https://docs.google.com/spreadsheets/d/1kXUHIRUVW6DH_RG_kKLMpKFZWboa-vA39JSbftajr50/gviz/tq?tqx=out:json";
+
+async function loadSheetPerName(sheetName){
+  try{
+    const url = BASE_SHEET_SINGLE + "&sheet=" + encodeURIComponent(sheetName);
+    const res = await fetch(url);
+    const txt = await res.text();
+
+    const start = txt.indexOf('{');
+    const end = txt.lastIndexOf('}');
+    const json = JSON.parse(txt.substring(start, end+1));
+
+    const cols = json.table.cols || [];
+    const rows = json.table.rows || [];
+
+    let html = `<table class="sheet-table">`;
+
+    html += "<tr>";
+    cols.slice(0,5).forEach(c=>{
+      html += `<th class="sheet-th">${c.label}</th>`;
+    });
+    html += "</tr>";
+
+    rows.forEach(r=>{
+      html += "<tr>";
+      (r.c || []).slice(0,5).forEach(cell=>{
+        html += `<td class="sheet-td">${cell ? cell.v : ''}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    html += "</table>";
+
+    document.getElementById('sheetTable').innerHTML = html;
+
+  }catch(e){
+    document.getElementById('sheetTable').innerHTML = "GAGAL LOAD DATA (NAMA SHEET HARUS SAMA)";
+    console.error(e);
+  }
+}
+
+
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click', function(){
+
+    
+    const mini = document.querySelector('.map-list-section');
+    if(mini) mini.style.display = 'none';
+    const footer = document.querySelector('.footer');
+    if(footer) footer.style.display = 'none';
+    const sheetName = this.getAttribute('data-sheet');
+
+    document.querySelector('.hero').style.display='none';
+    document.querySelector('.next-section').style.display='none';
+
+    let page = document.getElementById('page2');
+    if(!page){
+      page = document.createElement('div');
+      page.id = 'page2';
+      document.body.appendChild(page);
+    }
+
+    page.innerHTML = `
+      <div style="margin-top:90px;text-align:center">
+        <h1 class="top10-mobile-title" style="font-size:32px;letter-spacing:4px;color:#ff7a18;text-transform:uppercase">${sheetName}</h1>
+        <p class="top10-mobile-subtitle" style="font-family:'Playfair Display', serif;letter-spacing:2px">ALL DATA COFFEE SPACE FOR YOU!</p>
+        <div id="sheetTable">Loading data...</div>
+      </div>
+    `;
+
+    loadSheetPerName(sheetName);
+  });
+});
+</script>
+
+<style>
+
+@media(max-width:900px){
+  .top10-mobile-subtitle{
+    font-size:11px !important;
+    letter-spacing:1px !important;
+    line-height:1.6 !important;
+    padding:0 18px;
+    margin-top:6px;
+  }
+
+  .top10-mobile-title{
+    font-size:22px !important;
+    letter-spacing:2px !important;
+    line-height:1.2 !important;
+    padding:0 14px;
+  }
+}
+
+.nav-item.active{
+  color:#ff7a18 !important;
+  font-weight:600;
+}
+</style>
+
+<script>
+
+const navItems = document.querySelectorAll('.nav-item');
+const topParent = document.querySelector('.dropdown > .nav-item');
+
+function clearActive(){
+  navItems.forEach(n=>n.classList.remove('active'));
+}
+
+function setActive(el){
+  clearActive();
+  if(el) el.classList.add('active');
+}
+
+
+function removeDetailPanel(){
+  const panel = document.getElementById('detailPanel');
+  if(panel) panel.remove();
+}
+
+const homeBtnFix = document.getElementById('homeBtn');
+homeBtnFix.addEventListener('click', ()=>{
+  removeDetailPanel();
+  setActive(homeBtnFix);
+});
+
+
+const burgerBtn = document.getElementById('burgerBtn');
+const navMenu = document.getElementById('navMenu');
+
+burgerBtn.addEventListener('click', (e)=>{
+  e.stopPropagation();
+  burgerBtn.classList.toggle('active');
+  navMenu.classList.toggle('open');
+
+  if(navMenu.classList.contains('open')){
+    document.body.style.overflow = 'hidden';
+  }else{
+    document.body.style.overflow = 'auto';
+  }
+});
+
+function closeMobileMenu(){
+  burgerBtn.classList.remove('active');
+  navMenu.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
+
+
+document.querySelectorAll('.nav-item, .top-link').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    closeMobileMenu();
+  });
+});
+
+
+document.addEventListener('click', (e)=>{
+  if(window.innerWidth <= 900){
+    if(!navMenu.contains(e.target) && !burgerBtn.contains(e.target)){
+      closeMobileMenu();
+    }
+  }
+});
+
+window.addEventListener('resize', ()=>{
+  if(window.innerWidth > 900){
+    closeMobileMenu();
+  }
+});
+
+
+const mapBtnFix = document.querySelectorAll('.nav-item')[1];
+mapBtnFix.addEventListener('click', ()=>{
+  removeDetailPanel();
+  setActive(mapBtnFix);
+});
+
+
+document.querySelectorAll('.top-link').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    removeDetailPanel();
+    setActive(topParent);
+  });
+});
+
+
+setActive(homeBtnFix);
+</script>
+</body>
+</html>
