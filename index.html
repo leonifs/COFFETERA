@@ -945,7 +945,6 @@ setTimeout(()=>{
     {lat:-7.797165,lng:110.370748,name:'Ginamu Coffee',rating:5},
     {lat:-7.786432,lng:110.366843,name:'ARAH Coffee',rating:4.6},
     {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books',rating:4.6},
-    {lat:-7.78014,lng:110.377899,name:'Tetra Coffee & Eatery - Yogyakarta',rating:4.6},
     {lat:-7.781117,lng:110.37752,name:'Couvee Reside',rating:4.6},
     {lat:-7.781814,lng:110.375302,name:'MUSEA Coffee & Eatery',rating:4.8},
     {lat:-7.780403,lng:110.373408,name:'Awor Gallery & Coffee',rating:4.5},
@@ -971,11 +970,11 @@ setTimeout(()=>{
     {lat:-7.807573,lng:110.387719,name:'Resapi Coffe',rating:4.7},
     {lat:-7.814975,lng:110.401869,name:'LOKIO Coffe & Eatery',rating:4.7},
     {lat:-7.815494,lng:110.38385,name:'Nabe Coffe Batikan',rating:4.6},
-    {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe &Resto',rating:4.6},
+    {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe & Resto',rating:4.6},
     {lat:-7.79335,lng:110.372481,name:'The Gade Coffe & Gold',rating:4.7},
     {lat:-7.79712,lng:110.378114,name:'Restless Coffee & Eatery',rating:4.6},
     {lat:-7.780027,lng:110.378759,name:'Tekoff Coffee and Roastery',rating:4.6},
-    {lat:-7.788745,lng:110.372352,name:'BOLO SPACE',rating:4.9},
+    {lat:-7.788745,lng:110.372352,name:'Bolo Space',rating:4.9},
     {lat:-7.78816,lng:110.372794,name:'Legend Coffee',rating:4.4},
     {lat:-7.785196,lng:110.366537,name:'Nyore Coffee & Space',rating:4.7},
     {lat:-7.785296,lng:110.365703,name:'Kopi Gowongan',rating:5},
@@ -983,6 +982,7 @@ setTimeout(()=>{
     {lat:-7.8096,lng:110.357097,name:'Gandhok Coffee Kadipaten',rating:4.7},
     {lat:-7.77586,lng:110.352217,name:'Kedai Kopi Ibu Kita',rating:4.6},
     {lat:-7.782025,lng:110.353421,name:'Eastern Kopi TM Godean',rating:4.5}
+    {lat:-7.78014,lng:110.377899,name:'Tetra Coffee & Eatery - Yogyakarta',rating:4.6},
   ];
 
   const romantic = [
@@ -1001,6 +1001,7 @@ setTimeout(()=>{
     {lat:-7.80154,lng:110.360337,name:'POENOKAWAN CAFE RESTO & GALLERY',rating:4.6},
     {lat:-7.800091,lng:110.354161,name:'Secret Garden Coffee and Chocolate',rating:4.4}
   ];
+
 
   
   function icon(color){
@@ -1197,8 +1198,8 @@ document.querySelector('.prev').onclick = ()=>{
 
 function renderInsightAwal(){
   const aesthetic = 37;
-  const working = 50;
-  const family = 18;
+  const working = 48;
+  const family = 19;
   const romantic = 14;
 
   const total = aesthetic + working + family + romantic;
@@ -2292,7 +2293,7 @@ mapBtn.addEventListener('click', function(e){
       {lat:-7.793102,lng:110.39493,name:'DEHAVEN Coffee', img:'DEHAVEN.png', rating:5},
       {lat:-7.801874,lng:110.389617,name:'Tetra Coffee & Eatery - Kusumanegara', img:'Tetra.png', rating:4.5},
       {lat:-7.800978,lng:110.387726,name:'Kakofoni Coffee', img:'Kakofoni.png', rating:4.9},
-      {lat:-7.801694,lng:110.384134,name:'Nabe Coffee Kusuma', img:'Nabe.png', rating:4.8},
+      {lat:-7.801694,lng:110.384134,name:'Nabe Coffee Kusuma', img:'NabeK.png', rating:4.8},
       {lat:-7.797334,lng:110.37989,name:'Nook Coffee', img:'Nook.png', rating:5},
       {lat:-7.810667,lng:110.377098,name:'Lussid Coffee', img:'Lussid.png', rating:4.6},
       {lat:-7.808893,lng:110.377381,name:'Kopi Kenangan - Ruko Taman Siswa Yogyakarta', img:'Kopi.png', rating:4.5},
@@ -2308,7 +2309,6 @@ mapBtn.addEventListener('click', function(e){
       {lat:-7.797165,lng:110.370748,name:'Ginamu Coffee', img:'Ginamu.png', rating:5},
       {lat:-7.786432,lng:110.366843,name:'ARAH Coffee', img:'ARAH.png', rating:4.6},
       {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books', img:'Blanco.png', rating:4.6},
-      {lat:-7.78014,lng:110.377899,name:'Tetra Coffee & Eatery - Yogyakarta', img:'Tetrayk.png', rating:4.6},
       {lat:-7.781117,lng:110.37752,name:'Couvee Reside', img:'Couvee.png', rating:4.6},
       {lat:-7.781814,lng:110.375302,name:'MUSEA Coffee & Eatery', img:'MUSEA.png', rating:4.8},
       {lat:-7.780403,lng:110.373408,name:'Awor Gallery & Coffee', img:'Awor.png', rating:4.5},
@@ -2332,19 +2332,20 @@ mapBtn.addEventListener('click', function(e){
       {lat:-7.826477,lng:110.394555,name:'Kalimat Kopi Kotagede', img:'Kalimat.png', rating:5},
       {lat:-7.826826,lng:110.392961,name:'Omah Kalang Coffe and Space', img:'Omah.png', rating:4.5},
       {lat:-7.807573,lng:110.387719,name:'Resapi Coffe', img:'Resapi.png', rating:4.7},
-      {lat:-7.814975,lng:110.401869,name:'LOKIO Coffe & Eatery', img:'LOKIO.png', rating:4.7},
-      {lat:-7.815494,lng:110.38385,name:'Nabe Coffe Batikan', img:'Nabe.png', rating:4.6},
-      {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe &Resto', img:'Taru.png', rating:4.6},
+      {lat:-7.814975,lng:110.401869,name:'LOKIO Coffe & Eatery', img:'LOKIO1.png', rating:4.7},
+      {lat:-7.815494,lng:110.38385,name:'Nabe Coffe Batikan', img:'NabeB.png', rating:4.6},
+      {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe & Resto', img:'Taru.png', rating:4.6},
       {lat:-7.79335,lng:110.372481,name:'The Gade Coffe & Gold', img:'The.png', rating:4.7},
       {lat:-7.79712,lng:110.378114,name:'Restless Coffee & Eatery', img:'Restless.png', rating:4.6},
       {lat:-7.780027,lng:110.378759,name:'Tekoff Coffee and Roastery', img:'Tekoff.png', rating:4.6},
-      {lat:-7.788745,lng:110.372352,name:'BOLO SPACE', img:'BOLO.png', rating:4.9},
+      {lat:-7.788745,lng:110.372352,name:'Bolo Space', img:'Bolo.png', rating:4.9},
       {lat:-7.78816,lng:110.372794,name:'Legend Coffee', img:'Legend.png', rating:4.4},
       {lat:-7.785196,lng:110.366537,name:'Nyore Coffee & Space', img:'Nyore.png', rating:4.7},
       {lat:-7.785296,lng:110.365703,name:'Kopi Gowongan', img:'Kopi.png', rating:5},
       {lat:-7.806315,lng:110.367694,name:'OKID Cafe', img:'OKID.png', rating:4.7},
       {lat:-7.8096,lng:110.357097,name:'Gandhok Coffee Kadipaten', img:'Gandhok.png', rating:4.7},
       {lat:-7.77586,lng:110.352217,name:'Kedai Kopi Ibu Kita', img:'Kedai.png', rating:4.6},
+      {lat:-7.78014,lng:110.377899,name:'Tetra Coffee & Eatery - Yogyakarta', img:'Tetrayk.png', rating:4.6},
       {lat:-7.782025,lng:110.353421,name:'Eastern Kopi TM Godean', img:'Eastern.png', rating:4.5}
     ];
 
@@ -2357,10 +2358,10 @@ mapBtn.addEventListener('click', function(e){
       {lat:-7.784344,lng:110.374093,name:'Simetri Coffee Roaster', img:'Simetri.png', rating:4.6},
       {lat:-7.785877,lng:110.371562,name:'Rakku Coffee', img:'Rakku.png', rating:4.7},
       {lat:-7.781552,lng:110.362304,name:'Elder On The Table - Bakery & Coffee Shop', img:'Elder.png', rating:4.8},
-      {lat:-7.774206,lng:110.368194,name:'A Cup of Tugu Lor Java', img:'A.png', rating:4.5},
-      {lat:-7.787536,lng:110.36637,name:'LOKIO Coffee & Eatery - Mangkubumi', img:'LOKIO.png', rating:4.8},
+      {lat:-7.774206,lng:110.368194,name:'A Cup of Tugu Lor Java', img:'Acup.png', rating:4.5},
+      {lat:-7.787536,lng:110.36637,name:'LOKIO Coffee & Eatery - Mangkubumi', img:'LOKIO2.png', rating:4.8},
       {lat:-7.797203,lng:110.365343,name:'Djoen Bakery, Coffee & Resto', img:'Djoen.png', rating:4.6},
-      {lat:-7.801856,lng:110.364579,name:'Titik Nol Kopi', img:'Titik.png', rating:4.6},
+      {lat:-7.801856,lng:110.364579,name:'Titik Nol Kopi', img:'Titik0.png', rating:4.6},
       {lat:-7.80154,lng:110.360337,name:'POENOKAWAN CAFE RESTO & GALLERY', img:'POENOKAWAN.png', rating:4.6},
       {lat:-7.800091,lng:110.354161,name:'Secret Garden Coffee and Chocolate', img:'Secret.png', rating:4.4}
     ];
