@@ -815,40 +815,136 @@ setTimeout(()=>{
 
   
   const aesthetic = [
-    {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1',rating:4.5},
-    {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2',rating:4.2},
-    {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3',rating:4.7},
-    {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4',rating:4.3}
+    {lat:-7.781321,lng:110.362633,name:'KRU Coffee and Casual Bakes',rating:5},
+    {lat:-7.7869,lng:110.369626,name:'31 Bloc Coffee Street',rating:4.9},
+    {lat:-7.787131,lng:110.363086,name:'Picchu Coffee',rating:5},
+    {lat:-7.792447,lng:110.360904,name:'SUA Coffee',rating:4.5},
+    {lat:-7.790542,lng:110.360315,name:'Bergamot Koffie',rating:4.9},
+    {lat:-7.791367,lng:110.35939,name:'Hagia Coffee Yogyakarta',rating:4.5},
+    {lat:-7.794395,lng:110.357505,name:'Back On 13 Coffee Shop',rating:4.8},
+    {lat:-7.793232,lng:110.360015,name:'Ono Roso Malioboro',rating:4.9},
+    {lat:-7.801091,lng:110.361916,name:'Sender Coffee - Bena s Personal Space',rating:4.9},
+    {lat:-7.825142,lng:110.386829,name:'Samping Embung Coffee',rating:5},
+    {lat:-7.827456,lng:110.397639,name:'Nutur Coffee Store & Roastery',rating:4.6},
+    {lat:-7.813987,lng:110.391721,name:'Rembug Kopi',rating:4.5},
+    {lat:-7.820298,lng:110.37197,name:'Sellie Coffee',rating:4.5},
+    {lat:-7.810748,lng:110.400469,name:'Kopi Darijiwa - Kotagede',rating:4.9},
+    {lat:-7.817212,lng:110.385004,name:'Ollin Bar Studio',rating:4.9},
+    {lat:-7.801927,lng:110.382562,name:'MIM',rating:4.9},
+    {lat:-7.785275,lng:110.39169,name:'Bounds Coffee',rating:5},
+    {lat:-7.798685,lng:110.380951,name:'Kupiku Coffee - Mandala Krida',rating:4.7},
+    {lat:-7.792525,lng:110.381638,name:'Colortones Koffie & Studio Baciro',rating:4.9},
+    {lat:-7.809516,lng:110.377089,name:'A1 Coffee',rating:4.5},
+    {lat:-7.804411,lng:110.377471,name:'Welcome To Pleasure',rating:4.9},
+    {lat:-7.787007,lng:110.378729,name:'Awor Coffee Junction',rating:4.5},
+    {lat:-7.785745,lng:110.3759,name:'Jnawi Coffee',rating:4.6},
+    {lat:-7.785597,lng:110.373975,name:'Toko Kopi TUKU',rating:4.6},
+    {lat:-7.778291,lng:110.371356,name:'Blue s Coffee and Eatery',rating:4.9},
+    {lat:-7.783098,lng:110.367479,name:'Broeder Coffee - Tugu',rating:4.7},
+    {lat:-7.785255,lng:110.366543,name:'Space Roastery ONE',rating:4.7},
+    {lat:-7.791362,lng:110.361419,name:'C28 Social Space - Malioboro',rating:5},
+    {lat:-7.818867,lng:110.366525,name:'Sonderbrew - Tirtodipuran',rating:4.9},
+    {lat:-7.824589,lng:110.36775,name:'Sender Coffee - Peter s Personal Space',rating:4.9},
+    {lat:-7.78369,lng:110.363251,name:'Mood and Tone',rating:4.4},
+    {lat:-7.802573,lng:110.360743,name:'Kumpeni Indonesian Coffee & Ice Cream',rating:4.6},
+    {lat:-7.806154,lng:110.362146,name:'Nangkring',rating:4.8},
+    {lat:-7.813963,lng:110.363371,name:'Ramble Coffee Gading',rating:4.8},
+    {lat:-7.814489,lng:110.364861,name:'Toko Kopi Oetama',rating:4.6},
+    {lat:-7.789782,lng:110.354029,name:'Bura Bura Coffee',rating:4.7},
+    {lat:-7.800436,lng:110.353093,name:'Eighteen Coffee Jogja',rating:4.8}
   ];
 
   const working = [
-    {lat:-7.804,lng:110.358,name:'Working Coffee 1',rating:4.1},
-    {lat:-7.792,lng:110.367,name:'Working Coffee 2',rating:4.4},
-    {lat:-7.786,lng:110.374,name:'Working Coffee 3',rating:4.0},
-    {lat:-7.798,lng:110.382,name:'Working Coffee 4',rating:4.3}
-  ];
+    {lat:-7.776234,lng:110.368048,name:'Harum Coffee & Bakery',rating:4.7},
+    {lat:-7.778117,lng:110.365976,name:'Peacockoffie Monginsidi',rating:4.1},
+    {lat:-7.782244,lng:110.361194,name:'Dasawarsa Coffee Roasters',rating:4.7},
+    {lat:-7.791781,lng:110.364313,name:'Soma Coffee Jogja',rating:5},
+    {lat:-7.799831,lng:110.362183,name:'CUPP it Coffee & Bread',rating:4.8},
+    {lat:-7.828231,lng:110.379431,name:'Koat Kopi UAD',rating:4.6},
+    {lat:-7.818864,lng:110.387795,name:'Lembayung Coffee',rating:4.6},
+    {lat:-7.801549,lng:110.391852,name:'Sekarep Cafe & Eatery',rating:4.9},
+    {lat:-7.820514,lng:110.399505,name:'Sisi Selatan Coffee and eatery',rating:4.7},
+    {lat:-7.818812,lng:110.401408,name:'TOMORO COFFEE - Gedongkuning',rating:4.4},
+    {lat:-7.81193,lng:110.389215,name:'Meet In Coffee & Space',rating:4.9},
+    {lat:-7.81419,lng:110.386201,name:'Sebelas Coffee - Veteran',rating:4.6},
+    {lat:-7.808593,lng:110.377636,name:'Kopi Sahabat 7am-Taman Siswa',rating:4.8},
+    {lat:-7.793102,lng:110.39493,name:'DEHAVEN Coffee',rating:5},
+    {lat:-7.801874,lng:110.389617,name:'Tetra Coffee & Eatery - Kusumanegara',rating:4.5},
+    {lat:-7.800978,lng:110.387726,name:'Kakofoni Coffee',rating:4.9},
+    {lat:-7.801694,lng:110.384134,name:'Nabe Coffee Kusuma',rating:4.8},
+    {lat:-7.797334,lng:110.37989,name:'Nook Coffee',rating:5},
+    {lat:-7.810667,lng:110.377098,name:'Lussid Coffee',rating:4.6},
+    {lat:-7.808893,lng:110.377381,name:'Kopi Kenangan - Ruko Taman Siswa Yogyakarta',rating:4.5},
+    {lat:-7.797612,lng:110.379068,name:'774 HUB - Gayam',rating:4.5},
+    {lat:-7.812162,lng:110.376603,name:'28 Coffee Taman Siswa',rating:4.8},
+    {lat:-7.781679,lng:110.38806,name:'318 Coffee & Playstation',rating:4.9},
+    {lat:-7.782777,lng:110.385782,name:'ENCHANTE COFFEE',rating:4.7},
+    {lat:-7.783214,lng:110.381563,name:'Azen Coffee Mahkota',rating:4.7},
+    {lat:-7.823288,lng:110.368088,name:'Cold N Brew - Parangtritis',rating:4.6},
+    {lat:-7.786217,lng:110.378821,name:'Dummin Coffee & Space UKDW',rating:4.4},
+    {lat:-7.779008,lng:110.379478,name:'Nuju Coffee Sagan | Coffee Shop Yogyakarta',rating:4.9},
+    {lat:-7.821019,lng:110.376833,name:'Titrasi Coffee Company',rating:4.8},
+    {lat:-7.797165,lng:110.370748,name:'Ginamu Coffee',rating:5},
+    {lat:-7.786432,lng:110.366843,name:'ARAH Coffee Tugu Jogja',rating:4.6},
+    {lat:-7.786432,lng:110.366843,name:'ARAH Coffee Tugu Jogja',rating:4.6},
+    {lat:-7.786432,lng:110.366843,name:'ARAH Coffee Tugu Jogja',rating:4.6},
+    {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books',rating:4.6},
+    {lat:-7.78014,lng:110.377899,name:'TETRA Coffee & Eatery - Yogyakarta // Terra Coffee',rating:4.6},
+    {lat:-7.781117,lng:110.37752,name:'Couvee Reside',rating:4.6},
+    {lat:-7.781814,lng:110.375302,name:'MUSEA Coffee & Eatery',rating:4.8},
+    {lat:-7.780403,lng:110.373408,name:'Awor Gallery & Coffee',rating:4.5},
+    {lat:-7.78278,lng:110.366628,name:'Baratugu Coffee',rating:4.9},
+    {lat:-7.786572,lng:110.366835,name:'COSAN - Malioboro',rating:4.6},
+    {lat:-7.792636,lng:110.367716,name:'Cold N Brew - Malioboro',rating:4.4},
+    {lat:-7.796476,lng:110.367893,name:'Azen Coffee Malioboro',rating:4.7},
+    {lat:-7.794926,lng:110.365421,name:'Starbucks Coffee Malioboro',rating:4.6},
+    {lat:-7.817187,lng:110.363938,name:'COFFEE TEA CUP',rating:4.8},
+    {lat:-7.822367,lng:110.368496,name:'Dualima Coffee & Eatery',rating:4.9},
+    {lat:-7.824055,lng:110.36657,name:'B COFFEE YOGYA',rating:4.8},
+    {lat:-7.780781,lng:110.363741,name:'KOFIBRÜ - Pakuningratan, Yogyakarta',rating:4.4},
+    {lat:-7.810167,lng:110.360369,name:'Arka Coffee and Space',rating:4.8},
+    {lat:-7.812423,lng:110.364624,name:'SNAP Coffee & Space',rating:5},
+    {lat:-7.803922,lng:110.356495,name:'Eyang Kakung (Eyka) Coffee',rating:5},
+    {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books',rating:4.6},
+    {lat:-7.787377,lng:110.358953,name:'Cerita Kopi',rating:4.5}
+];
 
   const family = [
-    {lat:-7.805,lng:110.370,name:'Family Coffee 1',rating:4.6},
-    {lat:-7.796,lng:110.378,name:'Family Coffee 2',rating:4.2},
-    {lat:-7.787,lng:110.360,name:'Family Coffee 3',rating:4.1},
-    {lat:-7.799,lng:110.368,name:'Family Coffee 4',rating:4.5},
-    {lat:-7.790,lng:110.385,name:'Family Coffee 5',rating:4.3},
-    {lat:-7.803,lng:110.392,name:'Family Coffee 6',rating:4.4},
-    {lat:-7.789,lng:110.373,name:'Family Coffee 7',rating:4.2}
+    {lat:-7.78032,lng:110.358316,name:'Intano Kabare',rating:4.9},
+    {lat:-7.826477,lng:110.394555,name:'Kalimat Kopi Kotagede',rating:5},
+    {lat:-7.826826,lng:110.392961,name:'Omah Kalang Coffe and Space',rating:4.5},
+    {lat:-7.807573,lng:110.387719,name:'Resapi Coffe',rating:4.7},
+    {lat:-7.814975,lng:110.401869,name:'LOKIO Coffe & Eatery',rating:4.7},
+    {lat:-7.815494,lng:110.38385,name:'Nabe Coffe Batikan',rating:4.6},
+    {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe &Resto',rating:4.6},
+    {lat:-7.79335,lng:110.372481,name:'The Gade Coffe & Gold',rating:4.7},
+    {lat:-7.79712,lng:110.378114,name:'Restless Coffee & Eatery',rating:4.6},
+    {lat:-7.780027,lng:110.378759,name:'Tekoff Coffee and Roastery',rating:4.6},
+    {lat:-7.788745,lng:110.372352,name:'BOLO SPACE',rating:4.9},
+    {lat:-7.78816,lng:110.372794,name:'Legend Coffee',rating:4.4},
+    {lat:-7.785196,lng:110.366537,name:'Nyore Coffee & Space',rating:4.7},
+    {lat:-7.785296,lng:110.365703,name:'Kopi Gowongan',rating:5},
+    {lat:-7.806315,lng:110.367694,name:'OKID Cafe',rating:4.7},
+    {lat:-7.8096,lng:110.357097,name:'Gandhok Coffee Kadipaten',rating:4.7},
+    {lat:-7.77586,lng:110.352217,name:'Kedai Kopi Ibu Kita',rating:4.6},
+    {lat:-7.782025,lng:110.353421,name:'Eastern Kopi TM Godean',rating:4.5}
   ];
 
   const romantic = [
-    {lat:-7.801,lng:110.366,name:'Romantic Coffee 1',rating:4.8},
-    {lat:-7.793,lng:110.375,name:'Romantic Coffee 2',rating:4.6},
-    {lat:-7.786,lng:110.382,name:'Romantic Coffee 3',rating:4.5},
-    {lat:-7.798,lng:110.390,name:'Romantic Coffee 4',rating:4.7},
-    {lat:-7.792,lng:110.360,name:'Romantic Coffee 5',rating:4.4},
-    {lat:-7.804,lng:110.368,name:'Romantic Coffee 6',rating:4.6},
-    {lat:-7.788,lng:110.377,name:'Romantic Coffee 7',rating:4.3},
-    {lat:-7.800,lng:110.384,name:'Romantic Coffee 8',rating:4.7},
-    {lat:-7.795,lng:110.371,name:'Romantic Coffee 9',rating:4.5},
-    {lat:-7.802,lng:110.388,name:'Romantic Coffee 10',rating:4.6}
+    {lat:-7.816312,lng:110.389612,name:'Teras Jepun Coffee',rating:4.8},
+    {lat:-7.799009,lng:110.392741,name:'Inspira Roasters Artisan Coffee',rating:4.6},
+    {lat:-7.817861,lng:110.382756,name:'Metropole Coffee',rating:4.6},
+    {lat:-7.812807,lng:110.376487,name:'Peachy Coffee & Work Space',rating:4.6},
+    {lat:-7.782991,lng:110.390524,name:'Temu Kamu Coffee & Eatery Yogyakarta',rating:4.6},
+    {lat:-7.784344,lng:110.374093,name:'Simetri Coffee Roaster',rating:4.6},
+    {lat:-7.785877,lng:110.371562,name:'Rakku Coffee',rating:4.7},
+    {lat:-7.781552,lng:110.362304,name:'Elder On The Table - Bakery & Coffee Shop',rating:4.8},
+    {lat:-7.774206,lng:110.368194,name:'A Cup of Tugu Lor Java',rating:4.5},
+    {lat:-7.787536,lng:110.36637,name:'LOKIO Coffee & Eatery - Mangkubumi',rating:4.8},
+    {lat:-7.797203,lng:110.365343,name:'Djoen Bakery, Coffee & Resto',rating:4.6},
+    {lat:-7.801856,lng:110.364579,name:'Titik Nol Kopi',rating:4.6},
+    {lat:-7.80154,lng:110.360337,name:'POENOKAWAN CAFE RESTO & GALLERY',rating:4.6},
+    {lat:-7.800091,lng:110.354161,name:'Secret Garden Coffee and Chocolate',rating:4.4}
   ];
 
   
@@ -1573,6 +1669,50 @@ if(document.readyState === 'loading'){
 }
 
 
+.name-rate-filter{
+  display:flex;
+  flex-direction:column;
+  gap:0px;
+  padding:0px 0;
+  margin:0px 0;
+  border-top:1px solid rgba(0,0,0,0.12);
+  border-bottom:1px solid rgba(0,0,0,0.12);
+}
+
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  margin:6px 0;
+  font-weight:400;
+  color:#333;
+}
+
+.checkbox-item input[type="checkbox"]{
+  width:12px;
+  height:12px;
+  accent-color:#ff7a00;
+}
+
+.co-maps-label{
+  background:rgba(255,255,255,0.92) !important;
+  border:1px solid rgba(255,122,24,0.18) !important;
+  border-radius:8px !important;
+  padding:3px 6px !important;
+  font-size:9px !important;
+  line-height:1.25 !important;
+  font-family:'Montserrat',sans-serif !important;
+  font-weight:500 !important;
+  color:#333 !important;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08) !important;
+}
+
+.co-maps-label div{
+  margin:0 !important;
+  padding:0 !important;
+}
+
 </style>
 
 <script>
@@ -1832,7 +1972,7 @@ mapBtn.addEventListener('click', function(e){
 
       <!-- FLOAT LEGEND (BOTTOM RIGHT) -->
       <div id="legendBox" style="position:fixed;bottom:20px;right:20px;background:#fff;padding:14px 16px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.15);font-family:'Montserrat',sans-serif;z-index:1000;min-width:260px;max-width:260px;transition:0.3s ease">
-        <div style="font-weight:600;margin-bottom:10px;color:#ff7a18;letter-spacing:1px">COFFEE TYPE</div>
+        <div style="font-weight:600;margin-bottom:10px;color:#ff7a18;letter-spacing:1px;font-size:13px">COFFEE TYPE</div>
 
         <label style="display:flex;align-items:center;font-size:13px;margin:6px 0;gap:8px">
           <input type="checkbox" checked style="accent-color:red">
@@ -1853,6 +1993,43 @@ mapBtn.addEventListener('click', function(e){
           <input type="checkbox" checked style="accent-color:pink">
           Romantic Coffee
         </label>
+
+<!-- NAME & RATE FILTER -->
+<div style="height:1px;background:rgba(0,0,0,0.08);margin:12px 0 10px 0;border-radius:999px"></div>
+
+<div style="font-weight:600;color:#ff7a18;font-size:13px;letter-spacing:1px;margin-bottom:6px">LABEL</div>
+
+<div class="name-rate-filter">
+  <label class="checkbox-item">
+    <input type="checkbox" checked>
+    <span>Name</span>
+  </label>
+
+  <label class="checkbox-item">
+    <input type="checkbox" checked>
+    <span>Rate</span>
+  </label>
+</div>
+
+        <!-- SEARCH FILTER -->
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid #eee">
+
+          <div style="font-weight:600;color:#ff7a18;font-size:13px;letter-spacing:1px;margin-bottom:10px">SEARCH</div>
+
+          <div style="display:flex;align-items:center;background:rgba(255,255,255,0.96);border:1px solid rgba(255,122,24,0.18);border-radius:12px;padding:8px 10px;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05)">
+            <input
+              type="text"
+              id="mapSearchInput"
+              placeholder="Search coffee shop..."
+              style="flex:1;border:none;outline:none;background:transparent;font-size:12px;color:#444;font-family:'Montserrat',sans-serif"
+            >
+
+            <div style="width:28px;height:28px;border-radius:50%;background:#ff7a18;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">
+              ⌕
+            </div>
+          </div>
+
+        </div>
 
         <!-- RATING FILTER -->
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid #eee">
@@ -2004,50 +2181,177 @@ mapBtn.addEventListener('click', function(e){
 
     
     const aesthetic = [
-      {lat:-7.802,lng:110.364,name:'Aesthetic Coffee 1', img:'1.png', rating:4.5},
-      {lat:-7.795,lng:110.372,name:'Aesthetic Coffee 2', img:'2.png', rating:4.2},
-      {lat:-7.788,lng:110.381,name:'Aesthetic Coffee 3', img:'3.png', rating:4.7},
-      {lat:-7.800,lng:110.389,name:'Aesthetic Coffee 4', img:'4.png', rating:4.3}
+      {lat:-7.781321,lng:110.362633,name:'KRU Coffee and Casual Bakes', img:'KRU.png', rating:5},
+      {lat:-7.7869,lng:110.369626,name:'31 Bloc Coffee Street', img:'31.png', rating:4.9},
+      {lat:-7.787131,lng:110.363086,name:'Picchu Coffee', img:'Picchu.png', rating:5},
+      {lat:-7.792447,lng:110.360904,name:'SUA Coffee', img:'SUA.png', rating:4.5},
+      {lat:-7.790542,lng:110.360315,name:'Bergamot Koffie', img:'Bergamot.png', rating:4.9},
+      {lat:-7.791367,lng:110.35939,name:'Hagia Coffee Yogyakarta', img:'Hagia.png', rating:4.5},
+      {lat:-7.794395,lng:110.357505,name:'Back On 13 Coffee Shop', img:'Back.png', rating:4.8},
+      {lat:-7.793232,lng:110.360015,name:'Ono Roso Malioboro', img:'Ono.png', rating:4.9},
+      {lat:-7.801091,lng:110.361916,name:'Sender Coffee - Bena s Personal Space', img:'Sender.png', rating:4.9},
+      {lat:-7.825142,lng:110.386829,name:'Samping Embung Coffee', img:'Samping.png', rating:5},
+      {lat:-7.827456,lng:110.397639,name:'Nutur Coffee Store & Roastery', img:'Nutur.png', rating:4.6},
+      {lat:-7.813987,lng:110.391721,name:'Rembug Kopi', img:'Rembug.png', rating:4.5},
+      {lat:-7.820298,lng:110.37197,name:'Sellie Coffee', img:'Sellie.png', rating:4.5},
+      {lat:-7.810748,lng:110.400469,name:'Kopi Darijiwa - Kotagede', img:'Kopi.png', rating:4.9},
+      {lat:-7.817212,lng:110.385004,name:'Ollin Bar Studio', img:'Ollin.png', rating:4.9},
+      {lat:-7.801927,lng:110.382562,name:'MIM', img:'MIM.png', rating:4.9},
+      {lat:-7.785275,lng:110.39169,name:'Bounds Coffee', img:'Bounds.png', rating:5},
+      {lat:-7.798685,lng:110.380951,name:'Kupiku Coffee - Mandala Krida', img:'Kupiku.png', rating:4.7},
+      {lat:-7.792525,lng:110.381638,name:'Colortones Koffie & Studio Baciro', img:'Colortones.png', rating:4.9},
+      {lat:-7.809516,lng:110.377089,name:'A1 Coffee', img:'A1.png', rating:4.5},
+      {lat:-7.804411,lng:110.377471,name:'Welcome To Pleasure', img:'Welcome.png', rating:4.9},
+      {lat:-7.787007,lng:110.378729,name:'Awor Coffee Junction', img:'Awor.png', rating:4.5},
+      {lat:-7.785745,lng:110.3759,name:'Jnawi Coffee', img:'Jnawi.png', rating:4.6},
+      {lat:-7.785597,lng:110.373975,name:'Toko Kopi TUKU', img:'Toko.png', rating:4.6},
+      {lat:-7.778291,lng:110.371356,name:'Blue s Coffee and Eatery', img:'Blue.png', rating:4.9},
+      {lat:-7.783098,lng:110.367479,name:'Broeder Coffee - Tugu', img:'Broeder.png', rating:4.7},
+      {lat:-7.785255,lng:110.366543,name:'Space Roastery ONE', img:'Space.png', rating:4.7},
+      {lat:-7.791362,lng:110.361419,name:'C28 Social Space - Malioboro', img:'C28.png', rating:5},
+      {lat:-7.818867,lng:110.366525,name:'Sonderbrew - Tirtodipuran', img:'Sonderbrew.png', rating:4.9},
+      {lat:-7.824589,lng:110.36775,name:'Sender Coffee - Peter s Personal Space', img:'Sender.png', rating:4.9},
+      {lat:-7.78369,lng:110.363251,name:'Mood and Tone', img:'Mood.png', rating:4.4},
+      {lat:-7.802573,lng:110.360743,name:'Kumpeni Indonesian Coffee & Ice Cream', img:'Kumpeni.png', rating:4.6},
+      {lat:-7.806154,lng:110.362146,name:'Nangkring', img:'Nangkring.png', rating:4.8},
+      {lat:-7.813963,lng:110.363371,name:'Ramble Coffee Gading', img:'Ramble.png', rating:4.8},
+      {lat:-7.814489,lng:110.364861,name:'Toko Kopi Oetama', img:'Toko.png', rating:4.6},
+      {lat:-7.789782,lng:110.354029,name:'Bura Bura Coffee', img:'Bura.png', rating:4.7},
+      {lat:-7.800436,lng:110.353093,name:'Eighteen Coffee Jogja', img:'Eighteen.png', rating:4.8}
     ];
 
     const working = [
-      {lat:-7.804,lng:110.358,name:'Working Coffee 1', img:'1.png', rating:4.1},
-      {lat:-7.792,lng:110.367,name:'Working Coffee 2', img:'2.png', rating:4.4},
-      {lat:-7.786,lng:110.374,name:'Working Coffee 3', img:'3.png', rating:4.0},
-      {lat:-7.798,lng:110.382,name:'Working Coffee 4', img:'4.png', rating:4.3}
+      {lat:-7.776234,lng:110.368048,name:'Harum Coffee & Bakery', img:'Harum.png', rating:4.7},
+      {lat:-7.778117,lng:110.365976,name:'Peacockoffie Monginsidi', img:'Peacockoffie.png', rating:4.1},
+      {lat:-7.782244,lng:110.361194,name:'Dasawarsa Coffee Roasters', img:'Dasawarsa.png', rating:4.7},
+      {lat:-7.791781,lng:110.364313,name:'Soma Coffee Jogja', img:'Soma.png', rating:5},
+      {lat:-7.799831,lng:110.362183,name:'CUPP it Coffee & Bread', img:'CUPP.png', rating:4.8},
+      {lat:-7.828231,lng:110.379431,name:'Koat Kopi UAD', img:'Koat.png', rating:4.6},
+      {lat:-7.818864,lng:110.387795,name:'Lembayung Coffee', img:'Lembayung.png', rating:4.6},
+      {lat:-7.801549,lng:110.391852,name:'Sekarep Cafe & Eatery', img:'Sekarep.png', rating:4.9},
+      {lat:-7.820514,lng:110.399505,name:'Sisi Selatan Coffee and eatery', img:'Sisi.png', rating:4.7},
+      {lat:-7.818812,lng:110.401408,name:'TOMORO COFFEE - Gedongkuning', img:'TOMORO.png', rating:4.4},
+      {lat:-7.81193,lng:110.389215,name:'Meet In Coffee & Space', img:'Meet.png', rating:4.9},
+      {lat:-7.81419,lng:110.386201,name:'Sebelas Coffee - Veteran', img:'Sebelas.png', rating:4.6},
+      {lat:-7.808593,lng:110.377636,name:'Kopi Sahabat 7am-Taman Siswa', img:'Kopi.png', rating:4.8},
+      {lat:-7.793102,lng:110.39493,name:'DEHAVEN Coffee', img:'DEHAVEN.png', rating:5},
+      {lat:-7.801874,lng:110.389617,name:'Tetra Coffee & Eatery - Kusumanegara', img:'Tetra.png', rating:4.5},
+      {lat:-7.800978,lng:110.387726,name:'Kakofoni Coffee', img:'Kakofoni.png', rating:4.9},
+      {lat:-7.801694,lng:110.384134,name:'Nabe Coffee Kusuma', img:'Nabe.png', rating:4.8},
+      {lat:-7.797334,lng:110.37989,name:'Nook Coffee', img:'Nook.png', rating:5},
+      {lat:-7.810667,lng:110.377098,name:'Lussid Coffee', img:'Lussid.png', rating:4.6},
+      {lat:-7.808893,lng:110.377381,name:'Kopi Kenangan - Ruko Taman Siswa Yogyakarta', img:'Kopi.png', rating:4.5},
+      {lat:-7.797612,lng:110.379068,name:'774 HUB - Gayam', img:'774.png', rating:4.5},
+      {lat:-7.812162,lng:110.376603,name:'28 Coffee Taman Siswa', img:'28.png', rating:4.8},
+      {lat:-7.781679,lng:110.38806,name:'318 Coffee & Playstation', img:'318.png', rating:4.9},
+      {lat:-7.782777,lng:110.385782,name:'ENCHANTE COFFEE', img:'ENCHANTE.png', rating:4.7},
+      {lat:-7.783214,lng:110.381563,name:'Azen Coffee Mahkota', img:'Azen.png', rating:4.7},
+      {lat:-7.823288,lng:110.368088,name:'Cold \'N Brew - Parangtritis', img:'Cold.png', rating:4.6},
+      {lat:-7.786217,lng:110.378821,name:'Dummin Coffee & Space UKDW', img:'Dummin.png', rating:4.4},
+      {lat:-7.779008,lng:110.379478,name:'Nuju Coffee Sagan | Coffee Shop Yogyakarta', img:'Nuju.png', rating:4.9},
+      {lat:-7.821019,lng:110.376833,name:'Titrasi Coffee Company', img:'Titrasi.png', rating:4.8},
+      {lat:-7.797165,lng:110.370748,name:'Ginamu Coffee', img:'Ginamu.png', rating:5},
+      {lat:-7.786432,lng:110.366843,name:'ARAH Coffee Tugu Jogja', img:'ARAH.png', rating:4.6},
+      {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books', img:'Blanco.png', rating:4.6},
+      {lat:-7.78014,lng:110.377899,name:'TETRA Coffee & Eatery - Yogyakarta // Terra Coffee', img:'TETRA.png', rating:4.6},
+      {lat:-7.781117,lng:110.37752,name:'Couvee Reside', img:'Couvee.png', rating:4.6},
+      {lat:-7.781814,lng:110.375302,name:'MUSEA Coffee & Eatery', img:'MUSEA.png', rating:4.8},
+      {lat:-7.780403,lng:110.373408,name:'Awor Gallery & Coffee', img:'Awor.png', rating:4.5},
+      {lat:-7.78278,lng:110.366628,name:'Baratugu Coffee', img:'Baratugu.png', rating:4.9},
+      {lat:-7.786572,lng:110.366835,name:'COSAN - Malioboro', img:'COSAN.png', rating:4.6},
+      {lat:-7.792636,lng:110.367716,name:'Cold \'N Brew - Malioboro', img:'Cold.png', rating:4.4},
+      {lat:-7.796476,lng:110.367893,name:'Azen Coffee Malioboro', img:'Azen.png', rating:4.7},
+      {lat:-7.794926,lng:110.365421,name:'Starbucks Coffee Malioboro', img:'Starbucks.png', rating:4.6},
+      {lat:-7.817187,lng:110.363938,name:'COFFEE TEA CUP', img:'COFFEE.png', rating:4.8},
+      {lat:-7.822367,lng:110.368496,name:'Dualima Coffee & Eatery', img:'Dualima.png', rating:4.9},
+      {lat:-7.824055,lng:110.36657,name:'B COFFEE YOGYA', img:'B.png', rating:4.8},
+      {lat:-7.780781,lng:110.363741,name:'KOFIBRÜ - Pakuningratan, Yogyakarta', img:'KOFIBRÜ.png', rating:4.4},
+      {lat:-7.810167,lng:110.360369,name:'Arka Coffee and Space', img:'Arka.png', rating:4.8},
+      {lat:-7.812423,lng:110.364624,name:'SNAP Coffee & Space', img:'SNAP.png', rating:5},
+      {lat:-7.803922,lng:110.356495,name:'Eyang Kakung (Eyka) Coffee', img:'Eyang.png', rating:5},
+      {lat:-7.781408,lng:110.36477,name:'Blanco Coffee and Books', img:'Blanco.png', rating:4.6},
+      {lat:-7.787377,lng:110.358953,name:'Cerita Kopi', img:'Cerita.png', rating:4.5}
     ];
 
     const family = [
-      {lat:-7.805,lng:110.370,name:'Family Coffee 1', img:'1.png', rating:4.6},
-      {lat:-7.796,lng:110.378,name:'Family Coffee 2', img:'2.png', rating:4.2},
-      {lat:-7.787,lng:110.360,name:'Family Coffee 3', img:'3.png', rating:4.1},
-      {lat:-7.799,lng:110.368,name:'Family Coffee 4', img:'4.png', rating:4.5},
-      {lat:-7.790,lng:110.385,name:'Family Coffee 5', img:'5.png', rating:4.3},
-      {lat:-7.803,lng:110.392,name:'Family Coffee 6', img:'6.png', rating:4.4},
-      {lat:-7.789,lng:110.373,name:'Family Coffee 7', img:'7.png', rating:4.2}
+      {lat:-7.78032,lng:110.358316,name:'Intano Kabare', img:'Intano.png', rating:4.9},
+      {lat:-7.826477,lng:110.394555,name:'Kalimat Kopi Kotagede', img:'Kalimat.png', rating:5},
+      {lat:-7.826826,lng:110.392961,name:'Omah Kalang Coffe and Space', img:'Omah.png', rating:4.5},
+      {lat:-7.807573,lng:110.387719,name:'Resapi Coffe', img:'Resapi.png', rating:4.7},
+      {lat:-7.814975,lng:110.401869,name:'LOKIO Coffe & Eatery', img:'LOKIO.png', rating:4.7},
+      {lat:-7.815494,lng:110.38385,name:'Nabe Coffe Batikan', img:'Nabe.png', rating:4.6},
+      {lat:-7.790819,lng:110.381268,name:'Taru Martani Coffe &Resto', img:'Taru.png', rating:4.6},
+      {lat:-7.79335,lng:110.372481,name:'The Gade Coffe & Gold', img:'The.png', rating:4.7},
+      {lat:-7.79712,lng:110.378114,name:'Restless Coffee & Eatery', img:'Restless.png', rating:4.6},
+      {lat:-7.780027,lng:110.378759,name:'Tekoff Coffee and Roastery', img:'Tekoff.png', rating:4.6},
+      {lat:-7.788745,lng:110.372352,name:'BOLO SPACE', img:'BOLO.png', rating:4.9},
+      {lat:-7.78816,lng:110.372794,name:'Legend Coffee', img:'Legend.png', rating:4.4},
+      {lat:-7.785196,lng:110.366537,name:'Nyore Coffee & Space', img:'Nyore.png', rating:4.7},
+      {lat:-7.785296,lng:110.365703,name:'Kopi Gowongan', img:'Kopi.png', rating:5},
+      {lat:-7.806315,lng:110.367694,name:'OKID Cafe', img:'OKID.png', rating:4.7},
+      {lat:-7.8096,lng:110.357097,name:'Gandhok Coffee Kadipaten', img:'Gandhok.png', rating:4.7},
+      {lat:-7.77586,lng:110.352217,name:'Kedai Kopi Ibu Kita', img:'Kedai.png', rating:4.6},
+      {lat:-7.782025,lng:110.353421,name:'Eastern Kopi TM Godean', img:'Eastern.png', rating:4.5}
     ];
 
     const romantic = [
-      {lat:-7.801,lng:110.366,name:'Romantic Coffee 1', img:'1.png', rating:4.8},
-      {lat:-7.793,lng:110.375,name:'Romantic Coffee 2', img:'2.png', rating:4.6},
-      {lat:-7.786,lng:110.382,name:'Romantic Coffee 3', img:'3.png', rating:4.5},
-      {lat:-7.798,lng:110.390,name:'Romantic Coffee 4', img:'4.png', rating:4.7},
-      {lat:-7.792,lng:110.360,name:'Romantic Coffee 5', img:'5.png', rating:4.4},
-      {lat:-7.804,lng:110.368,name:'Romantic Coffee 6', img:'6.png', rating:4.6},
-      {lat:-7.788,lng:110.377,name:'Romantic Coffee 7', img:'7.png', rating:4.3},
-      {lat:-7.800,lng:110.384,name:'Romantic Coffee 8', img:'8.png', rating:4.7},
-      {lat:-7.795,lng:110.371,name:'Romantic Coffee 9', img:'9.png', rating:4.5},
-      {lat:-7.802,lng:110.388,name:'Romantic Coffee 10', img:'10.png', rating:4.6}
+      {lat:-7.816312,lng:110.389612,name:'Teras Jepun Coffee', img:'Teras.png', rating:4.8},
+      {lat:-7.799009,lng:110.392741,name:'Inspira Roasters Artisan Coffee', img:'Inspira.png', rating:4.6},
+      {lat:-7.817861,lng:110.382756,name:'Metropole Coffee', img:'Metropole.png', rating:4.6},
+      {lat:-7.812807,lng:110.376487,name:'Peachy Coffee & Work Space', img:'Peachy.png', rating:4.6},
+      {lat:-7.782991,lng:110.390524,name:'Temu Kamu Coffee & Eatery Yogyakarta', img:'Temu.png', rating:4.6},
+      {lat:-7.784344,lng:110.374093,name:'Simetri Coffee Roaster', img:'Simetri.png', rating:4.6},
+      {lat:-7.785877,lng:110.371562,name:'Rakku Coffee', img:'Rakku.png', rating:4.7},
+      {lat:-7.781552,lng:110.362304,name:'Elder On The Table - Bakery & Coffee Shop', img:'Elder.png', rating:4.8},
+      {lat:-7.774206,lng:110.368194,name:'A Cup of Tugu Lor Java', img:'A.png', rating:4.5},
+      {lat:-7.787536,lng:110.36637,name:'LOKIO Coffee & Eatery - Mangkubumi', img:'LOKIO.png', rating:4.8},
+      {lat:-7.797203,lng:110.365343,name:'Djoen Bakery, Coffee & Resto', img:'Djoen.png', rating:4.6},
+      {lat:-7.801856,lng:110.364579,name:'Titik Nol Kopi', img:'Titik.png', rating:4.6},
+      {lat:-7.80154,lng:110.360337,name:'POENOKAWAN CAFE RESTO & GALLERY', img:'POENOKAWAN.png', rating:4.6},
+      {lat:-7.800091,lng:110.354161,name:'Secret Garden Coffee and Chocolate', img:'Secret.png', rating:4.4}
     ];
 
 
 
-    function addMarkers(data, layer, color){
+    const coffeeMarkers = [];
+
+function updateMarkerLabels(){
+  const nameCheckbox = checkboxes[4];
+  const rateCheckbox = checkboxes[5];
+
+  coffeeMarkers.forEach(entry=>{
+    const marker = entry.marker;
+    const item = entry.data;
+
+    marker.unbindTooltip();
+
+    let labelContent = '';
+
+    if(nameCheckbox && nameCheckbox.checked){
+      labelContent += `<div>${item.name}</div>`;
+    }
+
+    if(rateCheckbox && rateCheckbox.checked){
+      labelContent += `<div>⭐ ${item.rating}</div>`;
+    }
+
+    if(labelContent !== ''){
+      marker.bindTooltip(labelContent,{
+        permanent:true,
+        direction:'right',
+        offset:[10,0],
+        className:'co-maps-label'
+      });
+    }
+  });
+}
+
+function addMarkers(data, layer, color){
       data.forEach(item=>{
         const imgSrc = item.img || '1.png';
         const safeName = String(item.name).replace(/'/g, "\'");
 
-        L.marker([item.lat,item.lng], {icon:icon(color)})
+        const marker = L.marker([item.lat,item.lng], {icon:icon(color)})
         .bindPopup(`
           <div style="text-align:center;font-family:'Montserrat',sans-serif">
             <div style="font-family:'Playfair Display', serif;font-size:18px;letter-spacing:1px;color:#ff7a18;margin-bottom:4px">
@@ -2063,6 +2367,11 @@ mapBtn.addEventListener('click', function(e){
           </div>
         `)
         .addTo(layer);
+
+        coffeeMarkers.push({
+          marker:marker,
+          data:item
+        });
       });
     }
 
@@ -2252,6 +2561,18 @@ window.closeModal = function(){
 }
 
 // ===== SMART LIVE ROUTING SYSTEM =====
+let navigationStarted = false;
+let liveNavigationEnabled = false;
+let lastGpsPosition = null;
+let navigationProgress = 0;
+let routeSteps = [
+  'Continue straight',
+  'Turn right',
+  'Turn left',
+  'Slight right ahead',
+  'Destination ahead'
+];
+let currentStepIndex = 0;
 let routingMap = null;
 let routingUserMarker = null;
 let routingCoffeeMarker = null;
@@ -2281,55 +2602,133 @@ window.startRoute = function(name){
 
       <div id="routeBottomSheet" style="position:fixed;left:0;bottom:0;width:100%;z-index:5000;display:flex;justify-content:center;font-family:'Montserrat',sans-serif;pointer-events:none">
 
-        <div id="sheetContainer" style="width:100%;max-width:100%;background:rgba(248,242,235,0.98);backdrop-filter:blur(20px);border-top-left-radius:26px;border-top-right-radius:26px;overflow:hidden;box-shadow:0 -10px 40px rgba(255,122,24,0.12);transform:translateY(0);transition:transform 0.35s ease;pointer-events:auto">
+        <div id="sheetContainer" style="width:100%;max-width:100%;background:#ffffff;backdrop-filter:blur(20px);border-top-left-radius:26px;border-top-right-radius:26px;overflow:hidden;box-shadow:0 -6px 24px rgba(0,0,0,0.06);transform:translateY(0);transition:transform 0.35s ease;pointer-events:auto">
+
+          <style>
+            @media(min-width:901px){
+              #routeBottomSheet{
+                top:auto !important;
+                bottom:22px !important;
+                left:22px !important;
+                right:auto !important;
+                justify-content:flex-start !important;
+                align-items:flex-end !important;
+                padding:0 !important;
+              }
+
+              #sheetContainer{
+                width:280px !important;
+                max-width:280px !important;
+                min-height:auto !important;
+                border-radius:34px !important;
+                box-shadow:0 10px 30px rgba(0,0,0,0.08) !important;
+              }
+
+              #sheetHandleArea{
+                display:none !important;
+              }
+            }
+
+            @media(max-width:900px){
+              #routeBottomSheet{
+                top:auto !important;
+                bottom:0 !important;
+              }
+
+              #routeInfoWrapper{
+                display:grid !important;
+                grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important;
+                align-items:center !important;
+                gap:10px !important;
+              }
+
+              #routeDivider{
+                width:1px !important;
+                height:52px !important;
+              }
+            }
+          </style>
 
           <div id="sheetHandleArea" style="padding:12px 0 4px;display:flex;justify-content:center;cursor:grab;touch-action:none">
-            <div style="width:70px;height:6px;border-radius:999px;background:#c8b7a6"></div>
+            <div style="width:70px;height:6px;border-radius:999px;background:#d9d9d9"></div>
           </div>
 
-          <div style="padding:16px 18px 18px;background:linear-gradient(135deg,#ff9f43,#ff7a18);position:relative">
+          <div style="padding:16px 18px 18px;background:#ffffff;position:relative">
 
             
 
-            <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.85);font-weight:700">
-              LIVE NAVIGATION
+            <div style="display:flex;align-items:center;gap:8px;font-size:8px;letter-spacing:1.6px;color:#8a7b6d;font-weight:700">
+              <span style="width:10px;height:10px;border-radius:50%;background:#00d26a;display:inline-block;box-shadow:0 0 10px rgba(0,210,106,0.5)"></span>
+              <span>LIVE NAVIGATION</span>
             </div>
 
-            <div style="margin-top:10px;font-size:clamp(22px,5vw,34px);line-height:0.95;font-family:'Bebas Neue';letter-spacing:2px;color:white;max-width:70%">
+            <div style="margin-top:10px;font-size:clamp(18px,4vw,26px);line-height:0.95;font-family:'Bebas Neue';letter-spacing:2px;color:#2b2b2b;max-width:70%">
               ${selected.name}
             </div>
 
-            <div style="position:absolute;right:20px;top:34px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;color:white;font-weight:600;font-size:10px;letter-spacing:1px;text-align:right">
-              <span style="width:12px;height:12px;border-radius:50%;background:#00ff99;display:block;box-shadow:0 0 12px #00ff99"></span>
-              <span>GPS CONNECTED</span>
+            <div style="margin-top:8px;font-size:9px;letter-spacing:1.2px;color:#9b8d80;font-weight:600;text-transform:uppercase">
+              Kota Yogyakarta
             </div>
-          </div>
 
-          <div style="padding:18px;background:#f5efe7;color:#2b2b2b">
+            <div style="margin-top:12px;width:100%;height:1px;background:#efefef"></div>
 
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+            </div>
 
-              <div style="flex:1;min-width:180px">
-                <div style="font-size:11px;letter-spacing:2px;color:#9a8f82;margin-bottom:8px">
-                  ROUTE STATUS
+          <div style="padding:2px 18px 18px;background:#ffffff;color:#2b2b2b">
+
+            <div id="routeInfoWrapper" style="display:flex;flex-direction:column;align-items:flex-start;padding:0 0 2px;gap:14px">
+
+              <div style="display:flex;gap:10px;align-items:center;padding-right:10px;min-width:0">
+                <div style="width:34px;height:34px;border-radius:10px;background:#ffffff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21C12 21 18 15.5 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 15.5 12 21 12 21Z" stroke="#ff7a18" stroke-width="1.8"/>
+                    <circle cx="12" cy="10" r="2.5" fill="#ff7a18"/>
+                  </svg>
                 </div>
 
-                <div id="routeDistance" style="font-size:22px;font-weight:700;line-height:1.2;color:#2b2b2b">
-                  Calculating...
-                </div>
+                <div>
+                  <div style="font-size:8px;letter-spacing:1.2px;color:#9a8f82;margin-bottom:4px;font-weight:700">
+                    ROUTE STATUS
+                  </div>
 
-                <div id="routeEta" style="margin-top:4px;font-size:11px;font-weight:600;color:#9a8f82;letter-spacing:1px">
-                  Estimating travel time...
+                  <div id="routeDistance" style="font-size:clamp(12px,3vw,18px);font-weight:700;line-height:1;color:#2b2b2b;white-space:nowrap">
+                    Calculating...
+                  </div>
                 </div>
               </div>
 
-              
+              <div id="routeDivider" style="width:100%;height:1px;background:#efefef"></div>
+
+              <div style="display:flex;gap:8px;align-items:center;padding-left:2px;justify-content:flex-start;min-width:0">
+                <div style="width:34px;height:34px;border-radius:10px;background:#ffffff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="8" stroke="#ff7a18" stroke-width="1.8"/>
+                    <path d="M12 8V12L15 14" stroke="#ff7a18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <div style="text-align:left">
+                  <div style="font-size:8px;letter-spacing:1.2px;color:#9a8f82;margin-bottom:4px;font-weight:700">
+                    ESTIMATE TIME
+                  </div>
+
+                  <div id="routeEta" style="font-size:clamp(12px,3vw,18px);font-weight:700;line-height:1;color:#2b2b2b;white-space:nowrap">
+                    Estimating...
+                  </div>
+                </div>
+              </div>
 
             </div>
 
-            <button onclick="backToComap()" style="margin-top:18px;width:100%;border:none;background:linear-gradient(135deg,#ff9f43,#ff7a18);color:white;padding:14px;border-radius:16px;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 10px 30px rgba(255,122,24,0.3)">
-              BACK TO CO-MAP
-            </button>
+            <div style="display:flex;gap:10px;margin-top:14px;width:100%">
+
+              
+
+              <button onclick="backToComap()" style="flex:1;border:none;background:#ff7a18;color:#ffffff;padding:10px 12px;border-radius:14px;font-size:8px;font-weight:700;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 20px rgba(255,122,24,0.22)">
+                BACK TO CO-MAP
+              </button>
+
+            </div>
 
           </div>
 
@@ -2433,7 +2832,12 @@ window.startRoute = function(name){
           }
 
           if(etaEl){
-            etaEl.innerHTML = `Estimated time ${minutes} min`;
+            etaEl.innerHTML = `${minutes} min`;
+          }
+
+          // REAL GPS-BASED LIVE NAVIGATION UPDATE
+          if(liveNavigationEnabled && typeof window.liveNavigationUpdater === 'function'){
+            window.liveNavigationUpdater(parseFloat(km));
           }
 
           if(distanceMeters <= 25){
@@ -2442,7 +2846,7 @@ window.startRoute = function(name){
             }
 
             if(etaEl){
-              etaEl.innerHTML = `Destination reached`;
+              etaEl.innerHTML = `Arrived`;
             }
 
             if(watchRouteId){
@@ -2462,7 +2866,7 @@ window.startRoute = function(name){
           }
 
           if(etaEl){
-            etaEl.innerHTML = 'Check internet or GPS';
+            etaEl.innerHTML = 'GPS Error';
           }
         });
     }
@@ -2533,6 +2937,165 @@ window.startRoute = function(name){
   },300);
 }
 
+window.startNavigationAction = function(){
+
+  if(navigationStarted) return;
+
+  navigationStarted = true;
+
+  const sheetBody = document.querySelector('#sheetContainer');
+
+  if(sheetBody){
+
+    sheetBody.innerHTML = `
+
+      <div style="background:#ffffff;border-radius:26px;overflow:hidden">
+
+        <div style="padding:18px 18px 10px">
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+
+            <div style="display:flex;align-items:center;gap:10px">
+              <div>
+                <div style="font-size:8px;letter-spacing:1.5px;color:#ff922e;font-weight:700">LIVE NAVIGATION</div>
+                <div style="margin-top:6px;font-size:22px;font-weight:700;color:#222">Navigation started!</div>
+                <div style="margin-top:5px;font-size:11px;color:#7c7c7c" id="smartDirectionText">Continue straight</div>
+              </div>
+            </div>
+
+            <button onclick="backToComap()" style="border:none;background:#ffffff;border:1px solid #ececec;padding:10px 14px;border-radius:14px;font-size:10px;font-weight:700;color:#ff7a18;cursor:pointer">
+              END
+            </button>
+          </div>
+
+          <div style="margin-top:18px;background:#f8faf8;border-radius:22px;padding:16px">
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+
+              <div>
+                <div style="font-size:8px;letter-spacing:1px;color:#8d8d8d;font-weight:700">DISTANCE LEFT</div>
+                <div id="liveDistanceLeft" style="margin-top:6px;font-size:20px;font-weight:700;color:#18a34a">Calculating...</div>
+              </div>
+
+              <div>
+                <div style="font-size:8px;letter-spacing:1px;color:#8d8d8d;font-weight:700">ETA</div>
+                <div id="liveEtaLeft" style="margin-top:6px;font-size:20px;font-weight:700;color:#222">Estimating...</div>
+              </div>
+
+              <div>
+                <div style="font-size:8px;letter-spacing:1px;color:#8d8d8d;font-weight:700">NEXT TURN</div>
+                <div id="liveNextTurn" style="margin-top:6px;font-size:20px;font-weight:700;color:#ff7a18">Forward</div>
+              </div>
+
+            </div>
+
+            <div style="margin-top:22px">
+
+              <div style="position:relative;height:10px;background:#e8e8e8;border-radius:999px;overflow:hidden">
+                <div id="navigationProgressBar" style="width:0%;height:100%;background:#1fbf75;border-radius:999px;transition:0.8s linear"></div>
+
+                <div id="navigationCar" style="position:absolute;top:50%;left:0%;transform:translate(-50%,-50%);transition:0.8s linear;width:14px;height:14px;border-radius:50%;background:#1fbf75;border:2px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.18)"></div>
+              </div>
+
+              <div style="margin-top:8px;display:flex;justify-content:space-between;font-size:10px;color:#888;font-weight:600">
+                <span>Start</span>
+                <span>Destination</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+  }
+
+  const initialDistance = parseFloat(document.getElementById('routeDistance')?.innerText) || 1;
+  const initialEta = parseInt(document.getElementById('routeEta')?.innerText) || 1;
+
+  liveNavigationEnabled = true;
+
+  const updateNavigationUI = (distanceKm)=>{
+
+    const progressPercent = Math.min(100, Math.max(0, ((initialDistance - distanceKm) / initialDistance) * 100));
+
+    navigationProgress = progressPercent;
+
+    nextTurn = Math.max(20, Math.round(distanceKm * 100));
+
+    if(nextTurn <= 0){
+      currentStepIndex = (currentStepIndex + 1) % routeSteps.length;
+
+      const directionEl = document.getElementById('smartDirectionText');
+      if(directionEl){
+        directionEl.innerHTML = routeSteps[currentStepIndex];
+      }
+
+      nextTurn = 350;
+    }
+
+    const progressBar = document.getElementById('navigationProgressBar');
+    const car = document.getElementById('navigationCar');
+    const distanceEl = document.getElementById('liveDistanceLeft');
+    const etaEl = document.getElementById('liveEtaLeft');
+    const turnEl = document.getElementById('liveNextTurn');
+
+    if(progressBar){
+      progressBar.style.width = progressPercent + '%';
+    }
+
+    if(car){
+      car.style.left = progressPercent + '%';
+    }
+
+    if(distanceEl){
+      distanceEl.innerHTML = distanceKm.toFixed(2) + ' km';
+    }
+
+    if(etaEl){
+      const calculatedEta = Math.max(1, Math.round((distanceKm / initialDistance) * initialEta));
+      etaEl.innerHTML = calculatedEta + ' min';
+    }
+
+    if(turnEl){
+      if(nextTurn <= 80){
+        turnEl.innerHTML = 'Turn now';
+      }else{
+        turnEl.innerHTML = nextTurn + ' m';
+      }
+    }
+
+    if(distanceKm <= 0.03){
+
+      if(distanceEl){
+        distanceEl.innerHTML = 'Arrived';
+      }
+
+      if(etaEl){
+        etaEl.innerHTML = '0 min';
+      }
+
+      if(turnEl){
+        turnEl.innerHTML = '0 m';
+      }
+
+      const directionEl = document.getElementById('smartDirectionText');
+      if(directionEl){
+        directionEl.innerHTML = 'You have arrived at destination';
+      }
+    }
+  };
+
+  window.liveNavigationUpdater = updateNavigationUI;
+
+  if(routingMap && routingUserMarker){
+    routingMap.flyTo(routingUserMarker.getLatLng(),17,{duration:1.2});
+  }
+}
+
 window.backToComap = function(){
   if(watchRouteId){
     navigator.geolocation.clearWatch(watchRouteId);
@@ -2583,6 +3146,7 @@ window.backToComap = function(){
       map.addLayer(userBuffer);
     }
 
+
     // ===== RATING FILTER =====
     const ratingSlider = document.getElementById('ratingSlider');
     const ratingInput = document.getElementById('ratingInput');
@@ -2594,15 +3158,21 @@ window.backToComap = function(){
       familyLayer.clearLayers();
       romanticLayer.clearLayers();
 
-      const filteredAesthetic = aesthetic.filter(item => item.rating >= minRating);
-      const filteredWorking = working.filter(item => item.rating >= minRating);
-      const filteredFamily = family.filter(item => item.rating >= minRating);
-      const filteredRomantic = romantic.filter(item => item.rating >= minRating);
+      coffeeMarkers.length = 0;
+
+      const keyword = (document.getElementById('mapSearchInput')?.value || '').toLowerCase().trim();
+
+      const filteredAesthetic = aesthetic.filter(item => item.rating >= minRating && item.name.toLowerCase().includes(keyword));
+      const filteredWorking = working.filter(item => item.rating >= minRating && item.name.toLowerCase().includes(keyword));
+      const filteredFamily = family.filter(item => item.rating >= minRating && item.name.toLowerCase().includes(keyword));
+      const filteredRomantic = romantic.filter(item => item.rating >= minRating && item.name.toLowerCase().includes(keyword));
 
       addMarkers(filteredAesthetic, aestheticLayer, 'red');
       addMarkers(filteredWorking, workingLayer, 'orange');
       addMarkers(filteredFamily, familyLayer, 'green');
       addMarkers(filteredRomantic, romanticLayer, 'pink');
+
+      updateMarkerLabels();
 
       if(!checkboxes[0].checked){ map.removeLayer(aestheticLayer); }
       if(!checkboxes[1].checked){ map.removeLayer(workingLayer); }
@@ -2693,6 +3263,29 @@ window.backToComap = function(){
     checkboxes[3].onchange = ()=>{
       if(checkboxes[3].checked){ map.addLayer(romanticLayer);} 
       else{ map.removeLayer(romanticLayer);} 
+    }
+
+    checkboxes[4].checked = false;
+    checkboxes[5].checked = false;
+
+    checkboxes[4].onchange = ()=>{
+      updateMarkerLabels();
+    }
+
+    checkboxes[5].onchange = ()=>{
+      updateMarkerLabels();
+    }
+
+    updateMarkerLabels();
+
+    // ===== SEARCH BY NAME =====
+    const mapSearchInput = document.getElementById('mapSearchInput');
+
+    if(mapSearchInput){
+      mapSearchInput.addEventListener('input', ()=>{
+        const currentRating = parseFloat(ratingSlider.value || 1);
+        applyRatingFilter(currentRating);
+      });
     }
 
   }, 300);
