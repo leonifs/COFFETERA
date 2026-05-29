@@ -532,11 +532,57 @@
     .special-for-you img {
       width: 300px !important;
       height: 400px !important;
-      aspect-ratio: 3 / 4 !important;
+      aspect-ratio: 3 / 4.2 !important;
+      max-width: 185px !important;
+      margin: 0 auto !important;
       object-fit: cover !important;
       display: block !important;
     }
-  </style>
+  
+    /* SPECIAL FOR YOU SLIDER FIX */
+    .special-slider,
+    .special-for-you,
+    .special-grid,
+    .slider-special {
+      display: grid !important;
+      grid-template-columns: repeat(4, 0.78fr) !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      align-items: start !important;
+    }
+
+    .special-slider .card,
+    .special-slider .item,
+    .special-for-you .card,
+    .special-for-you .item,
+    .special-grid .card,
+    .special-grid .item,
+    .slider-special .card,
+    .slider-special .item {
+      aspect-ratio: 3 / 4 !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+    }
+
+    .special-slider img,
+    .special-for-you img,
+    .special-grid img,
+    .slider-special img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    @media (max-width: 768px) {
+      .special-slider,
+      .special-for-you,
+      .special-grid,
+      .slider-special {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+</style>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
